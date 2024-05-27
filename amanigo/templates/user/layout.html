@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en" data-x="html" data-x-toggle="html-overflow-hidden">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore the world with Amanigo Travels. Discover exclusive deals and unique travel experiences at the best prices. Your gateway to unforgettable adventures starts here.">
+  <meta name="keywords" content="Amanigo Travels, Travel Agency, Travel Deals, Vacation Packages, Travel Booking">
+  <meta name="author" content="Amanigo Travels">
+  <meta property="og:title" content="Amanigo Travels - Your Gateway to Unforgettable Adventures">
+  <meta property="og:description" content="Book your next vacation with Amanigo Travels and enjoy unique travel experiences at the best prices. Discover our exclusive deals now!">
+  <meta property="og:image" content="https://www.amanigotravels.com/static/img/icons/5.png">
+  <meta property="og:url" content="https://www.amanigotravels.com">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="../../static/img/icons/6.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google fonts -->
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&amp;display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../static/css/vendors.css">
+  <link rel="stylesheet" href="../../static/css/main.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+
+  <title>{{pagename}}</title>
+</head>
+<style>
+ .header .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.header .dropdown-toggle {
+    cursor: pointer;
+}
+
+.header .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    z-index: 1;
+    min-width: 200px;
+    padding: 10px 0;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.header .dropdown-menu li {
+    padding: 8px 16px;
+}
+
+.header .dropdown-menu li a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+}
+
+.header .dropdown-menu li a:hover {
+    background-color: #f1f1f1;
+}
+
+.header .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.newsletter-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    font-size: 24px;
+    cursor: pointer;
+    background-color: #300063;
+    border: none;
+    padding: 5px;
+    border-radius:10px;
+    color: #fff;
+}
+
+.close-btn:hover{
+  background-color: #CE4501;
+  color: #fff;
+  transition: 0.1s ease-in;
+}
+
+.popup-image img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+.popup-form h2 {
+    margin-top: 20px;
+    font-size: 24px;
+    color: #300063;
+}
+
+.popup-form p {
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.popup-input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.popup-submit {
+    padding: 10px 20px;
+    background-color: #300063;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup-submit:hover {
+    background-color: #CE4501;
+    transition: 0.1s ease-in;
+}
+
+.single-field {
+        position: relative;
+    }
+
+    .single-field form {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
+    .single-field input {
+        flex-grow: 1;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        margin-right: 10px;
+        font-size: 16px;
+    }
+
+    .single-field .subscribe-btn {
+        background-color: #300063;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .single-field .subscribe-btn:hover {
+        background-color: #CE4501;
+    }
+
+    .header-menu .menu .menu__nav a{
+      margin-right: 20px !important;
+      padding-left: 20px !important;
+      font-weight: bold;
+    }
+
+
+    .menu__nav {
+  display: flex;
+  list-style: none;
+}
+
+.menu__nav li {
+  position: relative;
+  margin-right: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #000;
+  padding: 10px 0;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: #CE4501;
+}
+
+.nav-link::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #CE4501;
+  transition: width 0.3s;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.nav-link:hover::after,
+.nav-link:focus::after {
+  width: 100%;
+}
+
+.menu__nav li.active .nav-link::after {
+  width: 100%;
+}
+
+</style>
+<body>
+  <div class="preloader js-preloader">
+    <div class="preloader__wrap">
+      <div class="preloader__icon">
+        <svg width="38" height="37" viewBox="0 0 38 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <img src="../../static/img/icons/5.png" alt="Amanigo Travels Logo Scrolled"  style="height:auto; width:auto;">
+
+          <defs>
+            <clipPath id="clip0_1_41">
+              <rect width="36.92" height="36.92" fill="white" transform="translate(0.540039)" />
+            </clipPath>
+          </defs>
+        </svg>
+      </div>
+    </div>
+
+    <div class="preloader__title">  <img src="../../static/img/icons/13.png" alt="Amanigo Travels Logo Scrolled"  style="height:80px; width:300px;"></div>
+  </div>
+  <main><header data-add-bg="bg-white" class="header js-header" data-x="header" data-x-toggle="is-menu-opened">
+    <div data-anim="fade" class="header__container header__container-1500 mx-auto px-30 sm:px-20">
+        <div class="row justify-between items-center">
+  
+            <div class="col-auto">
+                <div class="d-flex items-center">
+                    <a href="{{ url_for('index') }}" class="header-logo mr-50" data-x="header-logo" data-x-toggle="is-logo-dark">
+                        <img src="../../static/img/icons/6.png" alt="Amanigo Travels Logo" style="height: 40px; width:40px;" class="logo-initial display: none;">
+                        <img src="../../static/img/icons/13.png" alt="Amanigo Travels Logo Scrolled" class="logo-scrolled" style="height: 60px;">
+                    </a>
+                </div>
+            </div>
+  
+            <div class="header-menu" data-x="mobile-menu" data-x-toggle="is-menu-active">
+                <div class="mobile-overlay"></div>
+  
+                <div class="header-menu__content">
+                    <div class="mobile-bg js-mobile-bg"></div>
+  
+                    <div class="menu js-navList">
+                        <ul class="menu__nav text-dark-1 -is-active">
+                            <li>
+                                <a href="{{url_for('index')}}" class="nav-link">
+                                    <span class="mr-10">Home</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{url_for('about')}}" class="nav-link">
+                                    <span class="mr-10">About</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{url_for('visa')}}" class="nav-link">
+                                    <span class="mr-10">Visa</span>
+                                </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                                    <span class="mr-10">Services</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{url_for('destination_list')}}" class="dropdown-item">Destinations</a></li>
+                                    <li><a href="{{url_for('packages_list')}}" class="dropdown-item">Vacation Packages</a></li>
+                                    <li><a href="{{url_for('special_offers_list')}}" class="dropdown-item">Special Offers</a></li>
+                                    <li><a href="{{url_for('core_services')}}" class="dropdown-item">Core Services</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="{{url_for('bloglist')}}" class="nav-link">
+                                    <span class="mr-10">News</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{url_for('contact')}}" class="nav-link">
+                                    <span class="mr-10">Contact</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+  
+                    <div class="mobile-footer px-20 py-20 border-top-light js-mobile-footer">
+  
+                    </div>
+                </div>
+            </div>
+  
+            <div class="col-auto">
+                <div class="d-flex items-center">
+  
+  
+                    <div class="d-none xl:d-flex x-gap-20 items-center pl-30 text-dark-1" data-x="header-mobile-icons" data-x-toggle="text-white">
+                        <div><button class="d-flex items-center icon-menu text-inherit text-22" data-x-click="html, header, header-logo, header-mobile-icons, mobile-menu"></button></div>
+                    </div>
+                </div>
+            </div>
+  
+        </div>
+    </div>
+  </header>
+  
+
+
+    {%block banner%}
+
+
+    {%endblock banner%}
+
+    {%block content%}
+    
+
+    {%endblock content%}
+
+    <footer class="footer -type-2 bg-dark-3 text-white">
+      <div class="container">
+        <div class="pt-60 pb-60">
+          <div class="row y-gap-40 justify-between xl:justify-start">
+            <div class="col-xl-4 col-lg-6">
+              <img src="../../static/img/icons/2.png" alt="Amanigo Travels Logo Scrolled"  style="height: 70px; width:120px; ">
+
+              <div class="row y-gap-30 justify-between pt-30">
+                <div class="col-sm-6">
+                  <div class="text-14">Toll Free Customer Care</div>
+                  <a href="#" class="text-14 fw-500 mt-5">+(234) 803 511 1052</a>
+                  <br>
+                  <a href="#" class="text-14 fw-500 mt-5">+(234) 803 511 1601</a>
+                </div>
+
+                <div class="col-sm-5">
+                  <div class="text-14">Need live support?</div>
+                  <a href="#" class="text-18 fw-500 mt-5">info@amanigo.com</a>
+                </div>
+              </div>
+
+              <div class="row x-gap-20 y-gap-15 pt-60">
+                <div class="col-12">
+                  <h5 class="text-16 fw-500">Your all-in-one travel app Coming Soon on..</h5>
+                </div>
+
+                <div class="col-auto col-lg-6" >
+                  <div class="d-flex items-center px-25 py-10 rounded-4 bg-white-10" style="background-color:#D04500;">
+                    <div class="icon-apple pl-10 text-24"></div>
+                    <div class="ml-20" >
+                      <div class="text-14 lh-14">Download on the</div>
+                      <div class="text-15 lh-14 fw-500">Apple Store</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-auto col-lg-6">
+                  <div class="d-flex items-center px-20 py-10 rounded-4 bg-white-10" style="background-color:#D04500;">
+                    <div class="icon-play-market text-24"></div>
+                    <div class="ml-20" >
+                      <div class="text-14 lh-14">Get in on</div>
+                      <div class="text-15 lh-14 fw-500">Google Play</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-60">
+                <h5 class="text-16 fw-500 mb-10">Follow us on social media</h5>
+
+                <div class="d-flex x-gap-20 items-center">
+                  <a href="#"><i class="icon-facebook text-14"></i></a>
+                  <a href="https://x.com/Amanigotravels?t=-muu5pOJ_x4xc_qT62Wc9Q&s=09"><i class="icon-twitter text-14"></i></a>
+                  <a href="https://www.instagram.com/amanigotravels"><i class="icon-instagram text-14"></i></a>
+                  <a href="#"><i class="icon-linkedin text-14"></i></a>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="newsletter-popup" id="newsletter-popup">
+              <div class="popup-content">
+                  <button class="close-btn" id="close-btn">&times;</button>
+                  <div class="popup-image">
+                      <img src="../../static/images/newsletter.webp" alt="Newsletter Image">
+                  </div>
+                  <div class="popup-form">
+                      <h2>Subscribe to our Newsletter</h2>
+                      <p>Get updates & more</p>
+                      <form id="popupForm" method="POST" action="{{ url_for('submit_newsletter') }}">
+                          <input class="popup-input" type="email" name="email" placeholder="Your Email" required>
+                          <button class="popup-submit" type="submit">Subscribe</button>
+                      </form>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- Existing Subscription Form -->
+          <div class="col-lg-6">
+            <div class="row y-gap-30">
+              <div class="col-12">
+                <h5 class="text-16 fw-500 mb-15">Get Updates & More</h5>
+                <div class="single-field relative d-flex justify-end items-center pb-30">
+                    <form id="newsletterForm" method="POST" action="{{ url_for('submit_newsletter') }}" class="d-flex w-100">
+                        <input class="bg-white rounded-8 flex-grow-1 px-10 py-8" type="email" name="email" placeholder="Your Email" required>
+                        <button class="subscribe-btn px-20 py-10 text-15 fw-500 text-white ml-10" type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+         
+   
+
+          
+                <div class="col-lg-4 col-sm-6">
+                  <h5 class="text-16 fw-500 mb-30">Company</h5>
+                  <div class="d-flex y-gap-5 flex-column">
+                    <a href="{{url_for('about')}}">About Us</a>
+                    <a href="{{url_for('destination_list')}}">Destinations</a>
+                    <a href="{{url_for('bloglist')}}">Blog</a>
+                    <a href="{{url_for('special_offers_list')}}">Special Offers</a>
+                    <a href="{{url_for('packages_list')}}">Vacation Packages</a>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
+                  <h5 class="text-16 fw-500 mb-30">Support</h5>
+                  <div class="d-flex y-gap-5 flex-column">
+                    <a href="{{url_for('contact')}}">Contact</a>
+                    <a href="{{url_for('terms')}}">Legal Notice</a>
+                    <a href="{{url_for('terms')}}">Privacy Policy</a>
+                    <a href="{{url_for('terms')}}">Terms and Conditions</a>
+                    <a href="{{url_for('helpcenter')}}">Help Center</a>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
+                  <h5 class="text-16 fw-500 mb-30">Other Services</h5>
+                  <div class="d-flex y-gap-5 flex-column">
+                    <a href="{{url_for('contact')}}">Car hire</a>
+                    <a href="{{url_for('contact')}}">Flight finder</a>
+                    <a href="{{url_for('contact')}}">Cruise Ticket</a>
+                    <a href="{{url_for('contact')}}">Hotel Booking</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="py-20 border-top-white-15">
+          <div class="row justify-between items-center y-gap-10">
+            <div class="col-auto">
+              <div class="row x-gap-30 y-gap-10">
+                <div class="col-auto">
+                  <div class="text-14">
+                    © 2024 Amanigo Travels All rights reserved.
+                  </div>
+                  <p class=" text-12 text-white ">
+                    &copy;Designed By <img src="{{ url_for('static', filename='img/icons/circle2.png') }}" class="fa-fade mx-auto" id="iconfooter"> CyberSage
+                </p>
+                </div>
+
+                <div class="col-auto">
+                  <div class="d-flex x-gap-15 text-14">
+                    <a href="#" class="d-flex items-center">
+                      <span class="size-4 rounded-full bg-white mr-10"></span>
+                      Privacy
+                    </a>
+                    <a href="{{url_for('terms')}}" class="d-flex items-center">
+                      <span class="size-4 rounded-full bg-white mr-10"></span>
+                      Terms
+                    </a>
+                    <a href="#" class="d-flex items-center">
+                      <span class="size-4 rounded-full bg-white mr-10"></span>
+                      Site Map
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-auto">
+              <div class="row y-gap-10 items-center">
+                <div class="col-auto">
+                  <div class="d-flex items-center">
+                    <button class="d-flex items-center text-14 fw-500 text-white mr-10">
+                      <i class="icon-globe text-16 mr-10"></i>
+                      <span class="underline">English (US)</span>
+                    </button>
+
+                    <button class="d-flex items-center text-14 fw-500 text-white">
+                      <i class="icon-usd text-16 mr-10"></i>
+                      <span class="underline">USD</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+</main >
+
+
+  <!-- JavaScript -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAz77U5XQuEME6TpftaMdX0bBelQxXRlM"></script>
+  <script src="../../static/unpkg.com/%40googlemaps/markerclusterer%402.5.3/dist/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+  <script src="../../static/js/vendors.js"></script>
+  <script src="../../static/js/main.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+    const header = document.querySelector('.header');
+    if (header) {
+        const changeColorOnScroll = () => {
+            if (window.scrollY > 0) {
+                header.classList.add('text-black');
+            } else {
+                header.classList.remove('text-black');
+            }
+        };
+
+        window.addEventListener('scroll', changeColorOnScroll);
+    } else {
+        console.error('Header element not found');
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const logoInitial = document.querySelector('.logo-initial');
+    const logoScrolled = document.querySelector('.logo-scrolled');
+
+    if (logoInitial && logoScrolled) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                logoInitial.style.opacity = '0';
+                logoInitial.style.visibility = 'hidden';
+                logoScrolled.style.opacity = '1';
+                logoScrolled.style.visibility = 'visible';
+            } else {
+                logoInitial.style.opacity = '1';
+                logoInitial.style.visibility = 'visible';
+                logoScrolled.style.opacity = '0';
+                logoScrolled.style.visibility = 'hidden';
+            }
+        });
+    } else {
+        console.error('Logo elements not found');
+    }
+});
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  var promoSwiper = new Swiper('.promo-section', {
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    autoplay: {
+      delay: 5000,
+    },
+  });
+});
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    var swiper = new Swiper('.hajj-umrah-carousel', {
+        loop: true,
+        autoplay: {
+            delay: 6000,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+});
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  new Swiper('.js-section-slider', {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    navigation: {
+      nextEl: '.js-routes-slider-next',
+      prevEl: '.js-routes-slider-prev',
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 1,
+        spaceBetween: 20,
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 30,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 30,
+      },
+      1280: {
+        slidesPerView: 4,
+        spaceBetween: 30,
+      },
+    },
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+        // Show the popup after 2 seconds
+        setTimeout(() => {
+            document.getElementById('newsletter-popup').style.display = 'flex';
+        }, 2000);
+
+        // Close the popup
+        document.getElementById('close-btn').addEventListener('click', () => {
+            document.getElementById('newsletter-popup').style.display = 'none';
+        });
+
+        // Close the popup when clicking outside the content
+        window.addEventListener('click', (event) => {
+            if (event.target === document.getElementById('newsletter-popup')) {
+                document.getElementById('newsletter-popup').style.display = 'none';
+            }
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      // Remove active class from all links
+      navLinks.forEach(link => link.parentElement.classList.remove('active'));
+
+      // Add active class to the clicked link
+      this.parentElement.classList.add('active');
+    });
+  });
+});
+
+
+  </script>
+
+
+  
+  
+</body>
+
+</html>

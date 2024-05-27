@@ -1,0 +1,305 @@
+{%extends 'user/layout.html'%}
+
+{%block content%}
+
+<style>
+/* Breadcrumbs and General Styles */
+.breadcrumbs-section .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.breadcrumbs a {
+  color: #CECECE;
+  text-decoration: none;
+}
+
+.breadcrumbs a.text-dark {
+  color: #333;
+}
+
+.tourism-link a {
+  color: #CECECE;
+  text-decoration: none;
+}
+
+.map-container {
+  width: 100%;
+  height: 400px; /* Adjust height based on your needs */
+  margin-bottom: 20px;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.col-md-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding: 20px;
+}
+
+.map-form {
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.form-input input,
+.form-input textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+}
+
+.submit-btn {
+  background-color: #300063;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.submit-btn:hover{
+  background-color: #CE4501;
+  transition: .2s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+.content-area {
+  padding: 20px;
+  background-color: #fff; /* Optional: adds a white background */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow for depth */
+  height: 552px;
+}
+
+.content-area h2 {
+  margin-bottom: 15px; /* Space below the heading */
+}
+
+.content-area p {
+  margin-bottom: 10px; /* Space between paragraphs */
+  line-height: 1.6; /* Improves readability */
+  text-align: justify; /* Ensures justified text for a cleaner appearance */
+}
+
+.icon a:hover{
+  color:#CE4501 !important;
+  transition:color 0.1s ease-in-out;
+}
+
+</style>
+
+
+
+<div class="map-container">
+  <div id="map" class="map js-map-single"></div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 content-area mt-15">
+      <h2>Welcome to <img src="../../static/img/icons/13.png" alt="Amanigo Travels Logo Scrolled"  style="height:50px; width:220px;"></h2>
+      <p>
+        At Amanigo Travels, we are dedicated to crafting unforgettable travel experiences that cater to your unique tastes and preferences. Whether you're looking to explore hidden gems untouched by mainstream tourism or wish to indulge in the world's most luxurious resorts, our team is committed to making your dream vacation a reality.
+      </p>
+      <p>
+        With personalized travel planning, access to exclusive destinations, and a deep commitment to quality, Amanigo Travels ensures that every aspect of your journey is seamless and memorable. From the bustling streets of cosmopolitan cities to the serene solitude of secluded beaches, we bring the wonders of the world to your doorstep.
+      </p>
+      <p>
+        Experience travel planning as it should be—personal, seamless, and attuned to your desires. Explore the world with Amanigo Travels, where your journey begins with us.
+      </p>
+    </div>
+    <div class="col-md-6">
+      {% set messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      {% for category, message in messages %}
+          <div class="alert alert-{{ category }}"> {{ message }} </div>
+      {% endfor %}
+      {% endif %}
+      <form id="contactForm" class="map-form" method="POST" action="{{ url_for('submit_contact') }}">
+        <h2>Send a message</h2>
+        <div class="form-input">
+          <input type="text" name="full_name" placeholder="Full Name" required>
+        </div>
+        <div class="form-input">
+          <input type="email" name="email" placeholder="Email" required>
+        </div>
+        <div class="form-input">
+          <input type="text" name="subject" placeholder="Subject" required>
+        </div>
+        <div class="form-input">
+          <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send a Message</button>
+      </form>
+    </div>
+</div>
+</div>
+
+<section class="layout-pt-md layout-pb-lg" style="color:white; background-color:#292929;">
+  <div class="container">
+    <div class="row x-gap-80 y-gap-20 justify-between">
+      <div class="col-12">
+        <div class="text-30 sm:text-24 fw-600">Contact Us</div>
+      </div>
+
+      <div class="col-lg-3">
+        <div class="text-14 text-light-2">Address</div>
+        <div class="text-18 fw-500 mt-10">Suite C6 Primus Mall Plot 2 , 1st Avenue Gwarinpa Abuja, Nigeria.</div>
+      </div>
+
+      <div class="col-auto">
+        <div class="text-14 text-light-2">Toll Free Customer Care</div>
+        <div class="text-18 fw-500 mt-10">+(234) 803 511 1052</div> 
+        <div class="text-18 fw-500 mt-10">+(234) 803 511 1601</div>
+      </div>
+
+      <div class="col-auto">
+        <div class="text-14 text-light-2">Need live support?</div>
+        <div class="text-18 fw-500 mt-10">info@amanigo.com</div>
+      </div>
+
+      <div class="col-auto">
+        <div class="text-14 text-light-2">Follow us on social media</div>
+        <div class="d-flex x-gap-20 items-center mt-10 icon">
+          <a href="#"><i class="icon-facebook text-14"></i></a>
+          <a href="https://x.com/Amanigotravels?t=-muu5pOJ_x4xc_qT62Wc9Q&s=09"><i class="icon-twitter text-14"></i></a>
+          <a href="https://www.instagram.com/amanigotravels"><i class="icon-instagram text-14"></i></a>
+          <a href="#"><i class="icon-linkedin text-14"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="layout-pt-sm layout-pb-md" >
+  <div data-anim-wrap class="container">
+    <div data-anim-child="slide-up" class="row justify-center text-center">
+      <div class="col-auto">
+        <div class="sectionTitle -md">
+          <h2 class="sectionTitle__title t1">Why Choose Us</h2>
+          <p class="sectionTitle__text mt-5 sm:mt-0">Explore top-rated destinations with unique benefits and exceptional deals.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row y-gap-40 justify-between pt-50">
+
+      <div data-anim-child="slide-up delay-1" class="col-lg-3 col-sm-6">
+        <div class="featureIcon -type-1">
+          <div class="d-flex justify-center">
+            <img src="#" data-src="../../static/img/featureIcons/3/1.svg" alt="image" class="js-lazy">
+          </div>
+          <div class="text-center mt-30">
+            <h4 class="text-18 fw-500">Best Price Guarantee</h4>
+            <p class="text-15 mt-10">Never overpay for your travels. Enjoy the best available rates with our price match promise.</p>
+          </div>
+        </div>
+      </div>
+
+      <div data-anim-child="slide-up delay-2" class="col-lg-3 col-sm-6">
+        <div class="featureIcon -type-1">
+          <div class="d-flex justify-center">
+            <img src="#" data-src="../../static/img/featureIcons/3/2.svg" alt="image" class="js-lazy">
+          </div>
+          <div class="text-center mt-30">
+            <h4 class="text-18 fw-500">Easy & Quick Booking</h4>
+            <p class="text-15 mt-10">Streamline your booking process with our user-friendly platforms, designed for speed and convenience.</p>
+          </div>
+        </div>
+      </div>
+
+      <div data-anim-child="slide-up delay-3" class="col-lg-3 col-sm-6">
+        <div class="featureIcon -type-1">
+          <div class="d-flex justify-center">
+            <img src="#" data-src="../../static/img/featureIcons/3/3.svg" alt="image" class="js-lazy">
+          </div>
+          <div class="text-center mt-30">
+            <h4 class="text-18 fw-500">Customer Care 24/7</h4>
+            <p class="text-15 mt-10">Our dedicated support team is always on standby to help you resolve any travel issues, anytime, anywhere.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<script>
+  function initMap() {
+    var location = {lat: -34.397, lng: 150.644};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 8,
+      center: location
+    });
+    var marker = new google.maps.Marker({
+      position: location,
+      map: map
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('contactForm');
+      form.addEventListener('submit', (event) => {
+          event.preventDefault(); // Prevent the default form submission
+
+          if (validateForm()) {
+              alert('Your message has been sent successfully!');
+              form.submit(); // Submit the form after showing the alert
+          }
+      });
+
+      function validateForm() {
+          const inputs = form.querySelectorAll('input[required], textarea[required]');
+          for (let input of inputs) {
+              if (!input.value) {
+                  alert(`Please fill out the ${input.placeholder} field.`);
+                  return false;
+              }
+          }
+          return true;
+      }
+  });
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCixKR38tt6oXTonDdByW-4oVKVe9mULIM&callback=initMap">
+</script>
+
+{%endblock%}

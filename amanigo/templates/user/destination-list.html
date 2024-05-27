@@ -1,0 +1,151 @@
+{%extends 'user/layout.html'%}
+
+{%block content%}
+
+<style>
+    .swiper-slide {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .swiper-slide:hover {
+        transform: scale(1.05);
+    }
+
+    .sectionTitle__title {
+        color: #CE4501; /* Brand color for headers */
+    }
+
+    .arrow-left-hover, .arrow-right-hover {
+        background-color: #CE4501;
+        color: white;
+    }
+
+    .arrow-left-hover:hover, .arrow-right-hover:hover {
+        background-color: #AA381E; /* Darker shade for hover effect */
+    }
+
+    .pagination-dots {
+        color: #CE4501; /* Consistent brand color use */
+    }
+
+    .section-bg {
+        background-color: #300063; /* Sets the section background */
+    }
+
+    .sectionTitle__title {
+        color: #CE4501; /* Brand color for title */
+    }
+
+    .sectionTitle__text {
+        color: white; /* Ensures the subtitle text is visible against the dark background */
+    }
+
+    .testimonials {
+        background-color: white; /* Background of the testimonial cards */
+        color: #333; /* Default text color */
+    }
+
+    .testimonials h4 {
+        color: #CE4501; /* Specific color for headings within testimonials */
+    }
+
+    .swiper-pagination-bullet-active {
+        background-color: #CE4501;
+    }
+
+    .swiper-button-prev, .swiper-button-next {
+        color: #CE4501; /* Swiper arrows color to match the theme */
+    }
+
+    .swiper-button-prev:hover, .swiper-button-next:hover {
+        background-color: #AA381E; /* Darker shade for hover effect */
+    }
+
+    .section-bg {
+        position: relative;
+        overflow: hidden; /* Prevents any spillover from the fixed background */
+    }
+
+    .background-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(48, 0, 99, 0.7), rgba(0, 0, 0, 0.7)), url('../../static/img/icons/aman2.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        z-index: -1;
+    }
+
+    .container {
+        position: relative;
+        z-index: 1;
+    }
+
+    h1, .text-white {
+        color: white;
+    }
+</style>
+</head>
+<body>
+<section class="section-bg layout-pt-lg layout-pb-lg">
+    <div class="background-image">
+        <!-- Background image can be added here if needed -->
+    </div>
+    <div class="container">
+        <div class="row justify-center text-center">
+            <div class="col-xl-6 col-lg-8 col-md-10">
+                <h1 class="text-40 md:text-25 fw-600 text-white">Welcome to Our Destinations</h1>
+                <div class="text-white mt-15">Discover exciting destinations with your trusted travel companion</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="layout-pt-md layout-pb-lg mt-40">
+    <div class="container">
+        <div class="row justify-center text-center">
+            <div class="col-auto">
+                <div class="sectionTitle -md">
+                    <h2 class="sectionTitle__title">Destinations</h2>
+                    <p class="sectionTitle__text mt-5 sm:mt-0" style="color:#CE4501;">Explore our curated list of travel destinations.</p>
+                </div>
+            </div>
+        </div>
+
+
+            <div class="row y-gap-30 pt-40 js-post-container">
+                {% for destination in destinations %}
+                    <div class="col-lg-4 col-sm-6 post-item" data-category-ids="{{ destination.category_ids }}">
+                        <a href="{{ url_for('view_destination', destination_id=destination.id) }}" class="blogCard -type-1 d-block">
+                            <div class="blogCard__image">
+                                <div class="ratio ratio-4:3 rounded-8">
+                                    {% if destination.images.first() %}
+                                        <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/destinations/' + destination.images.first().url) }}" alt="{{ destination.name }}">
+                                    {% else %}
+                                        <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/destinations/default.jpg') }}" alt="{{ destination.name }}">
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="mt-20">
+                                <h4 class="text-dark-1 text-18 fw-500">{{ destination.name }}</h4>
+                                <div class="text-light-1 text-15 lh-14 mt-5">{{ destination.subtitle }}</div>
+                            </div>
+                        </a>
+                    </div>
+                {% else %}
+                    <div class="col-12">
+                        <p>No destinations available at the moment.</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+{%endblock%}

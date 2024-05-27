@@ -1,0 +1,49 @@
+{%extends 'user/layout.html'%}
+
+
+{%block content%}
+<style>
+  
+  section {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('../../static/img/icons/15.jpg');
+        background-attachment: fixed !important;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    .otp-form {
+        backdrop-filter: blur(10px);
+        background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        transition: background-color 0.3s;
+    }
+
+    .form-input {
+        margin-bottom: 20px;
+    }
+</style>
+
+<section class="layout-pt-lg layout-pb-lg bg-blue-2">
+    <div class="container">
+        <div class="row justify-center">
+            <div class="col-xl-6 col-lg-7 col-md-9">
+                <div class="otp-form">
+                    <h2>Send OTP</h2>
+                    <form action="{{ url_for('send_otp') }}" method="POST">
+                        {{ form.hidden_tag() }}
+                        <div class="col-12">
+                            {{ form.email.label(class='lh-1 text-14') }}
+                            {{ form.email(class='form-control') }}
+                        </div>
+                        {{ form.submit(class="button py-20 px-20 -dark-1 bg-dark-2 text-white") }}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{%endblock%}

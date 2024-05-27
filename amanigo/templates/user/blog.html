@@ -1,0 +1,335 @@
+{% extends 'user/layout.html' %}
+
+{% block banner %}
+<style>
+  body {
+    color: #333;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+
+  .customers {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('../../static/img/icons/15.jpg');
+    background-attachment: fixed !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white !important;
+  }
+
+  header.masthead {
+    padding-top: 15vh;
+    padding-bottom: 15vh;
+    text-align: center;
+    color: white;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  .site-heading h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+
+  .site-heading .subheading {
+    font-size: 1.25rem;
+    font-weight: normal;
+    line-height: 1.5;
+  }
+
+  article {
+    margin: 0 auto;
+    padding: 0 1%;
+    max-width: 950px;
+    text-align: justify;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  article h3 {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  article p {
+    margin-bottom: 15px;
+  }
+
+  @media (max-width: 800px) {
+    article {
+      padding: 0 5%;
+    }
+  }
+
+  footer img {
+    margin: auto;
+    padding: auto;
+  }
+
+  .post-content {
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+
+  .article {
+    background-color: white;
+    padding: 2rem;
+    margin: -8rem auto 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 80%;
+    max-width: 800px;
+  }
+
+  header, img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .categories, .tags {
+    margin-top: 1rem;
+  }
+
+  .category, .tag {
+    display: inline-block;
+    background-color: #CE4501;
+    color: white;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 0.375rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin: 0 auto;
+    padding: 0 1%;
+  }
+
+  .catag {
+    margin-left: 65px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  .post-content {
+    background-color: rgba(245, 245, 245, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+
+  .imgpost img {
+    border-radius: 10px;
+  }
+
+  .post-meta {
+    color: #ffffffb7;
+  }
+
+   
+
+</style>
+<header class="masthead" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ url_for('static', filename='images/post/' + post.image) }}'); background-size: cover; background-position: center;">
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          <h1>{{ post.title }}</h1>
+          <span class="subheading">{{ post.subtitle }}</span>
+          <p class="post-meta">
+            Posted by <a href="#">{{ post.author.username }}</a>
+            on {{ post.post_date.strftime('%B %d, %Y') }} | Last Modified: {{ post.last_modified.strftime('%B %d, %Y %H:%M') }}
+            {% if post.deleted_at %}
+            | Deleted At: {{ post.deleted_at.strftime('%B %d, %Y %H:%M') }}
+            {% endif %}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="post-content">
+    <article>
+      <div class="imgpost">
+        {% if post.image %}
+        <img src="{{ url_for('static', filename='images/post/' ~ post.image) }}" alt="Post Image" class="img-fluid">
+        {% endif %}
+      </div>
+      <h3>{{ post.subtitle }}</h3>
+      <div>{{ post.content | safe }}</div>
+    </article>
+    <div class="mt-4 catag">
+      <strong>Categories:</strong>
+      {% for category in post.categories %}
+      <span class="category">{{ category.name }}</span>{% if not loop.last %}, {% endif %}
+      {% endfor %}
+    </div>
+    <div class="mt-1 catag">
+      <strong>Tags:</strong>
+      {% for tag in post.tags %}
+      <span class="tag">{{ tag.name }}</span>{% if not loop.last %}, {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<section class="customers layout-pt-lg layout-pb-lg bg-dark-3">
+  <div class="container">
+    <div class="row y-gap-40 justify-between text-white">
+      <div class="col-xl-5 col-lg-6">
+        <h2 class="text-30">What our customers are saying about us?</h2>
+        <p class="text-white mt-20">Explore what travelers have to say about their extraordinary journeys with us. Discover how we've transformed their travel experiences.</p>
+
+        <div class="row y-gap-30 pt-60 lg:pt-40">
+          <div class="col-sm-5 col-6">
+            <div class="text-30 lh-15 fw-600">13m+</div>
+            <div class="lh-15">Happy Customers</div>
+          </div>
+
+          <div class="col-sm-5 col-6">
+            <div class="text-30 lh-15 fw-600">4.88</div>
+            <div class="lh-15">Average Customer Rating</div>
+
+            <div class="d-flex x-gap-5 items-center pt-10">
+              <div class="icon-star text-white text-10"></div>
+              <div class="icon-star text-white text-10"></div>
+              <div class="icon-star text-white text-10"></div>
+              <div class="icon-star text-white text-10"></div>
+              <div class="icon-star text-white text-10"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-anim="slide-up delay-2" class="col-lg-6">
+        <div class="overflow-hidden js-testimonials-slider-3" data-scrollbar>
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="row items-center x-gap-30 y-gap-20">
+                <div class="col-auto">
+                  <img src="" alt="Tony">
+                </div>
+
+                <div class="col-auto">
+                  <h5 class="text-16 text-white fw-500">Tony Nwoke</h5>
+                  <div class="text-15 text-white lh-15">Marketing Specialist</div>
+                </div>
+              </div>
+
+              <p class="text-18 fw-500 text-white mt-30 sm:mt-20">"Amanigo Travels helped me discover hidden gems around Europe. Each itinerary was perfectly tailored, making every trip memorable and unique!"</p>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="row items-center x-gap-30 y-gap-20">
+                <div class="col-auto">
+                  <img src="" alt="Danmallam">
+                </div>
+
+                <div class="col-auto">
+                  <h5 class="text-16 text-white fw-500">Danmallam kahdijat</h5>
+                  <div class="text-15 text-white lh-15">Freelance Writer</div>
+                </div>
+              </div>
+
+              <p class="text-18 fw-500 text-white mt-30 sm:mt-20">"From the planning stages to the trip itself, Amanigo Travels provided outstanding service. Their attention to detail made my travel stress-free and incredibly enjoyable."</p>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="row items-center x-gap-30 y-gap-20">
+                <div class="col-auto">
+                  <img src="" alt="Linda">
+                </div>
+
+                <div class="col-auto">
+                  <h5 class="text-16 text-white fw-500">Linda Apkofure</h5>
+                  <div class="text-15 text-white lh-15">Entrepreneur</div>
+                </div>
+              </div>
+
+              <p class="text-18 fw-500 text-white mt-30 sm:mt-20">"I've booked several family vacations through Amanigo Travels. Each experience has been seamless, from exotic destinations to cultural immersions. Truly a five-star service!"</p>
+            </div>
+
+          </div>
+
+          <div class="d-flex items-center mt-60 sm:mt-20 js-testimonials-slider-pag">
+            <div class="text-white fw-500 js-current">01</div>
+            <div class="slider-scrollbar -light bg-white-10 ml-20 mr-20 w-max-300 js-scrollbar"></div>
+            <div class="text-white fw-500 js-all">03</div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+  
+</section>
+
+
+<section class="layout-pt-md layout-pb-lg mt-40">
+  <div class="container">
+    <div class="row justify-center text-center">
+      <div class="col-auto">
+        <div class="sectionTitle -md">
+          <h2 class="sectionTitle__title">Top Destinations</h2>
+          <p class="sectionTitle__text mt-5 sm:mt-0">These popular destinations have a lot to offer.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row y-gap-30 pt-40 js-post-container">
+      {% for destination in destinations %}
+      <div class="col-lg-4 col-sm-6 post-item" data-category-ids="{{ destination.category_ids }}">
+        <a href="{{ url_for('view_destination', destination_id=destination.id) }}" class="blogCard -type-1 d-block">
+          <div class="blogCard__image">
+            <div class="ratio ratio-4:3 rounded-8">
+              {% if destination.images.first() %}
+              <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/destinations/' + destination.images.first().url) }}" alt="{{ destination.name }}">
+              {% else %}
+              <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/destinations/default.jpg') }}" alt="{{ destination.name }}">
+              {% endif %}
+            </div>
+          </div>
+          <div class="mt-20">
+            <h4 class="text-dark-1 text-18 fw-500">{{ destination.name }}</h4>
+            <div class="text-light-1 text-15 lh-14 mt-5">{{ destination.subtitle }}</div>
+          </div>
+        </a>
+      </div>
+      {% else %}
+      <div class="col-12">
+        <p>No destinations available at the moment.</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      // Smooth scrolling for all links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+              document.querySelector(this.getAttribute('href')).scrollIntoView({
+                  behavior: 'smooth'
+              });
+          });
+      });
+  });
+  </script>
+  
+
+{% endblock %}

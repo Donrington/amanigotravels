@@ -1,0 +1,65 @@
+{%extends 'user/layout2.html'%}
+
+{%block content%}
+
+<style>
+    section {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../static/img/background.jpg');
+        background-attachment: fixed !important;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+  
+    .otp-box {
+        backdrop-filter: blur(10px);
+        background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        text-align: center;
+    }
+  
+    .form-input {
+        margin-bottom: 20px;
+    }
+
+  </style>
+  
+
+
+<!-- verify_otp.html -->
+<section class="layout-pt-lg layout-pb-lg bg-blue-2">
+    <div class="container">
+        <div class="row justify-center">
+            <div class="col-xl-6 col-lg-7 col-md-9">
+                <div class="otp-box">
+                    <form action="{{ url_for('verify_otp') }}" method="POST">
+                        {% set messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                        {% for category, message in messages %}
+                          <div class="alert alert-{{ category }}"> {{ message }} </div>
+                        {% endfor %}
+                        {% endif %}
+                        {{ form.hidden_tag() }}
+                        <h1 class="text-22 fw-500">Verify OTP</h1>
+                        <div class="form-input">
+                            {{ form.otp_code.label(class="lh-1 text-14") }}
+                            {{ form.otp_code(class="input form-control", required=True) }}
+                        </div>
+                        {{ form.submit(class="button py-20 px-20 -dark-1 bg-dark-2 text-white") }}
+                        <p class="mt-10">Enter the OTP sent to your email to proceed.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+{%endblock%}

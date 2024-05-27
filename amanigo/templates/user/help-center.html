@@ -1,0 +1,228 @@
+{%extends 'user/layout2.html'%}
+
+{%block content%}
+
+<style>
+  .col button {
+  background-color: transparent; /* Ensure background is transparent by default */
+  color: inherit; /* Inherits the color from the parent or defaults to the CSS root */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for background and text color */
+}
+
+/* Button hover style */
+.col button:hover {
+  background-color: #FF8800; /* Dark shade when hovered */
+  color: white; /* Changes text color to white when hovered */
+}
+
+/* Optional: Add a focus style for accessibility */
+.col button:focus {
+  outline: none; /* Removes default outline */
+  box-shadow: 0 0 0 3px rgba(206, 69, 1, 0.5); /* Adds a subtle focus ring around the button */
+}
+
+</style>
+
+
+
+<section class="layout-pt-md mt-40">
+  <div class="container">
+    <div class="row justify-center text-center">
+      <div class="col-xl-6 col-lg-8 col-md-10">
+        <div class="sectionTitle -md">
+          <h2 class="sectionTitle__title">Welcome to the <img src="../../static/img/icons/13.png" alt="Amanigo Travels Logo Scrolled"  style="height:45px; width:220px;"> </h2>
+          <h2 class="sectionTitle__title">Help Center</h2>
+          <p class="sectionTitle__text mt-5 sm:mt-0">Get answers to your queries and learn more about how to make the most of your travel experiences with us.</p>
+        </div> 
+
+        <div class="single-field d-flex items-center justify-end x-gap-10 y-gap-20 pt-40">
+          <div class="col-12">
+            <input class="border-light bg-white h-68" type="text" placeholder="Search for topics like 'Cancellation, meeting point, etc.'">
+          </div>
+
+          <div class="absolute mr-4">
+            <button class="button -md -dark-1 h-60 bg-dark-2 text-white">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row y-gap-30 pt-60 lg:pt-40" >
+      <div class="col-lg-4 col-md-6">
+        <div class="bg-blue-1-05 rounded-4 px-50 py-40" style="color:#fff; background-color: #262626;">
+          <div class="size-70 bg-white rounded-full flex-center">
+            <img src="../../static/img/pages/help/icons/1.svg" alt="icon">
+          </div>
+
+          <div class="mt-24">
+            <div class="text-18 fw-500">Booking Your Activity</div>
+            <p class="mt-5 text-white">Learn how to book your next adventure, understand booking conditions, and find out what to expect on your trip.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="bg-blue-1-05 rounded-4 px-50 py-40" style="color:#fff; background-color: #262626;">
+          <div class="size-70 bg-white rounded-full flex-center">
+            <img src="../../static/img/pages/help/icons/2.svg" alt="icon">
+          </div>
+
+          <div class="mt-24">
+            <div class="text-18 fw-500">Payment & Receipts</div>
+            <p class="mt-5 text-white">Find out about different payment methods, how to obtain receipts, and answers to your billing questions.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="bg-blue-1-05 rounded-4 px-50 py-40" style="color:#fff; background-color: #262626;">
+          <div class="size-70 bg-white rounded-full flex-center">
+            <img src="../../static/img/pages/help/icons/3.svg" alt="icon">
+          </div>
+
+          <div class="mt-24">
+            <div class="text-18 fw-500">Booking Changes & Refunds</div>
+            <p class="mt-5 text-white">Understand how to modify your booking, the refund process, and policies regarding cancellations.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="bg-blue-1-05 rounded-4 px-50 py-40" style="color:#fff; background-color: #262626;">
+          <div class="size-70 bg-white rounded-full flex-center">
+            <img src="../../static/img/pages/help/icons/4.svg" alt="icon">
+          </div>
+
+          <div class="mt-24">
+            <div class="text-18 fw-500">Promo Codes & Credits</div>
+            <p class="mt-5 text-white">Learn how to redeem promotional codes and understand the benefits of Amanigo credit.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="bg-blue-1-05 rounded-4 px-50 py-40" style="color:#fff; background-color: #262626;">
+          <div class="size-70 bg-white rounded-full flex-center">
+            <img src="../../static/img/pages/help/icons/5.svg" alt="icon">
+          </div>
+
+          <div class="mt-24">
+            <div class="text-18 fw-500">On the Participation Day</div>
+            <p class="mt-5 text-white">Tips and guidance on what to expect on the day of your activity, including check-in times and on-site support.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="bg-blue-1-05 rounded-4 px-50 py-40" style="color:#fff; background-color: #262626;">
+          <div class="size-70 bg-white rounded-full flex-center">
+            <img src="../../static/img/pages/help/icons/6.svg" alt="icon">
+          </div>
+
+          <div class="mt-24">
+            <div class="text-18 fw-500">Value Packs</div>
+            <p class="mt-5 text-white">Discover how to maximize savings with our value pack deals and enjoy enhanced experiences at reduced rates.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="layout-pt-lg layout-pb-lg">
+  <div class="container">
+    <div class="row justify-center text-center">
+      <div class="col-auto">
+        <div class="sectionTitle -md">
+          <h2 class="sectionTitle__title">Frequently Asked Questions</h2>
+          <p class="sectionTitle__text mt-5 sm:mt-0">Get answers to common questions about planning your trip with Amanigo Travels.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row y-gap-30 justify-center pt-40 sm:pt-20">
+      <div class="col-xl-8 col-lg-10">
+        <div class="accordion -simple row y-gap-20 js-accordion">
+
+          <div class="col-12">
+            <div class="accordion__item px-20 py-20 border-light rounded-4">
+              <div class="accordion__button d-flex items-center">
+                <div class="accordion__icon size-40 flex-center bg-light-2 rounded-full mr-20">
+                  <i class="icon-plus"></i>
+                  <i class="icon-minus"></i>
+                </div>
+                <div class="button text-dark-1">How do your travel package prices compare to others?</div>
+              </div>
+              <div class="accordion__content">
+                <div class="pt-20 pl-60">
+                  <p class="text-15">Amanigo Travels offers competitive pricing on all travel packages. We ensure that our customers receive value for money by securing the best deals and discounts without compromising on service quality.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="accordion__item px-20 py-20 border-light rounded-4">
+              <div class="accordion__button d-flex items-center">
+                <div class="accordion__icon size-40 flex-center bg-light-2 rounded-full mr-20">
+                  <i class="icon-plus"></i>
+                  <i class="icon-minus"></i>
+                </div>
+                <div class="button text-dark-1">What services do you provide for international travelers?</div>
+              </div>
+              <div class="accordion__content">
+                <div class="pt-20 pl-60">
+                  <p class="text-15">We provide comprehensive services for international travelers, including flight bookings, hotel reservations, travel insurance, guided tours, and personalized travel itineraries to enhance your traveling experience.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="accordion__item px-20 py-20 border-light rounded-4">
+              <div class="accordion__button d-flex items-center">
+                <div class="accordion__icon size-40 flex-center bg-light-2 rounded-full mr-20">
+                  <i class="icon-plus"></i>
+                  <i class="icon-minus"></i>
+                </div>
+                <div class="button text-dark-1">What should I do if I need help while abroad?</div>
+              </div>
+              <div class="accordion__content">
+                <div class="pt-20 pl-60">
+                  <p class="text-15">If you need assistance while abroad, Amanigo Travels offers 24/7 customer support. Contact us via our dedicated helpline, email, or messaging service. We are here to help resolve any issues and ensure your trip goes smoothly.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="accordion__item px-20 py-20 border-light rounded-4">
+              <div class="accordion__button d-flex items-center">
+                <div class="accordion__icon size-40 flex-center bg-light-2 rounded-full mr-20">
+                  <i class="icon-plus"></i>
+                  <i class="icon-minus"></i>
+                </div>
+                <div class="button text-dark-1">How can I ensure my trip is sustainable?</div>
+              </div>
+              <div class="accordion__content">
+                <div class="pt-20 pl-60">
+                  <p class="text-15">Amanigo Travels is committed to promoting sustainable tourism. We suggest choosing eco-friendly accommodations, respecting local cultures, minimizing waste, and using local transport options. We provide advice and resources to help you make sustainable choices while traveling.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+{%endblock%}

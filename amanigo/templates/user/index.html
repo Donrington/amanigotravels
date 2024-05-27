@@ -1,0 +1,863 @@
+{%extends 'user/layout.html'%}
+
+{%block banner%}
+
+<style>
+  .masthead{
+    z-index: -100;
+  }
+  .customers{
+      background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('../../static/img/icons/15.jpg'); background-attachment: fixed !important;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      color:white !important;
+    }
+    .carousel {
+            position: relative;
+            max-width: 90%;
+            margin: auto;
+            overflow: hidden;
+            /* border: 2px solid #ddd;
+            background-color: #fff; */
+        }
+
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            min-width: 33.33%;
+            box-sizing: border-box;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.5s ease-in-out;
+            position: relative;
+            color: #000;
+        }
+        .carousel-item a:hover{
+          color: #CE4501;
+        }
+        .carousel-item h3 {
+            margin: 0;
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+
+        .carousel-item p {
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 50%;
+            user-select: none;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .next {
+            right: 0;
+            border-radius: 50%;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: #CE4501;
+            transition: 0.1s ease-in;
+        }
+
+        .active-featured {
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .active-featured::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('') center/cover;
+            border-radius: 10px;
+            z-index: 1;
+        }
+
+        .active-featured h3, .active-featured p {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-item {
+                min-width: 50%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-item {
+                min-width: 100%;
+            }
+        }
+        .elementor-section{
+          margin-top: -150px;
+          z-index: 200;
+        }
+</style>
+<section class="masthead -type-10">
+  <div class="swiper-container">
+      <div class="swiper-wrapper">
+          <div class="swiper-slide">
+              <div class="video-overlay"></div>
+              <video playsinline autoplay muted loop style="width: 100%; height: 100%; object-fit: cover;">
+                  <source src="../../static/img/video/travid1.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+          </div>
+          <div class="swiper-slide">
+              <div class="video-overlay"></div>
+              <video playsinline autoplay muted loop style="width: 100%; height: 100%; object-fit: cover;">
+                  <source src="../../static/images/beachvid.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+          </div>
+          <div class="swiper-slide">
+              <div class="video-overlay"></div>
+              <video playsinline autoplay muted loop style="width: 100%; height: 100%; object-fit: cover;">
+                  <source src="../../static/img/video/travid6.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+          </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="container-1500">
+          <div class="row">
+              <div class="col-lg-auto">
+                  <div class="masthead__content" id="masthead-content">
+                      <h1 class="text-80 lg:text-80 sm:text-30 slide-down">Explore the World With</h1>
+                      <img src="../../static/img/icons/white.png" alt="Amanigo Travels Logo Scrolled" class="fade-in" style="height: 120px; width: 450px;">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+
+<section class="promo-section swiper">
+ 
+  <!-- Add Pagination -->
+  <div class="swiper-pagination"></div>
+</section>      <section class="elementor-section elementor-top-section elementor-element elementor-element-b7902c7 elementor-section-boxed elementor-section-height-default elementor-section-height-default ct-header-fixed-none ct-row-max-none" data-id="b7902c7" data-element_type="section">
+  <div class="elementor-container elementor-column-gap-extended">
+      <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-9b007be" data-id="9b007be" data-element_type="column">
+          <div class="elementor-widget-wrap elementor-element-populated">
+              <div class="elementor-element elementor-element-9ec0e8c elementor-widget elementor-widget-ct_service_carousel" data-id="9ec0e8c" data-element_type="widget" data-widget_type="ct_service_carousel.default">
+                  <div class="elementor-widget-container">
+                      <div id="ct_service_carousel-9ec0e8c" class="ct-service-carousel8 ct-slick-slider">
+                          <div class="ct-carousel-inner">
+                              <div class="carousel">
+                                  <div class="carousel-container">
+                                      <div class="carousel-item" data-bg="../../static/images/visaimage.webp">
+                                          <div class="grid-item-inner">
+                                              <img src="../../static/images/visaimage.webp" alt="Visa Consultation" title="Visa Consultation">
+                                              <h3><a href="{{url_for('visa')}}">Visa Consultation</a></h3>
+                                              <p>Expert advice and guidance to help you navigate the visa application process.</p>
+                                          </div>
+                                      </div>
+                                      <div class="carousel-item" data-bg="../../static/images/bookflight.webp">
+                                          <div class="grid-item-inner">
+                                              <img src="../../static/images/bookflight.webp" alt="Flight Booking" title="Flight Booking">
+                                              <h3><a href="{{url_for('visa')}}">Flight Booking</a></h3>
+                                              <p>Book your flights with ease through our hassle-free flight booking service.</p>
+                                          </div>
+                                      </div>
+                                      <div class="carousel-item" data-bg="../../static/images/hajj3.jpg">
+                                          <div class="grid-item-inner">
+                                              <img src="../../static/images/hajj3.jpg" alt="Umar and Hajj" title="Umar and Hajj">
+                                              <h3><a href="">Umar and Hajj</a></h3>
+                                              <p>Comprehensive packages for your spiritual journeys of Umar and Hajj.</p>
+                                          </div>
+                                      </div>
+                                      <div class="carousel-item" data-bg="../../static/img/destinations/lon5.webp">
+                                          <div class="grid-item-inner">
+                                              <img src="../../static/img/destinations/lon5.webp" alt="Tour Operations" title="Tour Operations">
+                                              <h3><a href="{{url_for('destination_list')}}">Tour Operations</a></h3>
+                                              <p>Exciting tours and travel experiences tailored to your interests and needs.</p>
+                                          </div>
+                                      </div>
+                                      <div class="carousel-item" data-bg="../../static/images/reception.webp">
+                                          <div class="grid-item-inner">
+                                              <img src="../../static/images/reception.webp" alt="Hotel Reservations" title="Hotel Reservations">
+                                              <h3><a href="{{url_for('contact')}}">Hotel Reservations</a></h3>
+                                              <p>Find and book the best hotels to ensure a comfortable stay during your travels.</p>
+                                          </div>
+                                      </div>
+                                      <div class="carousel-item" data-bg="../../static/images/travv.webp">
+                                          <div class="grid-item-inner">
+                                              <img src="../../static/images/travv.webp" alt="Travel Insurance" title="Travel Insurance">
+                                              <h3><a href="{{url_for('about')}}">Travel Insurance</a></h3>
+                                              <p>Secure your trip with comprehensive travel insurance coverage.</p>
+                                          </div>
+                                      </div>  <div class="carousel-item" data-bg="../../static/images/visaimage.webp">
+                                        <div class="grid-item-inner">
+                                            <img src="../../static/images/visaimage.webp" alt="Visa Consultation" title="Visa Consultation">
+                                            <h3><a href="{{url_for('visa')}}">Visa Consultation</a></h3>
+                                            <p>Expert advice and guidance to help you navigate the visa application process.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item" data-bg="../../static/images/bookflight.webp">
+                                        <div class="grid-item-inner">
+                                            <img src="../../static/images/bookflight.webp" alt="Flight Booking" title="Flight Booking">
+                                            <h3><a href="{{url_for('visa')}}">Flight Booking</a></h3>
+                                            <p>Book your flights with ease through our hassle-free flight booking service.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item" data-bg="../../static/images/hajj3.jpg">
+                                        <div class="grid-item-inner">
+                                            <img src="../../static/images/hajj3.jpg" alt="Umar and Hajj" title="Umar and Hajj">
+                                            <h3><a href="">Umar and Hajj</a></h3>
+                                            <p>Comprehensive packages for your spiritual journeys of Umar and Hajj.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item" data-bg="../../static/img/destinations/lon5.webp">
+                                        <div class="grid-item-inner">
+                                            <img src="../../static/img/destinations/lon5.webp" alt="Tour Operations" title="Tour Operations">
+                                            <h3><a href="{{url_for('destination_list')}}">Tour Operations</a></h3>
+                                            <p>Exciting tours and travel experiences tailored to your interests and needs.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item" data-bg="../../static/images/reception.webp">
+                                        <div class="grid-item-inner">
+                                            <img src="../../static/images/reception.webp" alt="Hotel Reservations" title="Hotel Reservations">
+                                            <h3><a href="{{url_for('contact')}}">Hotel Reservations</a></h3>
+                                            <p>Find and book the best hotels to ensure a comfortable stay during your travels.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item" data-bg="../../static/images/travv.webp">
+                                        <div class="grid-item-inner">
+                                            <img src="../../static/images/travv.webp" alt="Travel Insurance" title="Travel Insurance">
+                                            <h3><a href="{{url_for('about')}}">Travel Insurance</a></h3>
+                                            <p>Secure your trip with comprehensive travel insurance coverage.</p>
+                                        </div>
+                                    </div>  <div class="carousel-item" data-bg="../../static/images/visaimage.webp">
+                                      <div class="grid-item-inner">
+                                          <img src="../../static/images/visaimage.webp" alt="Visa Consultation" title="Visa Consultation">
+                                          <h3><a href="{{url_for('visa')}}">Visa Consultation</a></h3>
+                                          <p>Expert advice and guidance to help you navigate the visa application process.</p>
+                                      </div>
+                                  </div>
+                                  <div class="carousel-item" data-bg="../../static/images/bookflight.webp">
+                                      <div class="grid-item-inner">
+                                          <img src="../../static/images/bookflight.webp" alt="Flight Booking" title="Flight Booking">
+                                          <h3><a href="{{url_for('visa')}}">Flight Booking</a></h3>
+                                          <p>Book your flights with ease through our hassle-free flight booking service.</p>
+                                      </div>
+                                  </div>
+                                  <div class="carousel-item" data-bg="../../static/images/hajj3.jpg">
+                                      <div class="grid-item-inner">
+                                          <img src="../../static/images/hajj3.jpg" alt="Umar and Hajj" title="Umar and Hajj">
+                                          <h3><a href="">Umar and Hajj</a></h3>
+                                          <p>Comprehensive packages for your spiritual journeys of Umar and Hajj.</p>
+                                      </div>
+                                  </div>
+                                  <div class="carousel-item" data-bg="../../static/img/destinations/lon5.webp">
+                                      <div class="grid-item-inner">
+                                          <img src="../../static/img/destinations/lon5.webp" alt="Tour Operations" title="Tour Operations">
+                                          <h3><a href="{{url_for('destination_list')}}">Tour Operations</a></h3>
+                                          <p>Exciting tours and travel experiences tailored to your interests and needs.</p>
+                                      </div>
+                                  </div>
+                                  <div class="carousel-item" data-bg="../../static/images/reception.webp">
+                                      <div class="grid-item-inner">
+                                          <img src="../../static/images/reception.webp" alt="Hotel Reservations" title="Hotel Reservations">
+                                          <h3><a href="{{url_for('contact')}}">Hotel Reservations</a></h3>
+                                          <p>Find and book the best hotels to ensure a comfortable stay during your travels.</p>
+                                      </div>
+                                  </div>
+                                  <div class="carousel-item" data-bg="../../static/images/travv.webp">
+                                      <div class="grid-item-inner">
+                                          <img src="../../static/images/travv.webp" alt="Travel Insurance" title="Travel Insurance">
+                                          <h3><a href="{{url_for('about')}}">Travel Insurance</a></h3>
+                                          <p>Secure your trip with comprehensive travel insurance coverage.</p>
+                                      </div>
+                                  </div>  <div class="carousel-item" data-bg="../../static/images/visaimage.webp">
+                                    <div class="grid-item-inner">
+                                        <img src="../../static/images/visaimage.webp" alt="Visa Consultation" title="Visa Consultation">
+                                        <h3><a href="{{url_for('visa')}}">Visa Consultation</a></h3>
+                                        <p>Expert advice and guidance to help you navigate the visa application process.</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item" data-bg="../../static/images/bookflight.webp">
+                                    <div class="grid-item-inner">
+                                        <img src="../../static/images/bookflight.webp" alt="Flight Booking" title="Flight Booking">
+                                        <h3><a href="{{url_for('visa')}}">Flight Booking</a></h3>
+                                        <p>Book your flights with ease through our hassle-free flight booking service.</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item" data-bg="../../static/images/hajj3.jpg">
+                                    <div class="grid-item-inner">
+                                        <img src="../../static/images/hajj3.jpg" alt="Umar and Hajj" title="Umar and Hajj">
+                                        <h3><a href="">Umar and Hajj</a></h3>
+                                        <p>Comprehensive packages for your spiritual journeys of Umar and Hajj.</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item" data-bg="../../static/img/destinations/lon5.webp">
+                                    <div class="grid-item-inner">
+                                        <img src="../../static/img/destinations/lon5.webp" alt="Tour Operations" title="Tour Operations">
+                                        <h3><a href="{{url_for('destination_list')}}">Tour Operations</a></h3>
+                                        <p>Exciting tours and travel experiences tailored to your interests and needs.</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item" data-bg="../../static/images/reception.webp">
+                                    <div class="grid-item-inner">
+                                        <img src="../../static/images/reception.webp" alt="Hotel Reservations" title="Hotel Reservations">
+                                        <h3><a href="{{url_for('contact')}}">Hotel Reservations</a></h3>
+                                        <p>Find and book the best hotels to ensure a comfortable stay during your travels.</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item" data-bg="../../static/images/travv.webp">
+                                    <div class="grid-item-inner">
+                                        <img src="../../static/images/travv.webp" alt="Travel Insurance" title="Travel Insurance">
+                                        <h3><a href="{{url_for('about')}}">Travel Insurance</a></h3>
+                                        <p>Secure your trip with comprehensive travel insurance coverage.</p>
+                                    </div>
+                                </div>  <div class="carousel-item" data-bg="../../static/images/visaimage.webp">
+                                  <div class="grid-item-inner">
+                                      <img src="../../static/images/visaimage.webp" alt="Visa Consultation" title="Visa Consultation">
+                                      <h3><a href="{{url_for('visa')}}">Visa Consultation</a></h3>
+                                      <p>Expert advice and guidance to help you navigate the visa application process.</p>
+                                  </div>
+                              </div>
+                              <div class="carousel-item" data-bg="../../static/images/bookflight.webp">
+                                  <div class="grid-item-inner">
+                                      <img src="../../static/images/bookflight.webp" alt="Flight Booking" title="Flight Booking">
+                                      <h3><a href="{{url_for('visa')}}">Flight Booking</a></h3>
+                                      <p>Book your flights with ease through our hassle-free flight booking service.</p>
+                                  </div>
+                              </div>
+                              <div class="carousel-item" data-bg="../../static/images/hajj3.jpg">
+                                  <div class="grid-item-inner">
+                                      <img src="../../static/images/hajj3.jpg" alt="Umar and Hajj" title="Umar and Hajj">
+                                      <h3><a href="">Umar and Hajj</a></h3>
+                                      <p>Comprehensive packages for your spiritual journeys of Umar and Hajj.</p>
+                                  </div>
+                              </div>
+                              <div class="carousel-item" data-bg="../../static/img/destinations/lon5.webp">
+                                  <div class="grid-item-inner">
+                                      <img src="../../static/img/destinations/lon5.webp" alt="Tour Operations" title="Tour Operations">
+                                      <h3><a href="{{url_for('destination_list')}}">Tour Operations</a></h3>
+                                      <p>Exciting tours and travel experiences tailored to your interests and needs.</p>
+                                  </div>
+                              </div>
+                              <div class="carousel-item" data-bg="../../static/images/reception.webp">
+                                  <div class="grid-item-inner">
+                                      <img src="../../static/images/reception.webp" alt="Hotel Reservations" title="Hotel Reservations">
+                                      <h3><a href="{{url_for('contact')}}">Hotel Reservations</a></h3>
+                                      <p>Find and book the best hotels to ensure a comfortable stay during your travels.</p>
+                                  </div>
+                              </div>
+                              <div class="carousel-item" data-bg="../../static/images/travv.webp">
+                                  <div class="grid-item-inner">
+                                      <img src="../../static/images/travv.webp" alt="Travel Insurance" title="Travel Insurance">
+                                      <h3><a href="{{url_for('about')}}">Travel Insurance</a></h3>
+                                      <p>Secure your trip with comprehensive travel insurance coverage.</p>
+                                  </div>
+                              </div>
+                                  </div>
+                                  <button class="prev" onclick="prevSlide()">&#10094;</button>
+                                  <button class="next" onclick="nextSlide()">&#10095;</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+{%endblock banner%}
+
+
+
+
+{%block content%}
+<section class="layout-pt-sm layout-pb-md">
+  <div data-anim-wrap class="container">
+    <div data-anim-child="slide-up" class="row justify-center text-center">
+      <div class="col-auto">
+        <div class="sectionTitle -md">
+          <h2 class="sectionTitle__title t1">Why Choose Us</h2>
+          <p class="sectionTitle__text mt-5 sm:mt-0">Explore top-rated destinations with unique benefits and exceptional deals.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row y-gap-40 justify-between pt-50">
+
+      <div data-anim-child="slide-up delay-1" class="col-lg-3 col-sm-6">
+        <div class="featureIcon -type-1">
+          <div class="d-flex justify-center">
+            <img src="#" data-src="../../static/img/featureIcons/3/1.svg" alt="image" class="js-lazy">
+          </div>
+          <div class="text-center mt-30">
+            <h4 class="text-18 fw-500">Best Price Guarantee</h4>
+            <p class="text-15 mt-10">Never overpay for your travels. Enjoy the best available rates with our price match promise.</p>
+          </div>
+        </div>
+      </div>
+
+      <div data-anim-child="slide-up delay-2" class="col-lg-3 col-sm-6">
+        <div class="featureIcon -type-1">
+          <div class="d-flex justify-center">
+            <img src="#" data-src="../../static/img/featureIcons/3/2.svg" alt="image" class="js-lazy">
+          </div>
+          <div class="text-center mt-30">
+            <h4 class="text-18 fw-500">Easy & Quick Booking</h4>
+            <p class="text-15 mt-10">Streamline your booking process with our user-friendly platforms, designed for speed and convenience.</p>
+          </div>
+        </div>
+      </div>
+
+      <div data-anim-child="slide-up delay-3" class="col-lg-3 col-sm-6">
+        <div class="featureIcon -type-1">
+          <div class="d-flex justify-center">
+            <img src="#" data-src="../../static/img/featureIcons/3/3.svg" alt="image" class="js-lazy">
+          </div>
+          <div class="text-center mt-30">
+            <h4 class="text-18 fw-500">Customer Care 24/7</h4>
+            <p class="text-15 mt-10">Our dedicated support team is always on standby to help you resolve any travel issues, anytime, anywhere.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="layout-pt-lg layout-pb-md">
+  <div data-anim-wrap class="container">
+    <div data-anim-child="slide-up delay-1" class="row justify-center text-center">
+      <div class="col-auto">
+        <div class="sectionTitle -md">
+          <h2 class="sectionTitle__title">Special Offers</h2>
+          <p class="sectionTitle__text mt-5 sm:mt-0">These popular destinations have a lot to offer</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row y-gap-20 pt-40">
+
+
+  
+      {% for special_offer in special_offers %}
+      <div class="col-lg-4 col-sm-6">
+        <div class="ctaCard -type-1 rounded-4 -no-overlay">
+          <div class="ctaCard__image ratio ratio-41:35">
+            <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/specialoffers/' + special_offer.image) }}" alt="{{ special_offer.title }}">
+          </div>
+          <div class="ctaCard__content py-50 px-50 xl:py-30 xl:px-30">
+            <div class="text-15 fw-500 text-white mb-10">{{ special_offer.subtitle[:20] }}{% if special_offer.subtitle|length > 20 %}...{% endif %}</div>
+            <h4 class="text-30 xl:text-24 text-white">{{ special_offer.title }}</h4>
+            <div class="d-inline-block mt-30">
+              <a href="{{ url_for('view_special_offer', offer_id=special_offer.id) }}" class="button px-48 py-15 -blue-1 -min-180 bg-white text-dark-1">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% else %}
+      <div class="col-12">
+        <p>No special offers available at the moment.</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+  <section class="hajj-umrah-section layout-pt-lg layout-pb-lg">
+    <div class="swiper-container hajj-umrah-carousel">
+        <div class="swiper-wrapper">
+            <!-- Slide with background image -->
+            <div class="swiper-slide" style="background-image: url('../../static/images/hajj1.jpg');">
+                <div class="overlay-content">
+                    <h2>Embark on a Spiritual Journey</h2>
+                    <p>Experience Hajj with unparalleled service and support.</p>
+                </div>
+            </div>
+            <!-- Slide with background video -->
+            <div class="swiper-slide">
+                <video autoplay loop muted playsinline class="video-slide">
+                    <source src="../../static/images/umar1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="overlay-content">
+                    <h2>Discover the Peace of Umrah</h2>
+                    <p>Find serenity and spiritual renewal in the heart of Mecca.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
+
+  <section class="layout-pt-md layout-pb-md">
+    <div data-anim-wrap class="container">
+      <div data-anim-child="slide-up delay-1" class="row justify-center text-center">
+        <div class="col-auto">
+          <div class="sectionTitle -md">
+            <h2 class="sectionTitle__title">Top Destinations</h2>
+            <p class=" sectionTitle__text mt-5 sm:mt-0">These popular destinations have a lot to offer</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row y-gap-40 justify-between pt-40 sm:pt-20">
+
+
+      
+          {% for destination in destinations %}
+          <div data-anim-child="slide-up delay-{{ loop.index + 3 }}" class="col-xl-{% if loop.index % 2 == 0 %}6{% else %}3{% endif %} col-md-4 col-sm-6">
+            <a href="{{ url_for('view_destination', destination_id=destination.id) }}" class="citiesCard -type-3 d-block rounded-4 h-full">
+                  <div class="citiesCard__image ratio ratio-1:1">
+                      {% if destination.images.first() %}
+                      <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/destinations/' + destination.images.first().url) }}" alt="image">
+                      {% else %}
+                      <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/destinations/default.jpg') }}" alt="image">
+                      {% endif %}
+                  </div>
+                  <div class="citiesCard__content px-30 py-30">
+                      <h4 class="text-26 fw-600 text-white">{{ destination.name }}</h4>
+                     
+                  </div>
+              </a>
+          </div>
+          {% endfor %}
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+  <section class="customers layout-pt-lg layout-pb-lg bg-dark-3">
+    <div class="container">
+      <div class="row y-gap-40 justify-between text-white">
+        <div class="col-xl-5 col-lg-6">
+          <h2 class="text-30">What our customers are saying about us?</h2>
+          <p class="text-white mt-20">Explore what travelers have to say about their extraordinary journeys with us. Discover how we've transformed their travel experiences.</p>
+
+          <div class="row y-gap-30 pt-60 lg:pt-40">
+            <div class="col-sm-5 col-6">
+              <div class="text-30 lh-15 fw-600">13m+</div>
+              <div class="lh-15">Happy Customers</div>
+            </div>
+
+            <div class="col-sm-5 col-6">
+              <div class="text-30 lh-15 fw-600">4.88</div>
+              <div class="lh-15">Average Customer Rating</div>
+
+              <div class="d-flex x-gap-5 items-center pt-10">
+                <div class="icon-star text-white text-10"></div>
+                <div class="icon-star text-white text-10"></div>
+                <div class="icon-star text-white text-10"></div>
+                <div class="icon-star text-white text-10"></div>
+                <div class="icon-star text-white text-10"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div data-anim="slide-up delay-2" class="col-lg-6">
+          <div class="overflow-hidden js-testimonials-slider-3" data-scrollbar>
+            <div class="swiper-wrapper">
+
+              <div class="swiper-slide">
+                <div class="row items-center x-gap-30 y-gap-20">
+                  <div class="col-auto">
+                    <img src="" alt="Tony">
+                  </div>
+
+                  <div class="col-auto">
+                    <h5 class="text-16 text-white fw-500">Tony Nwoke</h5>
+                    <div class="text-15 text-white lh-15">Marketing Specialist</div>
+                  </div>
+                </div>
+
+                <p class="text-18 fw-500 text-white mt-30 sm:mt-20">"Amanigo Travels helped me discover hidden gems around Europe. Each itinerary was perfectly tailored, making every trip memorable and unique!"</p>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="row items-center x-gap-30 y-gap-20">
+                  <div class="col-auto">
+                    <img src="" alt="Danmallam">
+                  </div>
+
+                  <div class="col-auto">
+                    <h5 class="text-16 text-white fw-500">Danmallam kahdijat</h5>
+                    <div class="text-15 text-white lh-15">Freelance Writer</div>
+                  </div>
+                </div>
+
+                <p class="text-18 fw-500 text-white mt-30 sm:mt-20">"From the planning stages to the trip itself, Amanigo Travels provided outstanding service. Their attention to detail made my travel stress-free and incredibly enjoyable."</p>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="row items-center x-gap-30 y-gap-20">
+                  <div class="col-auto">
+                    <img src="" alt="Linda">
+                  </div>
+
+                  <div class="col-auto">
+                    <h5 class="text-16 text-white fw-500">Linda Apkofure</h5>
+                    <div class="text-15 text-white lh-15">Entrepreneur</div>
+                  </div>
+                </div>
+
+                <p class="text-18 fw-500 text-white mt-30 sm:mt-20">"I've booked several family vacations through Amanigo Travels. Each experience has been seamless, from exotic destinations to cultural immersions. Truly a five-star service!"</p>
+              </div>
+
+            </div>
+
+            <div class="d-flex items-center mt-60 sm:mt-20 js-testimonials-slider-pag">
+              <div class="text-white fw-500 js-current">01</div>
+              <div class="slider-scrollbar -light bg-white-10 ml-20 mr-20 w-max-300 js-scrollbar"></div>
+              <div class="text-white fw-500 js-all">03</div>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+    
+  </section>
+
+  <section class="layout-pt-lg layout-pb-lg">
+    <div data-anim-wrap class="container">
+        <div data-anim-child="slide-up" class="row justify-between items-end">
+            <div class="col-auto">
+                <div class="sectionTitle -md">
+                    <h2 class="sectionTitle__title">Packages</h2>
+                    <p class=" sectionTitle__text mt-5 sm:mt-0">These popular destinations have a lot to offer</p>
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <a href="{{url_for('packages_list')}}" class="button -md -blue-1 bg-blue-1-05" style="color:#CE4501">
+                    More <div class="icon-arrow-top-right ml-15"></div>
+                </a>
+            </div>
+        </div>
+
+        <div class="relative">
+            <div class="overflow-hidden mt-40 sm:mt-20 js-section-slider" data-gap="30" data-slider-cols="xl-4 lg-3 md-2 sm-1" data-nav-prev="js-routes-slider-prev" data-nav-next="js-routes-slider-next">
+                <div class="swiper-wrapper">
+                    <!-- Existing post items can stay here -->
+
+                    <!-- Packages -->
+                    {% for package in packages %}
+                    <div data-anim-child="slide-up delay-2" class="swiper-slide">
+                        <a href="{{ url_for('view_package', package_id=package.id) }}" class="rentalCard -type-2">
+                            <div class="rentalCard__image">
+                                <div class="cardImage ratio ratio-6:5">
+                                    <div class="cardImage__content">
+                                        {% if package.image %}
+                                        <img class="rounded-4 col-12 img-ratio js-lazy" src="{{ url_for('static', filename='images/packages/' + package.image) }}" alt="{{ package.title }}">
+                                        {% else %}
+                                        <img class="rounded-4 col-12 img-ratio js-lazy" src="{{ url_for('static', filename='images/packages/default.jpg') }}" alt="Default Image">
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rentalCard__content mt-10">
+                                <h4 class="rentalCard__title text-dark-1 text-18 lh-16 fw-500">
+                                    <span>{{ package.title }}</span>
+                                </h4>
+                                <div class="d-flex items-center text-light-1">
+                                    <div class="text-14">{{ package.subtitle }}</div>
+                                    <div class="size-3 bg-light-1 rounded-full ml-10 mr-10"></div>
+                                    <div class="text-14">{{ package.amount }}</div>
+                                </div>
+                                <div class="text-light-1 mt-5">
+                                    <span class="fw-500 text-dark-1">{{ package.amount }}</span>
+                                    / per package
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <button class="section-slider-nav -prev flex-center button -blue-1 bg-white text-dark-1 size-40 rounded-full shadow-1 sm:d-none  js-routes-slider-prev">
+                <i class="icon icon-chevron-left text-12"></i>
+            </button>
+
+            <button class="section-slider-nav -next flex-center button -blue-1 bg-white text-dark-1 size-40 rounded-full shadow-1 sm:d-none  js-routes-slider-next">
+                <i class="icon icon-chevron-right text-12"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+
+  <section data-anim-wrap class="section-bg pt-80 pb-80 md:pt-40 md:pb-40" >
+    <div data-anim-child="fade delay-1" class=" section-bg__item -w-1500 rounded-4 bg-blue-2" style="background-color:#262626 !important;"></div>
+
+    <div class="container">
+      <div class="row y-gap-30 items-center justify-between">
+        <div data-anim-child="slide-up delay-2" class="col-xl-5 col-lg-6">
+          <h2 class="text-30 text-white lh-15">The <span>    <img src="../../static/img/icons/white.png" alt="Amanigo Travels Logo Scrolled"  style="height: 50px; width:190px; "></span> App Will Be Coming Soon..</h2>
+          <p class="text-white pr-40 lg:pr-0 mt-15 sm:mt-5">Plan and book your perfect trip with ease. Get exclusive deals, manage your itineraries, and access trip details anytime, anywhere.</p>
+
+          <div class="row y-gap-20 items-center pt-30 sm:pt-10">
+            <div class="col-auto">
+              <div class="d-flex items-center px-20 py-10 rounded-8 border-white-15 text-white" style="background-color:#D04500;">
+                <div class="icon-apple text-24"></div>
+                <div class="ml-20">
+                  <div class="text-14">Download on the</div>
+                  <div class="text-15 lh-1 fw-500">App Store</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-auto">
+              <div class="d-flex items-center px-20 py-10 rounded-8 border-white-15 text-white" style="background-color:#D04500;">
+                <div class="icon-play-market text-24"></div>
+                <div class="ml-20">
+                  <div class="text-14">Get it on</div>
+                  <div class="text-15 lh-1 fw-500">Google Play</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div data-anim-child="slide-up delay-3" class="col-lg-6">
+          <img src="../../static/img/app/Carrooo.png" alt="App Interface">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="layout-pt-lg layout-pb-lg">
+    <div class="container">
+        <div class="row justify-center text-center">
+            <div class="col-auto">
+                <div class="sectionTitle -md">
+                    <h2 class="sectionTitle__title">Get Inspired for Your Next Journey</h2>
+                    <p class="sectionTitle__text mt-5 sm:mt-0">Explore our curated articles that promise to ignite your wanderlust and help you plan your next adventure.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row y-gap-30 pt-40">
+            {% for post in posts %}
+            <div class="col-lg-4 col-sm-6">
+                <a href="{{ url_for('blog', post_id=post.id) }}" class="blogCard -type-1 d-block">
+                    <div class="blogCard__image">
+                        <div class="ratio ratio-4:3 rounded-8">
+                          {% if post.image %}
+                          <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/post/' + post.image) }}" alt="{{ post.title }}">
+                          {% else %}
+                          No image
+                          {% endif %}
+                        </div>
+                    </div>
+                    <div class="mt-20">
+                        <h4 class="text-dark-1 text-18 fw-500">{{ post.title }}</h4>
+                        <div class="text-light-1 text-15 lh-14 mt-5">Published: {{ post.post_date.strftime('%B %d, %Y') }}</div>
+                    </div>
+                </a>
+            </div>
+            {% else %}
+            <div class="col-12">
+                <p>No posts available at the moment.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+
+<script>
+
+let slideIndex = 0;
+        const slides = document.querySelectorAll('.carousel-item');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            if (index >= totalSlides) {
+                slideIndex = 0;
+            } else if (index < 0) {
+                slideIndex = totalSlides - 1;
+            }
+            const offset = -slideIndex * 100 / getVisibleSlides();
+            document.querySelector('.carousel-container').style.transform = `translateX(${offset}%)`;
+            slides.forEach((slide, idx) => {
+                if (idx === slideIndex + getVisibleSlides() / 2 - 0.5) {
+                    slide.classList.add('active-featured');
+                    slide.style.backgroundImage = `url(${slide.dataset.bg})`;
+                } else {
+                    slide.classList.remove('active-featured');
+                    slide.style.backgroundImage = 'none';
+                }
+            });
+        }
+
+        function nextSlide() {
+            slideIndex++;
+            showSlide(slideIndex);
+        }
+
+        function prevSlide() {
+            slideIndex--;
+            showSlide(slideIndex);
+        }
+
+        function getVisibleSlides() {
+            if (window.innerWidth <= 480) {
+                return 1;
+            } else if (window.innerWidth <= 768) {
+                return 2;
+            } else {
+                return 3;
+            }
+        }
+
+        window.addEventListener('resize', () => showSlide(slideIndex));
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlide(slideIndex);
+            setInterval(() => {
+                nextSlide();
+            }, 3000); // Change slide every 3 seconds
+        });
+</script>
+
+{%endblock content%}
+
+
+

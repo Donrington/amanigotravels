@@ -1,0 +1,173 @@
+{% extends 'user/dashlayout.html' %}
+
+{% block content %}
+
+<style>
+h1, h2, h3, p, span, th, td {
+    color: #fff;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0,0,0,.05);
+}
+
+.table thead th {
+    background-color: #CE4501;
+    color: white;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #CE4501;
+    border-color: #CE4501;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.scrollable-table {
+    max-height: 300px; /* Adjust as needed */
+    overflow-y: auto;
+}
+</style>
+
+<main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 dashboard-content">
+  <div class="row">
+    <div class="col-12">
+      <h2>Posts</h2>
+      <div class="scrollable-table">
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>Title</th>
+              <th>Categories</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for post in posts %}
+            <tr>
+              <td>{{ post.title }}</td>
+              <td>{{ post.categories | map(attribute='name') | join(', ') }}</td>
+              <td>{{ post.post_date.strftime('%Y-%m-%d') }}</td>
+              <td>
+                <form action="{{ url_for('delete_post', post_id=post.id) }}" method="post" style="display:inline;">
+                  <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</button>
+                </form>
+              </td>
+            </tr>
+            {% else %}
+            <tr>
+              <td colspan="4">No posts found.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <h2>Packages</h2>
+      <div class="scrollable-table">
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>Title</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for package in packages %}
+            <tr>
+              <td>{{ package.title }}</td>
+              <td>{{ package.amount }}</td>
+              <td>{{ package.post_date.strftime('%Y-%m-%d') }}</td>
+              <td>
+                <form action="{{ url_for('delete_package', package_id=package.id) }}" method="post" style="display:inline;">
+                  <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</button>
+                </form>
+              </td>
+            </tr>
+            {% else %}
+            <tr>
+              <td colspan="4">No packages found.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <h2>Destinations</h2>
+      <div class="scrollable-table">
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for destination in destinations %}
+            <tr>
+              <td>{{ destination.name }}</td>
+              <td>{{ destination.description }}</td>
+              <td>
+                <form action="{{ url_for('delete_destination', destination_id=destination.id) }}" method="post" style="display:inline;">
+                  <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</button>
+                </form>
+              </td>
+            </tr>
+            {% else %}
+            <tr>
+              <td colspan="3">No destinations found.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <h2>Special Offers</h2>
+      <div class="scrollable-table">
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>Title</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for offer in offers %}
+            <tr>
+              <td>{{ offer.title }}</td>
+              <td>{{ offer.offer_date.strftime('%Y-%m-%d') }}</td>
+              <td>
+                <form action="{{ url_for('delete_offer', offer_id=offer.id) }}" method="post" style="display:inline;">
+                  <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</button>
+                </form>
+              </td>
+            </tr>
+            {% else %}
+            <tr>
+              <td colspan="3">No offers found.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+
+{% endblock %}

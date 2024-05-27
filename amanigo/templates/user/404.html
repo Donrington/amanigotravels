@@ -1,0 +1,29 @@
+{% extends 'user/layout2.html' %}
+
+{% block content %}
+
+<section class="layout-pt-lg layout-pb-lg">
+    <div class="container">
+        <div class="row y-gap-30 justify-between items-center">
+            <div class="col-lg-6">
+                <img src="../../static/images/5203299.jpg" alt="image">
+            </div>
+
+            <div class="col-lg-5">
+                <div class="no-page">
+                    <div class="no-page__title">40<span style="color:#CE4501;">4</span></div>
+
+                    <h2 class="text-30 fw-600">Oops! It looks like you're lost.</h2>
+
+                    <div class="pr-30 mt-5">The page you're looking for isn't available. Try to search again or use the go to.</div>
+
+                    <div class="d-inline-block mt-40 md:mt-20">
+                        <a href="{{ url_for('index') }}" class="button -md -dark-1 text-white" style="background-color:#300063">Go back to homepage</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
