@@ -3,9 +3,9 @@
 {%block content%}
 
 <style>
-
 .visa-header {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('../../static/images/visaimage.webp'); background-attachment: fixed !important;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('../../static/images/visaimage.webp'); 
+    background-attachment: fixed !important;
     background-size: cover;
     background-position: center;
     color: white;
@@ -25,47 +25,30 @@
 
 .content-section {
     display: flex;
+    flex-wrap: wrap; /* Ensure items wrap on smaller screens */
     justify-content: space-between;
     max-width: 1200px;
     margin: 50px auto;
     padding: 20px;
 }
 
-.visa-info {
-    flex: 1;
-    margin-right: 20px;
+.visa-info, .visa-form {
+    flex: 1 1 100%; /* Make each section take full width on small screens */
+    margin-bottom: 20px;
     background: #f7f7f7;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.visa-info h2 {
+.visa-info h2, .visa-form h3 {
     font-size: 2rem;
     margin-bottom: 1rem;
 }
 
-.visa-info p {
+.visa-info p, .visa-form p {
     font-size: 1rem;
     line-height: 1.5;
-    margin-bottom: 1rem;
-}
-
-.visa-form {
-    flex: 1;
-    background: #f7f7f7;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.visa-form h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.visa-form p {
-    font-size: 1rem;
     margin-bottom: 1rem;
 }
 
@@ -100,96 +83,128 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
     background-color: #CE4501;
-    transition:.1s ease-in;
+    transition: .1s ease-in;
 }
-</style>
-    <header class="visa-header">
-        <div class="header-content">
-            <h1>Visa Page</h1>
-            <p>Apply for your visa easily and efficiently</p>
-        </div>
-    </header>
 
-    <main>
-        <section class="content-section">
-            <div class="visa-info">
-                <h2>Travel Visa Assistance Program</h2>
-                <p>
-                    Our visa team is made up of specialized and seasoned experts in visa processing.
-                    Our process includes profiling, helping you complete your visa application forms,
-                    vetting documents, getting appointment dates, and conducting pre-interview sessions
-                    where applicable, with the aim of increasing your chances of visa success.
-                </p>
-                <p>
-                    We do not encourage immigration defaults and kindly note that the issuance of visas
-                    is at the discretion of the embassy.
-                </p>
-                <p>
-                    Contact our visa consultants for all your travel visa-related questions.
-                </p>
-            </div>
-            <div class="visa-form">
-                <form id="visaForm" method="POST" action="{{ url_for('visa') }}">
-                    <h3>Get Visa Assistance Now</h3>
-                    <p>We're bringing you a new level of comfort.</p>
-                    {% set messages = get_flashed_messages(with_categories=true) %}
-                    {% if messages %}
-                    {% for category, message in messages %}
-                        <div class="alert alert-{{ category }}"> {{ message }} </div>
-                    {% endfor %}
-                    {% endif %}
-                    <div class="form-group">
-                        <label for="firstName">First Name</label>
-                        <input type="text" id="firstName" name="firstName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" id="lastName" name="lastName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="dob">Date of Birth</label>
-                        <input type="date" id="dob" name="dob" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="country">Country</label>
-                        <input type="text" id="country" name="country" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    <button type="submit">Submit Application</button>
-                </form>
-            </div>
-            
-        </section>
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const form = document.getElementById('visaForm');
-                form.addEventListener('submit', (event) => {
-                    // event.preventDefault(); // Comment this out to allow form submission
-                    if (validateForm()) {
-                        alert('Visa application submitted successfully!');
-                        form.reset();
-                    }
-                });
-            });
-        
-            function validateForm() {
-                const inputs = form.querySelectorAll('input[required]');
-                for (let input of inputs) {
-                    if (!input.value) {
-                        alert(`Please fill out the ${input.previousElementSibling.textContent} field.`);
-                        return false;
-                    }
-                }
-                return true;
+/* Media Queries */
+@media (min-width: 768px) {
+    .visa-info, .visa-form {
+        flex: 1 1 48%; /* Take half the width on medium screens */
+        margin-bottom: 0; /* Remove margin bottom */
+    }
+
+    .visa-info {
+        margin-right: 2%; /* Add space between the two sections */
+    }
+}
+
+@media (max-width: 767px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+
+    .header-content p {
+        font-size: 1rem;
+    }
+
+    .content-section {
+        padding: 10px;
+    }
+
+    .visa-info, .visa-form {
+        padding: 15px;
+    }
+}
+
+</style>
+<header class="visa-header">
+    <div class="header-content">
+        <h1>Visa Page</h1>
+        <p>Apply for your visa easily and efficiently</p>
+    </div>
+</header>
+
+<main>
+    <section class="content-section">
+        <div class="visa-info">
+            <h2>Travel Visa Assistance Program</h2>
+            <p>
+                Our visa team is made up of specialized and seasoned experts in visa processing.
+                Our process includes profiling, helping you complete your visa application forms,
+                vetting documents, getting appointment dates, and conducting pre-interview sessions
+                where applicable, with the aim of increasing your chances of visa success.
+            </p>
+            <p>
+                We do not encourage immigration defaults and kindly note that the issuance of visas
+                is at the discretion of the embassy.
+            </p>
+            <p>
+                Contact our visa consultants for all your travel visa-related questions.
+            </p>
+        </div>
+        <div class="visa-form">
+            <form id="visaForm" method="POST" action="{{ url_for('visa') }}">
+                <h3>Get Visa Assistance Now</h3>
+                <p>We're bringing you a new level of comfort.</p>
+                {% set messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}"> {{ message }} </div>
+                {% endfor %}
+                {% endif %}
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <input type="text" id="country" name="country" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <button type="submit">Submit Application</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('visaForm');
+        form.addEventListener('submit', (event) => {
+            // event.preventDefault(); // Comment this out to allow form submission
+            if (validateForm()) {
+                alert('Visa application submitted successfully!');
+                form.reset();
             }
-        </script>
-        
+        });
+    });
+
+    function validateForm() {
+        const inputs = document.querySelectorAll('input[required]');
+        for (let input of inputs) {
+            if (!input.value) {
+                alert(`Please fill out the ${input.previousElementSibling.textContent} field.`);
+                return false;
+            }
+        }
+        return true;
+    }
+</script>
+
 
 {%endblock%}
