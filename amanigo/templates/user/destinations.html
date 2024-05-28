@@ -132,12 +132,11 @@
   <div class="row">
       <div class="col-12">
           <div class="relative d-flex destinationimg">
-              {% if destination.images.first() %}
+            {% if destination.images.first() %}
               <img src="{{ url_for('static', filename='images/destinations/' + destination.images.first().url) }}" alt="image" class="col-12 rounded-4 destinationimg">
               {% else %}
               <img src="{{ url_for('static', filename='images/destinations/default.jpg') }}" alt="image" class="col-12 rounded-4 destinationimg">
               {% endif %}
-         
               <div class="absolute z-2 px-50 py-60 mt-40">
                   <h1 class="text-50 fw-600 text-white name">Explore {{ destination.name }}</h1>
                   <div class="text-white subtitle">{{ destination.subtitle }}</div>
