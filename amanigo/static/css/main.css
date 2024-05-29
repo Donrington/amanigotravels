@@ -3940,6 +3940,31 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 8px;
 }
 
+.services-dropdown .dropdown-menu {
+  display: none;
+}
+
+.services-dropdown:hover .dropdown-menu,
+.services-dropdown .dropdown-menu.show {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  min-width: 200px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+@media (max-width: 767px) {
+  .services-dropdown .dropdown-menu {
+    position: static;
+    float: none;
+    width: 100%;
+  }
+}
+
+
 .dropdown__button {
   height: 40px;
 }
