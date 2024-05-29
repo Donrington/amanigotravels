@@ -1,25 +1,20 @@
-{%extends 'user/dashlayout.html'%}
+{% extends 'user/dashlayout.html' %}
 
-{%block content%}
+{% block content %}
 
+<style>
+.card {
+    margin-top: 40px !important;
+    margin-bottom: 40px !important;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.86); /* Semi-transparent white */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: background-color 0.3s;
+}
 
-
-  <!-- Add necessary meta tags and links to CSS files here -->
-  <style>
-    .card {
-        margin-top: 40px !important;
-        margin-bottom: 40px !important;
-        backdrop-filter: blur(10px);
-        background-color: rgba(255, 255, 255, 0.86); /* Semi-transparent white */
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        transition: background-color 0.3s;
-        width: 500px;
-    }
-
-
-    .form-control-file {
+.form-control-file {
     display: block;
     width: 100%;
     padding: 0.375rem 0.75rem;
@@ -49,7 +44,7 @@
 <body>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-xl-8 col-lg-7 col-md-9">
+        <div class="col-xl-8 col-lg-10 col-md-12">
             <div class="card shadow">
                 <div class="card-body">
                     <h5 class="card-title">Create a New Destination</h5>
@@ -71,7 +66,7 @@
                                 <li>{{ error }}</li>
                             {% endfor %}
                             </ul>
-                        {% endif %}
+                            {% endif %}
                         </div>
 
                         <div class="form-group">
@@ -83,7 +78,7 @@
                                 <li>{{ error }}</li>
                             {% endfor %}
                             </ul>
-                        {% endif %}
+                            {% endif %}
                         </div>
 
                         <div class="form-group">
@@ -97,7 +92,7 @@
                             </ul>
                             {% endif %}
                         </div>
-                        
+
                         <div class="form-group">
                             {{ form.image.label(class_='form-label') }}
                             {{ form.image(class_='form-control-file') }}
@@ -109,7 +104,6 @@
                             </ul>
                             {% endif %}
                         </div>
-                        
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary mt-3">Create Destination</button>
@@ -121,5 +115,4 @@
     </div>
 </div>
 
-
-{%endblock%}
+{% endblock %}
