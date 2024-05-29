@@ -286,10 +286,10 @@
                                 </a>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                                <a href="#" class="dropdown-toggle md sm nav-link" data-toggle="dropdown">
                                     <span class="mr-10">Services</span>
                                 </a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu md sm">
                                     <li><a href="{{url_for('destination_list')}}" class="dropdown-item">Destinations</a></li>
                                     <li><a href="{{url_for('packages_list')}}" class="dropdown-item">Vacation Packages</a></li>
                                     <li><a href="{{url_for('special_offers_list')}}" class="dropdown-item">Special Offers</a></li>
@@ -317,7 +317,9 @@
   
             <div class="col-auto">
                 <div class="d-flex items-center">
-                    <div class="d-none d-md-flex x-gap-20 items-center pl-30 text-dark-1" data-x="header-mobile-icons" data-x-toggle="text-white">
+  
+  
+                    <div class="d-none xl:d-flex x-gap-20 items-center pl-30 text-dark-1" data-x="header-mobile-icons" data-x-toggle="text-white">
                         <div><button class="d-flex items-center icon-menu text-inherit text-22" data-x-click="html, header, header-logo, header-mobile-icons, mobile-menu"></button></div>
                     </div>
                 </div>
@@ -325,8 +327,8 @@
   
         </div>
     </div>
-</header>
-
+  </header>
+  
 
 
     {%block banner%}
@@ -525,9 +527,8 @@
   <!-- JavaScript -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAz77U5XQuEME6TpftaMdX0bBelQxXRlM"></script>
   <script src="../../static/unpkg.com/%40googlemaps/markerclusterer%402.5.3/dist/index.min.js"></script>
-<!-- Add Bootstrap JS for proper functioning of the navbar toggler -->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
   <script src="../../static/js/vendors.js"></script>
   <script src="../../static/js/main.js"></script>
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
