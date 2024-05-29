@@ -3934,6 +3934,14 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
+.dropdown {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+}
+
 .services-dropdown .dropdown-menu {
   display: none;
 }
@@ -3952,20 +3960,31 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 767px) {
   .services-dropdown .dropdown-menu {
+    display: block;
     position: static;
     float: none;
     width: 100%;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  .services-dropdown .dropdown-item {
+    display: block;
+    padding: 10px 20px;
+    color: #000;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .services-dropdown .dropdown-item:hover {
+    background-color: #f8f9fa;
+  }
+
+  .dropdown-toggle::after {
+    display: none;
   }
 }
 
-
-.dropdown {
-  cursor: pointer;
-  position: relative;
-  display: flex;
-  align-items: center;
-  border-radius: 8px;
-}
 
 .dropdown__button {
   height: 40px;
