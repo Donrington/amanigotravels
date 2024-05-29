@@ -252,7 +252,7 @@
   <main><header data-add-bg="bg-white" class="header js-header" data-x="header" data-x-toggle="is-menu-opened">
     <div data-anim="fade" class="header__container header__container-1500 mx-auto px-30 sm:px-20">
         <div class="row justify-between items-center">
-
+  
             <div class="col-auto">
                 <div class="d-flex items-center">
                     <a href="{{ url_for('index') }}" class="header-logo mr-50" data-x="header-logo" data-x-toggle="is-logo-dark">
@@ -261,13 +261,13 @@
                     </a>
                 </div>
             </div>
-
+  
             <div class="header-menu" data-x="mobile-menu" data-x-toggle="is-menu-active">
                 <div class="mobile-overlay"></div>
-
+  
                 <div class="header-menu__content">
                     <div class="mobile-bg js-mobile-bg"></div>
-
+  
                     <div class="menu js-navList">
                         <ul class="menu__nav text-dark-1 -is-active">
                             <li>
@@ -286,16 +286,16 @@
                                 </a>
                             </li>
                             <li class="dropdown services-dropdown">
-                                <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-                                    <span class="mr-10">Services</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="{{url_for('destination_list')}}" class="dropdown-item">Destinations</a></li>
-                                    <li><a href="{{url_for('packages_list')}}" class="dropdown-item">Vacation Packages</a></li>
-                                    <li><a href="{{url_for('special_offers_list')}}" class="dropdown-item">Special Offers</a></li>
-                                    <li><a href="{{url_for('core_services')}}" class="dropdown-item">Core Services</a></li>
-                                </ul>
-                            </li>
+                              <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                                  <span class="mr-10">Services</span>
+                              </a>
+                              <ul class="dropdown-menu">
+                                  <li><a href="{{url_for('destination_list')}}" class="dropdown-item">Destinations</a></li>
+                                  <li><a href="{{url_for('packages_list')}}" class="dropdown-item">Vacation Packages</a></li>
+                                  <li><a href="{{url_for('special_offers_list')}}" class="dropdown-item">Special Offers</a></li>
+                                  <li><a href="{{url_for('core_services')}}" class="dropdown-item">Core Services</a></li>
+                              </ul>
+                          </li>
                             <li>
                                 <a href="{{url_for('bloglist')}}" class="nav-link">
                                     <span class="mr-10">News</span>
@@ -308,28 +308,27 @@
                             </li>
                         </ul>
                     </div>
-
+  
                     <div class="mobile-footer px-20 py-20 border-top-light js-mobile-footer">
-
+  
                     </div>
                 </div>
             </div>
-
+  
             <div class="col-auto">
                 <div class="d-flex items-center">
-                    <!-- Mobile toggle button -->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="d-none d-md-flex x-gap-20 items-center pl-30 text-dark-1" data-x="header-mobile-icons" data-x-toggle="text-white">
+  
+  
+                    <div class="d-none xl:d-flex x-gap-20 items-center pl-30 text-dark-1" data-x="header-mobile-icons" data-x-toggle="text-white">
                         <div><button class="d-flex items-center icon-menu text-inherit text-22" data-x-click="html, header, header-logo, header-mobile-icons, mobile-menu"></button></div>
                     </div>
                 </div>
             </div>
-
+  
         </div>
     </div>
-</header>
+  </header>
+  
 
 
     {%block banner%}

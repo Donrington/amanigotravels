@@ -3932,13 +3932,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 12px;
 }
 
-.dropdown {
-  cursor: pointer;
-  position: relative;
-  display: flex;
-  align-items: center;
-  border-radius: 8px;
-}
+
 
 .services-dropdown .dropdown-menu {
   display: none;
@@ -3964,6 +3958,14 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+
+.dropdown {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+}
 
 .dropdown__button {
   height: 40px;
