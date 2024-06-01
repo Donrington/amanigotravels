@@ -742,7 +742,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('.nav-link');
   const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
-  navLinks.forEach(link => {
+  navLinks.forEach(link => { 
     link.addEventListener('click', function() {
       // Remove active class from all links
       navLinks.forEach(link => link.parentElement.classList.remove('active'));
