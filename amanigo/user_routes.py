@@ -386,15 +386,7 @@ def view_package(package_id):
 @app.route("/packages")
 def packages_list():
     user_id = session.get('user_id')
-    if not user_id:
-        flash('You need to log in to view packages.', 'error')
-        return redirect(url_for('login'))
-
     user = User.query.get(user_id)
-    if not user:
-        flash('User not found.', 'error')
-        return redirect(url_for('login'))
-
     packages = Package.query.all()
     return render_template("user/packages-list.html", packages=packages, user=user)
 
