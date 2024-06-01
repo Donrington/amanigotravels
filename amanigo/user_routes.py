@@ -615,6 +615,7 @@ def submit_contact():
         return redirect(url_for('contact'))
     
 @app.route('/contactinfo/')
+@csrf.exempt
 def contact_data():
     query = request.args.get('query')
     if query:
@@ -627,6 +628,20 @@ def contact_data():
     else:
         contacts = Contact.query.all()
     return render_template('user/contactinfo.html', pagename='Contact Information | Amanigo Travels', contacts=contacts, query=query)
+
+@app.route('/delete_contact/<int:contact_id>', methods=['POST'])
+@csrf.exempt
+def delete_contact(contact_id):
+    user_id = session.get('user_id')
+    if not user_id:
+        flash('You need to log in to perform this action.', 'error')
+        return redirect(url_for('login'))
+
+    contact = Contact.query.get_or_404(contact_id)
+    db.session.delete(contact)
+    db.session.commit()
+    flash('Contact message deleted successfully!', 'success')
+    return redirect(url_for('contact_data'))
 
 @app.route("/core_services/")
 def core_services():
@@ -711,25 +726,28 @@ def delete_offer(offer_id):
     db.session.commit()
     flash('Special Offer deleted successfully!', 'success')
     return redirect(url_for('homecontent'))
-
-@app.route('/change_password', methods=['GET', 'POST'])
-@login_required 
-@csrf.exempt # Ensure only logged-in users can access this
-def change_password():
+@app.route('/change_credentials', methods=['GET', 'POST'])
+@login_required  # Ensure only logged-in users can access this
+@csrf.exempt
+def change_credentials():
     user = User.query.filter_by(username=session.get('username')).first()
     if request.method == 'POST':
         current_password = request.form.get('current_password')
         new_password = request.form.get('new_password')
         confirm_password = request.form.get('confirm_password')
+        new_email = request.form.get('new_email')
 
         if not user.check_password(current_password):
             flash('Current password is incorrect.', 'danger')
-        elif new_password != confirm_password:
+        elif new_password and new_password != confirm_password:
             flash('New passwords do not match.', 'danger')
         else:
-            user.set_password(new_password)
+            if new_password:
+                user.set_password(new_password)
+            if new_email and new_email != user.email:
+                user.email = new_email
             db.session.commit()
-            flash('Password updated successfully.', 'success')
-            return redirect(url_for('change_password'))
+            flash('Credentials updated successfully.', 'success')
+            return redirect(url_for('change_credentials'))
 
-    return render_template('user/change_password.html', user=user)
+    return render_template('user/change_credentials.html', user=user)
