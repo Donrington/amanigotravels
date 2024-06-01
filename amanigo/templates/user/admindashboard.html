@@ -102,7 +102,36 @@
         </div>
       </div>
     </div>
-
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-header">
+          <h3>Special Offers</h3>
+        </div>
+        <div class="card-body">
+          <p id="new-special-offers">Loading...</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-header">
+          <h3>Contacts</h3>
+        </div>
+        <div class="card-body">
+          <p id="new-contacts">Loading...</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-header">
+          <h3>Newsletter Subscribers</h3>
+        </div>
+        <div class="card-body">
+          <p id="new-newsletter-subscribers">Loading...</p>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Charts Section -->
@@ -114,9 +143,9 @@
         </div>
         <div class="card-body">
           <div class="chart-container">
-            <canvas id="visaApplicationsChart"></canvas>
+              <canvas id="visaApplicationsChart"></canvas>
           </div>
-        </div>
+      </div>
       </div>
     </div>
   </div>
@@ -133,44 +162,51 @@
       document.getElementById('new-destination').textContent = data.new_destination;
       document.getElementById('new-posts').textContent = data.new_posts;
       document.getElementById('new-visa-applications').textContent = data.new_visa_applications;
+      document.getElementById('new-special-offers').textContent = data.new_special_offers;
+      document.getElementById('new-contacts').textContent = data.new_contacts;
+      document.getElementById('new-newsletter-subscribers').textContent = data.new_newsletter_subscribers;
     }
 
     fetchDashboardData();
 
     // Sample data for charts (replace with real data)
 
+
+  });
+  document.addEventListener("DOMContentLoaded", function() {
     async function fetchVisaApplicationsData() {
-      const response = await fetch('/api/visa-applications-data');
-      const data = await response.json();
+        const response = await fetch('/api/visa-applications-data');
+        const data = await response.json();
+        console.log(data);  // Add this line to debug the fetched data
 
-      const visaApplicationsChartConfig = {
-        type: 'line',
-        data: {
-          labels: data.labels,
-          datasets: [{
-            label: 'Visa Applications',
-            data: data.data,
-            backgroundColor: 'rgba(206, 69, 1, 0.2)',
-            borderColor: 'rgba(206, 69, 1, 1)',
-            borderWidth: 1
-          }]
-        },
-        options: {
-          responsive: true,
-          scales: {
-            y: {
-              beginAtZero: true
+        const visaApplicationsChartConfig = {
+            type: 'line',
+            data: {
+                labels: data.labels,
+                datasets: [{
+                    label: 'Visa Applications',
+                    data: data.data,
+                    backgroundColor: 'rgba(206, 69, 1, 0.2)',
+                    borderColor: 'rgba(206, 69, 1, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
             }
-          }
-        }
-      };
+        };
 
-      const visaApplicationsChartCtx = document.getElementById('visaApplicationsChart').getContext('2d');
-      const visaApplicationsChart = new Chart(visaApplicationsChartCtx, visaApplicationsChartConfig);
+        const visaApplicationsChartCtx = document.getElementById('visaApplicationsChart').getContext('2d');
+        const visaApplicationsChart = new Chart(visaApplicationsChartCtx, visaApplicationsChartConfig);
     }
 
-    fetchDashboardData();
     fetchVisaApplicationsData();
-  });
-  </script>
+});
+
+</script>
 {% endblock %}

@@ -229,7 +229,42 @@
 .menu__nav li.active .nav-link::after {
   width: 100%;
 }
+.services-dropdown .dropdown-menu {
+    display: none;
+    position: static;
+    float: none;
+    margin-top: 0;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding-left: 1.5rem;
+}
 
+.services-dropdown.active .dropdown-menu {
+    display: block;
+}
+
+.services-dropdown .dropdown-item {
+    padding: 0.5rem 0;
+}
+
+@media (min-width: 768px) {
+    .services-dropdown .dropdown-menu {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .services-dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+    .services-dropdown .dropdown-item {
+        padding: 0.5rem 1rem;
+    }
+}
 </style>
 <body>
   <div class="preloader js-preloader">
@@ -285,16 +320,17 @@
                                     <span class="mr-10">Visa</span>
                                 </a>
                             </li>
-                            <li class="dropdown services-dropdown">
-                              <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-                                  <span class="mr-10">Services</span>
-                              </a>
-                              <ul class="dropdown-menu">
-                                  <li><a href="{{url_for('destination_list')}}" class="dropdown-item">Destinations</a></li>
-                                  <li><a href="{{url_for('packages_list')}}" class="dropdown-item">Vacation Packages</a></li>
-                                  <li><a href="{{url_for('special_offers_list')}}" class="dropdown-item">Special Offers</a></li>
-                                  <li><a href="{{url_for('core_services')}}" class="dropdown-item">Core Services</a></li>
-                              </ul>
+                          
+                          <li class="dropdown services-dropdown">
+                          <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                              <span class="mr-10">Services</span>
+                          </a>
+                          <ul class="dropdown-menu">
+                              <li><a href="{{url_for('destination_list')}}" class="dropdown-item">Destinations</a></li>
+                              <li><a href="{{url_for('packages_list')}}" class="dropdown-item">Vacation Packages</a></li>
+                              <li><a href="{{url_for('special_offers_list')}}" class="dropdown-item">Special Offers</a></li>
+                              <li><a href="{{url_for('core_services')}}" class="dropdown-item">Core Services</a></li>
+                          </ul>
                           </li>
                             <li>
                                 <a href="{{url_for('bloglist')}}" class="nav-link">
@@ -514,11 +550,10 @@
                       <i class="icon-globe text-16 mr-10"></i>
                       <span class="underline">English (US)</span>
                     </button>
-
                     <button class="d-flex items-center text-14 fw-500 text-white">
-                      <i class="icon-usd text-16 mr-10"></i>
-                      <span class="underline">USD</span>
-                    </button>
+                      <i class="fas fa-naira-sign text-16 mr-10"></i>
+                      <span class="underline">NGN</span>
+                  </button>
                   </div>
                 </div>
               </div>
@@ -656,7 +691,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Show the popup after 2 seconds
         setTimeout(() => {
             document.getElementById('newsletter-popup').style.display = 'flex';
-        }, 2000);
+        }, 20000);
 
         // Close the popup
         document.getElementById('close-btn').addEventListener('click', () => {
@@ -671,8 +706,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+
     document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('.nav-link');
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
   navLinks.forEach(link => {
     link.addEventListener('click', function() {
@@ -683,9 +720,22 @@ document.addEventListener('DOMContentLoaded', () => {
       this.parentElement.classList.add('active');
     });
   });
+
+  dropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', function(event) {
+      event.preventDefault();
+      const parentLi = this.parentElement;
+      parentLi.classList.toggle('active');
+
+      // Close other open dropdowns
+      dropdownToggles.forEach(otherToggle => {
+        if (otherToggle !== this) {
+          otherToggle.parentElement.classList.remove('active');
+        }
+      });
+    });
+  });
 });
-
-
   </script>
 
 

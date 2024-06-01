@@ -163,7 +163,7 @@ def register():
 
 @app.route('/')
 def index():
-    user_id = session.get('logged_in')
+    user_id = session.get('user_id')
     user = User.query.get(user_id)
     posts = Post.query.order_by(Post.post_date.desc()).limit(3).all()  # Fetch the latest three posts
     destinations = Destination.query.limit(4).all()  # Fetch the latest four destinations
@@ -171,9 +171,11 @@ def index():
     packages = Package.query.order_by(Package.id.desc()).limit(3).all()
     return render_template('user/index.html', pagename='Homepage | Amanigo Travels', posts=posts, user=user, destinations=destinations, special_offers=special_offers, packages=packages)
 
+    
+
 @app.route("/blog/<int:post_id>")
 def blog(post_id):
-    user_id = session.get('logged_in')
+    user_id = session.get('user_id')
     user = User.query.get(user_id)
     post = Post.query.get(post_id)
     destinations = Destination.query.all() 
@@ -186,7 +188,7 @@ def blog(post_id):
 
 @app.route("/bloglist/")
 def bloglist():
-    user_id = session.get('logged_in')
+    user_id = session.get('user_id')
     user = User.query.get(user_id)
     categories = Category.query.order_by(Category.name).all()  # Fetch all categories
     posts = Post.query.order_by(Post.post_date.desc()).all()  # Fetch all posts
@@ -208,9 +210,6 @@ def fetch_posts_by_category(category_id):
     ]
 
     return jsonify({'posts': posts_data})
-
-
-
 
 
 
@@ -313,7 +312,7 @@ def create_destination():
 @app.route("/destination/<int:destination_id>")
 def view_destination(destination_id):
     destination = Destination.query.get_or_404(destination_id)
-    user_id = session.get('logged_in')
+    user_id = session.get('user_id')
     user = User.query.get(user_id)
     posts = Post.query.order_by(Post.post_date.desc()).all()  # Fetch all posts
     return render_template("user/destinations.html", pagename='Destination | Amanigo Travels', destination=destination, user=user, posts=posts)
@@ -322,7 +321,7 @@ def view_destination(destination_id):
 
 @app.route("/destinationlist/")
 def destination_list():
-    user_id = session.get('logged_in')
+    user_id = session.get('user_id')
     user = User.query.get(user_id)
     destinations = Destination.query.all()  # Fetch all destinations
     return render_template("user/destination-list.html",pagename ='Destination List | Amanigo Travels', user=user, destinations=destinations)
@@ -331,7 +330,7 @@ def destination_list():
 @app.route("/special-offer/<int:offer_id>")
 def view_special_offer(offer_id):
     special_offer = SpecialOffer.query.get_or_404(offer_id)
-    user_id = session.get('logged_in')
+    user_id = session.get('user_id')
     user = User.query.get(user_id)
     destinations = Destination.query.all() 
     return render_template("user/special-offer.html", special_offer=special_offer, user=user, pagename ='Special Offers | Amanigo Travels', destinations=destinations)
@@ -339,12 +338,12 @@ def view_special_offer(offer_id):
 @app.route("/special-offers/")
 def special_offers_list():
     special_offers = SpecialOffer.query.order_by(SpecialOffer.offer_date.desc()).all()
-    user_id = session.get('logged_in')
+    user_id = session.get('user_id')
     user = User.query.get(user_id)
     return render_template("user/special-offers-list.html", special_offers=special_offers, user=user, pagename ='Special Offers | Amanigo Travels')
 @app.route("/special-offer/new", methods=['GET', 'POST'])
 def new_special_offer():
-    if 'logged_in' not in session or not session['logged_in']:
+    if 'user_id' not in session or not session['user_id']:
         flash('You need to log in to create a new special offer.', 'error')
         return redirect(url_for('login'))
     
@@ -378,7 +377,7 @@ def new_special_offer():
 
 @app.route("/packages/<int:package_id>")
 def view_package(package_id):
-    user_id = session.get('logged_in')
+    user_id = session.get('user_id')
     user = User.query.get(user_id)
     package = Package.query.get_or_404(package_id)
     special_offers = SpecialOffer.query.order_by(SpecialOffer.offer_date.desc()).limit(3).all()
@@ -386,10 +385,19 @@ def view_package(package_id):
 
 @app.route("/packages")
 def packages_list():
-    user_id = session.get('logged_in')
+    user_id = session.get('user_id')
+    if not user_id:
+        flash('You need to log in to view packages.', 'error')
+        return redirect(url_for('login'))
+
     user = User.query.get(user_id)
+    if not user:
+        flash('User not found.', 'error')
+        return redirect(url_for('login'))
+
     packages = Package.query.all()
     return render_template("user/packages-list.html", packages=packages, user=user)
+
 
 import logging
 
@@ -469,7 +477,7 @@ def visa():
             db.session.add(new_application)
             db.session.commit()
 
-            flash('Visa application submitted successfully!', 'success')
+            flash('Visa application   submitted successfully!', 'success')
             return redirect(url_for('visa'))
         except Exception as e:
             # Debugging: Print the exception
@@ -480,27 +488,45 @@ def visa():
     return render_template('user/visapage.html')
 
 
-
 @app.route('/visa_applications', methods=['GET'])
+@csrf.exempt
 def visainfo():
-    user_id = session.get('logged_in')
+    user_id = session.get('user_id')  # Retrieve the user ID from the session
+    if not user_id:
+        flash('You need to log in to view visa applications.', 'error')
+        return redirect(url_for('login'))
+
     user = User.query.get(user_id)
     query = request.args.get('query')
     if query:
         applications = VisaApplication.query.filter(
-            (VisaApplication.first_name.like(f'%{query}%')) |
-            (VisaApplication.last_name.like(f'%{query}%')) |
-            (VisaApplication.country.like(f'%{query}%')) |
-            (VisaApplication.email.like(f'%{query}%')) |
-            (VisaApplication.phone.like(f'%{query}%'))
+            (VisaApplication.first_name.ilike(f'%{query}%')) |
+            (VisaApplication.last_name.ilike(f'%{query}%')) |
+            (VisaApplication.country.ilike(f'%{query}%')) |
+            (VisaApplication.email.ilike(f'%{query}%')) |
+            (VisaApplication.phone.ilike(f'%{query}%'))
         ).all()
     else:
         applications = VisaApplication.query.all()
     return render_template('user/visainfo.html', pagename='Visa Applications | Amanigo Travels', applications=applications, query=query, user=user)
 
+@app.route('/delete_visa_application/<int:application_id>', methods=['POST'])
+@csrf.exempt
+def delete_visa_application(application_id):
+    user_id = session.get('user_id')
+    if not user_id:
+        flash('You need to log in to perform this action.', 'error')
+        return redirect(url_for('login'))
+
+    application = VisaApplication.query.get_or_404(application_id)
+    db.session.delete(application)
+    db.session.commit()
+    flash('Visa application deleted successfully!', 'success')
+    return redirect(url_for('visainfo'))
+
 @app.route('/homecontent')
 def homecontent():
-    if not session.get('logged_in'):
+    if not session.get('user_id'):
         flash('You need to login to access the admin dashboard')
         return redirect(url_for('login'))
     
@@ -516,26 +542,30 @@ def homecontent():
 @app.route('/api/dashboard-data')
 def dashboard_data():
     new_package = Package.query.count()
-    new_destination = Destination.query.count()  # Assuming 'bookings' refers to 'destinations'
+    new_destination = Destination.query.count()
     new_posts = Post.query.count()
     new_visa_applications = VisaApplication.query.count()
+    new_special_offers = SpecialOffer.query.count()
+    new_contacts = Contact.query.count()
+    new_newsletter_subscribers = Newsletter.query.count()
 
     data = {
         'new_package': new_package,
         'new_destination': new_destination,
         'new_posts': new_posts,
-        'new_visa_applications': new_visa_applications
+        'new_visa_applications': new_visa_applications,
+        'new_special_offers': new_special_offers,
+        'new_contacts': new_contacts,
+        'new_newsletter_subscribers': new_newsletter_subscribers
     }
     return jsonify(data)
 
 
-
-
 @app.route('/api/visa-applications-data')
+@csrf.exempt
 def visa_applications_data():
-    # Get visa applications grouped by month using MySQL DATE_FORMAT
     visa_applications = db.session.query(
-        func.date_format(VisaApplication.created_at, '%Y-%m').label('month'),
+        func.to_char(VisaApplication.created_at, 'YYYY-MM').label('month'),
         func.count(VisaApplication.id).label('count')
     ).group_by('month').all()
 
@@ -547,7 +577,6 @@ def visa_applications_data():
         'data': data
     }
     return jsonify(applications_over_time)
-
 
 
 @app.route("/help-center/")
@@ -633,6 +662,19 @@ def view_newsletter_subscribers():
     subscribers = Newsletter.query.all()
     return render_template('user/newsletter_subscribers.html', subscribers=subscribers)
 
+@app.route('/delete_subscriber/<int:subscriber_id>', methods=['POST'])
+@csrf.exempt
+def delete_subscriber(subscriber_id):
+    user_id = session.get('user_id')
+    if not user_id:
+        flash('You need to log in to perform this action.', 'error')
+        return redirect(url_for('login'))
+
+    subscriber = Newsletter.query.get_or_404(subscriber_id)
+    db.session.delete(subscriber)
+    db.session.commit()
+    flash('Subscriber deleted successfully!', 'success')
+    return redirect(url_for('view_newsletter_subscribers'))
 
 @app.route('/delete_post/<int:post_id>', methods=['POST'])
 @csrf.exempt

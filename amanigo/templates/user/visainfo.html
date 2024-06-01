@@ -3,7 +3,6 @@
 {% block content %}
 
 <style>
-
 .cont {
     max-width: 1200px;
     margin: 0 auto;
@@ -13,7 +12,6 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
     margin-top: 50px;
-    
 }
 
 h1 {
@@ -80,8 +78,8 @@ form {
     padding-top: 12px;
     padding-bottom: 12px;
 }
-
 </style>
+
 <div class="cont">
     <h1>Visa Applications</h1>
     <form method="GET" action="{{ url_for('visainfo') }}">
@@ -98,6 +96,7 @@ form {
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Created At</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -110,9 +109,15 @@ form {
                     <td>{{ application.email }}</td>
                     <td>{{ application.phone }}</td>
                     <td>{{ application.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                    <td>
+                        <form action="{{ url_for('delete_visa_application', application_id=application.id) }}" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this application?');">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
+
 {% endblock %}
