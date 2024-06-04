@@ -296,6 +296,51 @@
     border-radius: 50%;
     object-fit: cover;
   }
+
+
+  
+
+.card {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.orange-bg {
+    background-color: #CE4501;
+    color: white;
+}
+
+.purple-bg {
+    background-color: #300063;
+    color: white;
+}
+
+.gold-bg {
+    background-color: gold;
+    color: black;
+}
+
+.text-center h4 {
+    margin-top: 15px;
+    color: inherit; /* Ensure the text color inherits from the parent element */
+}
+
+.text-center p {
+    margin-top: 10px;
+    color: inherit; /* Ensure the text color inherits from the parent element */
+}
+
+.text-center img {
+    max-width: 80px;
+    margin-bottom: 15px;
+}
 </style>
 <body>
   <div class="preloader js-preloader">
@@ -474,22 +519,7 @@
             </div>
 
 
-            <div class="newsletter-popup" id="newsletter-popup">
-              <div class="popup-content">
-                  <button class="close-btn" id="close-btn">&times;</button>
-                  <div class="popup-image">
-                      <img src="../../static/images/newsletter.webp" alt="Newsletter Image">
-                  </div>
-                  <div class="popup-form">
-                      <h2>Subscribe to our Newsletter</h2>
-                      <p>Get updates & more</p>
-                      <form id="popupForm" method="POST" action="{{ url_for('submit_newsletter') }}">
-                          <input class="popup-input" type="email" name="email" placeholder="Your Email" required>
-                          <button class="popup-submit" type="submit">Subscribe</button>
-                      </form>
-                  </div>
-              </div>
-          </div>
+
           
           <!-- Existing Subscription Form -->
           <div class="col-lg-6">
@@ -564,10 +594,7 @@
                       <span class="size-4 rounded-full bg-white mr-10"></span>
                       Terms
                     </a>
-                    <a href="#" class="d-flex items-center">
-                      <span class="size-4 rounded-full bg-white mr-10"></span>
-                      Site Map
-                    </a>
+               
                   </div>
                 </div>
               </div>
@@ -718,24 +745,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-        // Show the popup after 2 seconds
-        setTimeout(() => {
-            document.getElementById('newsletter-popup').style.display = 'flex';
-        }, 20000);
-
-        // Close the popup
-        document.getElementById('close-btn').addEventListener('click', () => {
-            document.getElementById('newsletter-popup').style.display = 'none';
-        });
-
-        // Close the popup when clicking outside the content
-        window.addEventListener('click', (event) => {
-            if (event.target === document.getElementById('newsletter-popup')) {
-                document.getElementById('newsletter-popup').style.display = 'none';
-            }
-        });
-    });
 
 
     document.addEventListener('DOMContentLoaded', () => {

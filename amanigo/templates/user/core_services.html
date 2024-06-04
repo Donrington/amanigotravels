@@ -2,7 +2,7 @@
 
 {%block content%}
 <style>
-    .layout-pt-lg {
+.layout-pt-lg {
     padding-top: 60px;
 }
 
@@ -61,6 +61,52 @@
     transform: translateX(0);
 }
 
+/* CTA Button Styles */
+.cta-button {
+    display: inline-block;
+    padding: 15px 20px;  /* Added padding-top to the button */
+    background-color: #300063;
+    color: white;
+    border: none;
+    margin-top: 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #CE4501;
+    transition: left 0.4s ease-in-out;
+    z-index: 0;
+}
+
+.cta-button:hover::before {
+    left: 0;
+}
+
+.cta-button:hover {
+    color: white;
+}
+
+.cta-button span {
+    position: relative;
+    z-index: 1;
+}
+
+.text-right {
+    text-align: right;
+}
+
+
 .services-header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('../../static/images/visaimage.webp'); background-attachment: fixed !important;
     background-size: cover;
@@ -84,6 +130,73 @@
       color:white !important;
     } 
 
+
+
+
+    .layout-pt-sm {
+    padding-top: 40px;
+}
+
+.layout-pb-md {
+    padding-bottom: 60px;
+}
+
+.y-gap-40 {
+    gap: 40px;
+}
+
+.card {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.orange-bg {
+    background-color: #CE4501;
+    color: white;
+}
+
+.purple-bg {
+    background-color: #300063;
+    color: white;
+}
+
+.gold-bg {
+    background-color: gold;
+    color: black;
+}
+
+.text-center h4 {
+    margin-top: 15px;
+    color: inherit; /* Ensure the text color inherits from the parent element */
+}
+
+.text-center p {
+    margin-top: 10px;
+    color: inherit; /* Ensure the text color inherits from the parent element */
+}
+
+.text-center img {
+    max-width: 80px;
+    margin-bottom: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .order-lg-1, .order-lg-2 {
+        order: 0;
+    }
+}
+
+.js-lazy{
+  color: white;
+}
 </style>
 <header class="services-header">
     <div class="header-content">
@@ -91,53 +204,62 @@
         <p>Explore our comprehensive range of services.</p>
     </div>
 </header>
-
-
 <section class="layout-pt-lg layout-pb-lg">
-    <div class="container">
-        <div class="row y-gap-30 justify-between items-center">
-            <!-- Hajj and Umrah services -->
-            <div class="col-lg-6 order-lg-1 animated-content from-left">
-                <h2>Hajj and Umrah Services</h2>
-                <p>We offer comprehensive packages for your spiritual journeys to Mekkah. Our services include flight bookings, accommodation arrangements, and guided tours to ensure a fulfilling and worry-free experience.</p>
-            </div>
-            <div class="col-lg-6 order-lg-2 animated-content from-right">
-                <img src="../../static/images/hajj1.jpg" alt="Hajj and Umrah" class="img-fluid">
-            </div>
-        </div>
-        <div class="row y-gap-30 justify-between items-center">
-            <!-- Flight booking services -->
-            <div class="col-lg-6 order-lg-2 animated-content from-right">
-                <h2>Flight Booking Services</h2>
-                <p>Book your flights with ease through our hassle-free flight booking service. We provide competitive rates and ensure a smooth booking process for all your travel needs.</p>
-            </div>
-            <div class="col-lg-6 order-lg-1 animated-content from-left">
-                <img src="../../static/images/bookflight.webp" alt="Flight Booking" class="img-fluid">
-            </div>
-        </div>
-        <div class="row y-gap-30 justify-between items-center">
-            <!-- Tour operations -->
-            <div class="col-lg-6 order-lg-1 animated-content from-left">
-                <h2>Tour Operations</h2>
-                <p>Exciting tours and travel experiences tailored to your interests and needs. From adventure tours to cultural experiences, we offer a wide range of tour packages to make your travels memorable.</p>
-            </div>
-            <div class="col-lg-6 order-lg-2 animated-content from-right">
-                <img src="../../static/images/travv.webp" alt="Tour Operations" class="img-fluid">
-            </div>
-        </div>
-        <div class="row y-gap-30 justify-between items-center">
-            <!-- Visa consultation -->
-            <div class="col-lg-6 order-lg-2 animated-content from-right">
-                <h2>Visa Consultation</h2>
-                <p>Expert advice and guidance to help you navigate the visa application process. Our team will assist you with the necessary documentation and procedures to ensure a smooth visa application experience.</p>
-            </div>
-            <div class="col-lg-6 order-lg-1 animated-content from-left">
-                <img src="../../static/images/visaimage.webp" alt="Visa Consultation" class="img-fluid">
-            </div>
-        </div>
-    </div>
+  <div class="container">
+      <div class="row y-gap-30 justify-between items-center">
+          <!-- Hajj and Umrah services -->
+          <div class="col-lg-6 order-lg-1 animated-content from-left">
+              <h2 style="color:#CE4501;">Hajj and Umrah Services</h2>
+              <p>We offer comprehensive packages for your spiritual journeys to Mekkah. Our services include flight bookings, accommodation arrangements, and guided tours to ensure a fulfilling and worry-free experience.</p>
+              <div class="text-right">
+                  <a href="{{ url_for('contact') }}" class="cta-button"><span>Learn More</span></a>
+              </div>
+          </div>
+          <div class="col-lg-6 order-lg-2 animated-content from-right">
+              <img src="../../static/images/hajj1.jpg" alt="Hajj and Umrah" class="img-fluid">
+          </div>
+      </div>
+      <div class="row y-gap-30 justify-between items-center">
+          <!-- Flight booking services -->
+          <div class="col-lg-6 order-lg-2 animated-content from-right">
+              <h2 style="color:#CE4501;">Flight Booking Services</h2>
+              <p>Book your flights with ease through our hassle-free flight booking service. We provide competitive rates and ensure a smooth booking process for all your travel needs.</p>
+              <div class="text-right">
+                  <a href="{{ url_for('contact') }}" class="cta-button"><span>Book Now</span></a>
+              </div>
+          </div>
+          <div class="col-lg-6 order-lg-1 animated-content from-left">
+              <img src="../../static/images/bookflight.webp" alt="Flight Booking" class="img-fluid">
+          </div>
+      </div>
+      <div class="row y-gap-30 justify-between items-center">
+          <!-- Tour operations -->
+          <div class="col-lg-6 order-lg-1 animated-content from-left">
+              <h2 style="color:#CE4501;">Tour Operations</h2>
+              <p>Exciting tours and travel experiences tailored to your interests and needs. From adventure tours to cultural experiences, we offer a wide range of tour packages to make your travels memorable.</p>
+              <div class="text-right">
+                  <a href="{{ url_for('destination_list') }}" class="cta-button"><span>Explore Tours</span></a>
+              </div>
+          </div>
+          <div class="col-lg-6 order-lg-2 animated-content from-right">
+              <img src="../../static/images/travv.webp" alt="Tour Operations" class="img-fluid">
+          </div>
+      </div>
+      <div class="row y-gap-30 justify-between items-center">
+          <!-- Visa consultation -->
+          <div class="col-lg-6 order-lg-2 animated-content from-right">
+              <h2 style="color:#CE4501;">Visa Consultation</h2>
+              <p>Expert advice and guidance to help you navigate the visa application process. Our team will assist you with the necessary documentation and procedures to ensure a smooth visa application experience.</p>
+              <div class="text-right">
+                  <a href="{{ url_for('contact') }}" class="cta-button"><span>Get Assistance</span></a>
+              </div>
+          </div>
+          <div class="col-lg-6 order-lg-1 animated-content from-left">
+              <img src="../../static/images/visaimage.webp" alt="Visa Consultation" class="img-fluid">
+          </div>
+      </div>
+  </div>
 </section>
-
 
 
 <section class="customers layout-pt-lg layout-pb-lg bg-dark-3">
@@ -231,60 +353,57 @@
   
 </section>
 
-  
 <section class="layout-pt-sm layout-pb-md">
-    <div data-anim-wrap class="container">
+  <div data-anim-wrap class="container">
       <div data-anim-child="slide-up" class="row justify-center text-center">
-        <div class="col-auto">
-          <div class="sectionTitle -md">
-            <h2 class="sectionTitle__title t1">Why Choose Us</h2>
-            <p class="sectionTitle__text mt-5 sm:mt-0">Explore top-rated destinations with unique benefits and exceptional deals.</p>
+          <div class="col-auto">
+              <div class="sectionTitle -md">
+                  <h2 class="sectionTitle__title t1">Why Choose Us</h2>
+                  <p class="sectionTitle__text mt-5 sm:mt-0">Explore top-rated destinations with unique benefits and exceptional deals.</p>
+              </div>
           </div>
-        </div>
       </div>
-  
+
       <div class="row y-gap-40 justify-between pt-50">
-  
-        <div data-anim-child="slide-up delay-1" class="col-lg-3 col-sm-6">
-          <div class="featureIcon -type-1">
-            <div class="d-flex justify-center">
-              <img src="#" data-src="../../static/img/featureIcons/3/1.svg" alt="image" class="js-lazy">
-            </div>
-            <div class="text-center mt-30">
-              <h4 class="text-18 fw-500">Best Price Guarantee</h4>
-              <p class="text-15 mt-10">Never overpay for your travels. Enjoy the best available rates with our price match promise.</p>
-            </div>
+          <div data-anim-child="slide-up delay-1" class="col-lg-3 col-sm-6">
+              <div class="featureIcon -type-1 card orange-bg">
+                  <div class="d-flex justify-center">
+                      <img src="#" data-src="../../static/img/featureIcons/3/1.svg" alt="image" class="js-lazy">
+                  </div>
+                  <div class="text-center mt-30">
+                      <h4 class="text-18 fw-500">Best Price Guarantee</h4>
+                      <p class="text-15 mt-10">Never overpay for your travels. Enjoy the best available rates with our price match promise.</p>
+                  </div>
+              </div>
           </div>
-        </div>
-  
-        <div data-anim-child="slide-up delay-2" class="col-lg-3 col-sm-6">
-          <div class="featureIcon -type-1">
-            <div class="d-flex justify-center">
-              <img src="#" data-src="../../static/img/featureIcons/3/2.svg" alt="image" class="js-lazy">
-            </div>
-            <div class="text-center mt-30">
-              <h4 class="text-18 fw-500">Easy & Quick Booking</h4>
-              <p class="text-15 mt-10">Streamline your booking process with our user-friendly platforms, designed for speed and convenience.</p>
-            </div>
+
+          <div data-anim-child="slide-up delay-2" class="col-lg-3 col-sm-6">
+              <div class="featureIcon -type-1 card purple-bg">
+                  <div class="d-flex justify-center">
+                      <img src="#" data-src="../../static/img/featureIcons/3/2.svg" alt="image" class="js-lazy">
+                  </div>
+                  <div class="text-center mt-30">
+                      <h4 class="text-18 fw-500">Easy & Quick Booking</h4>
+                      <p class="text-15 mt-10">Streamline your booking process with our user-friendly platforms, designed for speed and convenience.</p>
+                  </div>
+              </div>
           </div>
-        </div>
-  
-        <div data-anim-child="slide-up delay-3" class="col-lg-3 col-sm-6">
-          <div class="featureIcon -type-1">
-            <div class="d-flex justify-center">
-              <img src="#" data-src="../../static/img/featureIcons/3/3.svg" alt="image" class="js-lazy">
-            </div>
-            <div class="text-center mt-30">
-              <h4 class="text-18 fw-500">Customer Care 24/7</h4>
-              <p class="text-15 mt-10">Our dedicated support team is always on standby to help you resolve any travel issues, anytime, anywhere.</p>
-            </div>
+
+          <div data-anim-child="slide-up delay-3" class="col-lg-3 col-sm-6">
+              <div class="featureIcon -type-1 card gold-bg">
+                  <div class="d-flex justify-center">
+                      <img src="#" data-src="../../static/img/featureIcons/3/3.svg" alt="image" class="js-lazy">
+                  </div>
+                  <div class="text-center mt-30">
+                      <h4 class="text-18 fw-500">Customer Care 24/7</h4>
+                      <p class="text-15 mt-10">Our dedicated support team is always on standby to help you resolve any travel issues, anytime, anywhere.</p>
+                  </div>
+              </div>
           </div>
-        </div>
-  
       </div>
-    </div>
-  </section>
-  
+  </div>
+</section>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const animatedElements = document.querySelectorAll('.animated-content');
