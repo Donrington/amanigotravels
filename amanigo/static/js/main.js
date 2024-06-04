@@ -83,7 +83,7 @@ function initialReveal() {
     preloader.classList.add('-is-hidden')
     setTimeout(() => {
       RevealAnim.init()
-    }, 300)
+    }, 100)
   } else {
     RevealAnim.init()
   }
