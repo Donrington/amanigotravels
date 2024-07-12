@@ -30,7 +30,8 @@ socketio = SocketIO(app)
 def page_not_found(e):
     return render_template('user/404.html', pagename='Page Not Found | Amanigo Travels'), 404
 
-# Your existing login_required decorator
+# Your existing log
+# in_required decorator
 def login_required(f):
     @wraps(f)
     def login_check(*args, **kwargs):
@@ -392,7 +393,6 @@ def packages_list():
 
 
 import logging
-
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
 @app.route("/create_package", methods=['GET', 'POST'])
@@ -553,13 +553,16 @@ def dashboard_data():
     return jsonify(data)
 
 
+
 @app.route('/api/visa-applications-data')
-@csrf.exempt
 def visa_applications_data():
+    current_year = datetime.now().year
+    date_format = f'%Y-%m'
+
     visa_applications = db.session.query(
-        func.to_char(VisaApplication.created_at, 'YYYY-MM').label('month'),
+        func.DATE_FORMAT(VisaApplication.created_at, date_format).label('month'),
         func.count(VisaApplication.id).label('count')
-    ).group_by('month').all()
+    ).group_by('month').order_by('month').all()
 
     labels = [app.month for app in visa_applications]
     data = [app.count for app in visa_applications]

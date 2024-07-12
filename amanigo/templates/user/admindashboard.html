@@ -137,18 +137,18 @@
   <!-- Charts Section -->
   <div class="row">
     <div class="col-md-12">
-      <div class="card">
-        <div class="card-header">
-          <h3>Visa Applications Over Time</h3>
+        <div class="card">
+            <div class="card-header">
+                <h3>Visa Applications Over Time</h3>
+            </div>
+            <div class="card-body">
+                <div class="chart-container">
+                    <canvas id="visaApplicationsChart"></canvas>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-          <div class="chart-container">
-              <canvas id="visaApplicationsChart"></canvas>
-          </div>
-      </div>
-      </div>
     </div>
-  </div>
+</div>
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -172,41 +172,39 @@
     // Sample data for charts (replace with real data)
 
 
-  });
-  document.addEventListener("DOMContentLoaded", function() {
-    async function fetchVisaApplicationsData() {
-        const response = await fetch('/api/visa-applications-data');
-        const data = await response.json();
-        console.log(data);  // Add this line to debug the fetched data
+  });document.addEventListener("DOMContentLoaded", function() {
+            async function fetchVisaApplicationsData() {
+                const response = await fetch('/api/visa-applications-data');
+                const data = await response.json();
+                console.log(data);  // Debugging line to see fetched data
 
-        const visaApplicationsChartConfig = {
-            type: 'line',
-            data: {
-                labels: data.labels,
-                datasets: [{
-                    label: 'Visa Applications',
-                    data: data.data,
-                    backgroundColor: 'rgba(206, 69, 1, 0.2)',
-                    borderColor: 'rgba(206, 69, 1, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
+                const visaApplicationsChartConfig = {
+                    type: 'line',
+                    data: {
+                        labels: data.labels,
+                        datasets: [{
+                            label: 'Visa Applications',
+                            data: data.data,
+                            backgroundColor: 'rgba(206, 69, 1, 0.2)',
+                            borderColor: 'rgba(206, 69, 1, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
                     }
-                }
+                };
+
+                const visaApplicationsChartCtx = document.getElementById('visaApplicationsChart').getContext('2d');
+                const visaApplicationsChart = new Chart(visaApplicationsChartCtx, visaApplicationsChartConfig);
             }
-        };
 
-        const visaApplicationsChartCtx = document.getElementById('visaApplicationsChart').getContext('2d');
-        const visaApplicationsChart = new Chart(visaApplicationsChartCtx, visaApplicationsChartConfig);
-    }
-
-    fetchVisaApplicationsData();
-});
-
+            fetchVisaApplicationsData();
+        });
 </script>
 {% endblock %}

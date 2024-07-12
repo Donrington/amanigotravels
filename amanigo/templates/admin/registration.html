@@ -1,0 +1,65 @@
+{%extends 'user/layout2.html'%}
+
+{%block content%}
+
+<style>
+    section {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('../../static/img/icons/15.jpg');
+        background-attachment: fixed !important;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    .login-box {
+        backdrop-filter: blur(10px);
+        background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        transition: background-color 0.3s;
+    }
+  </style>
+  
+  <section class="layout-pt-lg layout-pb-lg bg-blue-2">
+    <div class="container">
+        <div class="row justify-center">
+            <div class="col-xl-6 col-lg-7 col-md-9">
+                <div class="login-box">
+                    <form action="{{ url_for('registeration') }}" method="POST" novalidate>
+                        {{ form.hidden_tag() }}
+                        <div class="row y-gap-20">
+                            <div class="col-12">
+                                <h1 class="text-22 fw-500">Create Account</h1>
+                            </div>
+                            {% set messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                            {% for category, message in messages %}
+                              <div class="alert alert-{{ category }}"> {{ message }} </div>
+                            {% endfor %}
+                            {% endif %}
+                            <div class="col-12">
+                                {{ form.username.label(class='lh-1 text-14') }}
+                                {{ form.username(class='form-control') }}
+                            </div>
+                            <div class="col-12">
+                                {{ form.email.label(class='lh-1 text-14') }}
+                                {{ form.email(class='form-control') }}
+                            </div>
+                            <div class="col-12">
+                                {{ form.password.label(class='lh-1 text-14') }}
+                                {{ form.password(class='form-control') }}
+                            </div>
+                            <div class="col-12">
+                                {{ form.submit(class='button py-20 px-20 -dark-1 bg-dark-2 text-white') }}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    {%endblock content%}

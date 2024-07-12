@@ -28,7 +28,8 @@
   <title>{{pagename}}</title>
 </head>
 <style>
- .header .dropdown {
+/* Dropdown Menu Styling */
+.header .dropdown {
     position: relative;
     display: inline-block;
 }
@@ -37,7 +38,7 @@
     cursor: pointer;
 }
 
-.header .dropdown-menu {
+.header .custom-dropdown {
     display: none;
     position: absolute;
     background-color: white;
@@ -49,23 +50,55 @@
     margin-top: 10px;
 }
 
-.header .dropdown-menu li {
+.header .custom-dropdown li {
     padding: 8px 16px;
 }
 
-.header .dropdown-menu li a {
+.header .custom-dropdown li a {
     color: #333;
     text-decoration: none;
     display: block;
 }
 
-.header .dropdown-menu li a:hover {
+.header .custom-dropdown li a:hover {
     background-color: #f1f1f1;
 }
 
-.header .dropdown:hover .dropdown-menu {
+.header .dropdown:hover .custom-dropdown,
+.header .dropdown:focus .custom-dropdown {
     display: block;
 }
+
+/* Ensure Dropdown Shows on Smaller Screens */
+@media (max-width: 767px) {
+    .header .custom-dropdown {
+        display: block;
+        position: static;
+        box-shadow: none;
+        margin-top: 0;
+        background-color: #fff;
+        width: 100%;
+    }
+
+    .header .dropdown-toggle {
+        display: none;
+    }
+
+    .header .custom-dropdown li {
+        margin: 0;
+        padding: 10px 0;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .header .custom-dropdown li a {
+        padding-left: 20px;
+    }
+
+    .header .custom-dropdown li:last-child {
+        border-bottom: none;
+    }
+}
+
 
 .newsletter-popup {
     display: none;
@@ -231,65 +264,6 @@
     width: 100%;
 }
 
-/* Mobile Menu */
-@media (max-width: 767px) {
-    .desktop-menu {
-        display: none;
-    }
-
-    .mobile-menu {
-        display: none;
-        flex-direction: column;
-        list-style: none;
-        padding-left: 0;
-        background-color: #fff;
-        width: 100%;
-    }
-
-    .mobile-menu.show {
-        display: flex;
-    }
-
-    .mobile-menu li {
-        margin-bottom: 10px;
-    }
-
-    .mobile-nav-link {
-        text-decoration: none;
-        color: #000;
-        padding: 10px;
-        display: block;
-        transition: color 0.3s ease;
-    }
-
-    .mobile-nav-link:hover,
-    .mobile-nav-link:focus {
-        color: #CE4501;
-    }
-}
-
-@media (min-width: 768px) {
-    .mobile-menu {
-        display: none;
-    }
-
-    .services-dropdown .dropdown-menu {
-        display: none;
-        position: absolute;
-        background-color: #fff;
-        border: 1px solid #ccc;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .services-dropdown:hover .dropdown-menu {
-        display: block;
-    }
-
-    .services-dropdown .dropdown-item {
-        padding: 0.5rem 1rem;
-    }
-}
-
 .avatar-img {
     width: 50px;
     height: 50px;
@@ -363,7 +337,6 @@
   <main><header data-add-bg="bg-white" class="header js-header" data-x="header" data-x-toggle="is-menu-opened">
     <div data-anim="fade" class="header__container header__container-1500 mx-auto px-30 sm:px-20">
         <div class="row justify-between items-center">
-  
             <div class="col-auto">
                 <div class="d-flex items-center">
                     <a href="{{ url_for('index') }}" class="header-logo mr-50" data-x="header-logo" data-x-toggle="is-logo-dark">
@@ -372,13 +345,10 @@
                     </a>
                 </div>
             </div>
-  
             <div class="header-menu" data-x="mobile-menu" data-x-toggle="is-menu-active">
                 <div class="mobile-overlay"></div>
-  
                 <div class="header-menu__content">
                     <div class="mobile-bg js-mobile-bg"></div>
-  
                     <div class="menu js-navList">
                         <ul class="menu__nav text-dark-1 -is-active">
                             <li>
@@ -396,18 +366,17 @@
                                     <span class="mr-10">Visa</span>
                                 </a>
                             </li>
-                          
-                          <li class="dropdown services-dropdown">
-                          <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-                              <span class="mr-10">Services</span>
-                          </a>
-                          <ul class="dropdown-menu">
-                              <li><a href="{{url_for('destination_list')}}" class="dropdown-item">Destinations</a></li>
-                              <li><a href="{{url_for('packages_list')}}" class="dropdown-item">Vacation Packages</a></li>
-                              <li><a href="{{url_for('special_offers_list')}}" class="dropdown-item">Special Offers</a></li>
-                              <li><a href="{{url_for('core_services')}}" class="dropdown-item">Core Services</a></li>
-                          </ul>
-                          </li>
+                            <li class="dropdown services-dropdown">
+                                <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                                    <span class="mr-10">Services</span>
+                                </a>
+                                <ul class="custom-dropdown">
+                                    <li><a href="{{url_for('destination_list')}}" class="dropdown-item">Destinations</a></li>
+                                    <li><a href="{{url_for('packages_list')}}" class="dropdown-item">Vacation Packages</a></li>
+                                    <li><a href="{{url_for('special_offers_list')}}" class="dropdown-item">Special Offers</a></li>
+                                    <li><a href="{{url_for('core_services')}}" class="dropdown-item">Core Services</a></li>
+                                </ul>
+                            </li>
                             <li>
                                 <a href="{{url_for('bloglist')}}" class="nav-link">
                                     <span class="mr-10">News</span>
@@ -420,33 +389,27 @@
                             </li>
                         </ul>
                     </div>
-  
                     <div class="mobile-footer px-20 py-20 border-top-light js-mobile-footer">
-  
                     </div>
                 </div>
             </div>
-  
             <div class="col-auto">
                 <div class="d-flex items-center">
-  
-  
                     <div class="d-none xl:d-flex x-gap-20 items-center pl-30 text-dark-1" data-x="header-mobile-icons" data-x-toggle="text-white">
                         <div><button class="d-flex items-center icon-menu text-inherit text-22" data-x-click="html, header, header-logo, header-mobile-icons, mobile-menu"></button></div>
                     </div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="d-none d-md-flex x-gap-20 items-center pl-30 text-dark-1" data-x="header-mobile-icons" data-x-toggle="text-white">
-                      <div><button class="d-flex items-center icon-menu text-inherit text-22" data-x-click="html, header, header-logo, header-mobile-icons, mobile-menu"></button></div>
-                  </div>
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="d-none d-md-flex x-gap-20 items-center pl-30 text-dark-1" data-x="header-mobile-icons" data-x-toggle="text-white">
+                        <div><button class="d-flex items-center icon-menu text-inherit text-22" data-x-click="html, header, header-logo, header-mobile-icons, mobile-menu"></button></div>
+                    </div>
                 </div>
             </div>
-  
         </div>
     </div>
-  </header>
-  
+</header>
+
 
 
     {%block banner%}
@@ -744,38 +707,26 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const dropdownMenu = document.querySelector('.custom-dropdown');
 
+    if (window.innerWidth > 767) {
+        dropdownToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        });
 
-
-    document.addEventListener('DOMContentLoaded', () => {
-  const navLinks = document.querySelectorAll('.nav-link');
-  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-
-  navLinks.forEach(link => { 
-    link.addEventListener('click', function() {
-      // Remove active class from all links
-      navLinks.forEach(link => link.parentElement.classList.remove('active'));
-
-      // Add active class to the clicked link
-      this.parentElement.classList.add('active');
-    });
-  });
-
-  dropdownToggles.forEach(toggle => {
-    toggle.addEventListener('click', function(event) {
-      event.preventDefault();
-      const parentLi = this.parentElement;
-      parentLi.classList.toggle('active');
-
-      // Close other open dropdowns
-      dropdownToggles.forEach(otherToggle => {
-        if (otherToggle !== this) {
-          otherToggle.parentElement.classList.remove('active');
-        }
-      });
-    });
-  });
+        // Close dropdown menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.style.display = 'none';
+            }
+        });
+    }
 });
+
+
   </script>
 
 
