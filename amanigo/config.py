@@ -37,5 +37,5 @@ engine = create_engine(SQLALCHEMY_DATABASE_URI, echo=True)
 MAIL_SERVER = 'smtp.gmail.com'
 MAIL_PORT = 465
 MAIL_USERNAME = 'carryoby@gmail.com'
-MAIL_PASSWORD = 'uxjq wcqv yntk dwju'
+MAIL_PASSWORD = 'pzvw jfdf swwa lmcw'
 MAIL_USE_SSL = True
