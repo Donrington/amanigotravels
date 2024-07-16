@@ -2,20 +2,20 @@
 from sqlalchemy import create_engine
 import psycopg2
 
-# config = {
-#     'user': 'amanigotravels_user',
-#     'password': '9uQcR5JtxHxLQIMHd1OTxZ8V800HwdcT',
-#     'host': 'dpg-cpafck4f7o1s73ag5350-a.oregon-postgres.render.com',
-#     'database': 'amanigotravels'
-# }
+config = {
+    'user': 'amanigotravels_znjz_user',
+    'password': 'Ew0KClpMdEFm3uWK7JAGPHQIH1aE0eLq',
+    'host': 'dpg-cqa6uv3v2p9s73cs4520-a.oregon-postgres.render.com',
+    'database': 'amanigotravels_znjz'
+}
 
 # Connect to PostgreSQL using psycopg2
-# connection = psycopg2.connect(
-#     user=config['user'],
-#     password=config['password'],
-#     host=config['host'],
-#     database=config['database']
-# )
+connection = psycopg2.connect(
+    user=config['user'],
+    password=config['password'],
+    host=config['host'],
+    database=config['database']
+)
 
 SECRET_KEY = "THTD673&?/YHG/@H393_YEU"
 ADMIN_EMAIL = "admin@personal.com"
@@ -28,7 +28,7 @@ SPECIAL_OFFER_IMAGE_PATH = "amanigo/static/images/specialoffers/"
 SQLALCHEMY_DATABASE_URI="mysql+mysqlconnector://root@127.0.0.1/amanigotravel"
 
 # SQLAlchemy database URI for PostgreSQL
-# SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://amanigotravels_user:9uQcR5JtxHxLQIMHd1OTxZ8V800HwdcT@dpg-cpafck4f7o1s73ag5350-a.oregon-postgres.render.com/amanigotravels"
+SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://amanigotravels_znjz_user:Ew0KClpMdEFm3uWK7JAGPHQIH1aE0eLq@dpg-cqa6uv3v2p9s73cs4520-a.oregon-postgres.render.com/amanigotravels_znjz"
 
 # Create SQLAlchemy engine
 engine = create_engine(SQLALCHEMY_DATABASE_URI, echo=True)
