@@ -198,41 +198,40 @@
     </div>
 
     <div class="row y-gap-20 pt-40">
-      <div class="col-lg-4 col-sm-6">
-        <div class="ctaCard -type-1 rounded-4 -no-overlay">
-          <div class="ctaCard__image ratio ratio-41:35">
-            <img class="img-ratio js-lazy" src="#" data-src="../../static/images/beachmat.jpg" alt="image">
-          </div>
-          <div class="ctaCard__content py-50 px-50 xl:py-30 xl:px-30">
-            <h4 class="text-30 xl:text-24 text-white">Things To Do On<br class='lg:d-none'> Your Trip</h4>
-            <div class="d-inline-block mt-30">
-              <a href="#" class="button px-48 py-15 -blue-1 -min-180 bg-white text-dark-1">Experiences</a>
-            </div>
-          </div>
-        </div>
-      </div>
+ 
 
   
       {% for special_offer in special_offers %}
       <div class="col-lg-4 col-sm-6">
-        <div class="ctaCard -type-1 rounded-4 -no-overlay">
-          <div class="ctaCard__image ratio ratio-41:35">
-            <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/specialoffers/' + special_offer.image) }}" alt="{{ special_offer.title }}">
+          <div class="ctaCard -type-1 rounded-4 -no-overlay">
+              <div class="ctaCard__image ratio ratio-41:35">
+                  {% if special_offer.image %}
+                      {% if special_offer.image.startswith('http://') or special_offer.image.startswith('https://') %}
+                          <img class="img-ratio js-lazy" src="{{ special_offer.image }}" alt="{{ special_offer.title }}">
+                      {% else %}
+                          <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/specialoffers/' + special_offer.image) }}" alt="{{ special_offer.title }}">
+                      {% endif %}
+                  {% else %}
+                      <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/specialoffers/default.jpg') }}" alt="Default Image">
+                  {% endif %}
+              </div>
+              <div class="ctaCard__content py-50 px-50 xl:py-30 xl:px-30">
+                  <div class="text-15 fw-500 text-white mb-10">
+                      {{ special_offer.subtitle[:20] }}{% if special_offer.subtitle|length > 20 %}...{% endif %}
+                  </div>
+                  <h4 class="text-30 xl:text-24 text-white">{{ special_offer.title }}</h4>
+                  <div class="d-inline-block mt-30">
+                      <a href="{{ url_for('view_special_offer', offer_id=special_offer.id) }}" class="button px-48 py-15 -blue-1 -min-180 bg-white text-dark-1">Learn More</a>
+                  </div>
+              </div>
           </div>
-          <div class="ctaCard__content py-50 px-50 xl:py-30 xl:px-30">
-            <div class="text-15 fw-500 text-white mb-10">{{ special_offer.subtitle[:20] }}{% if special_offer.subtitle|length > 20 %}...{% endif %}</div>
-            <h4 class="text-30 xl:text-24 text-white">{{ special_offer.title }}</h4>
-            <div class="d-inline-block mt-30">
-              <a href="{{ url_for('view_special_offer', offer_id=special_offer.id) }}" class="button px-48 py-15 -blue-1 -min-180 bg-white text-dark-1">Learn More</a>
-            </div>
-          </div>
-        </div>
       </div>
       {% else %}
       <div class="col-12">
-        <p>No special offers available at the moment.</p>
+          <p>No special offers available at the moment.</p>
       </div>
       {% endfor %}
+      
     </div>
   </div>
 </section>

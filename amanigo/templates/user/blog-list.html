@@ -138,29 +138,34 @@ h1, .text-white {
           
             <div class="row y-gap-30 pt-40 js-post-container">
               {% for post in posts %}
-                <div class="col-lg-4 col-sm-6 post-item" data-category-ids="{{ post.category_ids }}">
+              <div class="col-lg-4 col-sm-6 post-item" data-category-ids="{{ post.category_ids }}">
                   <a href="{{ url_for('blog', post_id=post.id) }}" class="blogCard -type-1 d-block">
-                    <div class="blogCard__image">
-                      <div class="ratio ratio-4:3 rounded-8">
-                        {% if post.image %}
-                          <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/post/' + post.image) }}" alt="{{ post.title }}">
-                          {% else %}
-                          No image
-                          {% endif %}
+                      <div class="blogCard__image">
+                          <div class="ratio ratio-4:3 rounded-8">
+                              {% if post.image %}
+                                  {% if post.image.startswith('http://') or post.image.startswith('https://') %}
+                                      <img class="img-ratio js-lazy" src="{{ post.image }}" alt="{{ post.title }}">
+                                  {% else %}
+                                      <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/post/' + post.image) }}" alt="{{ post.title }}">
+                                  {% endif %}
+                              {% else %}
+                                  <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/post/default.jpg') }}" alt="Default Image">
+                              {% endif %}
+                          </div>
                       </div>
-                    </div>
-                    <div class="mt-20">
-                      <h4 class="text-dark-1 text-18 fw-500">{{ post.title }}</h4>
-                      <div class="text-light-1 text-15 lh-14 mt-5">Published: {{ post.post_date.strftime('%B %d, %Y') }}</div>
-                    </div>
+                      <div class="mt-20">
+                          <h4 class="text-dark-1 text-18 fw-500">{{ post.title }}</h4>
+                          <div class="text-light-1 text-15 lh-14 mt-5">Published: {{ post.post_date.strftime('%B %d, %Y') }}</div>
+                      </div>
                   </a>
-                </div>
+              </div>
               {% else %}
-                <div class="col-12">
+              <div class="col-12">
                   <p>No posts available at the moment.</p>
-                </div>
+              </div>
               {% endfor %}
-            </div>
+          </div>
+          
           </div>
         </div>
       </section>

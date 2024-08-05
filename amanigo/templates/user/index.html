@@ -499,7 +499,9 @@
         {% endfor %}
         
   
-
+</div>
+</div>
+</section>
 
   <section class="hajj-umrah-section layout-pt-lg layout-pb-lg">
     <div class="swiper-container hajj-umrah-carousel">
@@ -688,9 +690,13 @@
                                 <div class="cardImage ratio ratio-6:5">
                                     <div class="cardImage__content">
                                         {% if package.image %}
-                                        <img class="rounded-4 col-12 img-ratio js-lazy" src="{{ url_for('static', filename='images/packages/' + package.image) }}" alt="{{ package.title }}">
+                                            {% if package.image.startswith('http://') or package.image.startswith('https://') %}
+                                                <img class="rounded-4 col-12 img-ratio js-lazy" src="{{ package.image }}" alt="{{ package.title }}">
+                                            {% else %}
+                                                <img class="rounded-4 col-12 img-ratio js-lazy" src="{{ url_for('static', filename='images/packages/' + package.image) }}" alt="{{ package.title }}">
+                                            {% endif %}
                                         {% else %}
-                                        <img class="rounded-4 col-12 img-ratio js-lazy" src="{{ url_for('static', filename='images/packages/default.jpg') }}" alt="Default Image">
+                                            <img class="rounded-4 col-12 img-ratio js-lazy" src="{{ url_for('static', filename='images/packages/default.jpg') }}" alt="Default Image">
                                         {% endif %}
                                     </div>
                                 </div>
@@ -702,10 +708,10 @@
                                 <div class="d-flex items-center text-light-1">
                                     <div class="text-14">{{ package.subtitle }}</div>
                                     <div class="size-3 bg-light-1 rounded-full ml-10 mr-10"></div>
-                                    <div class="text-14">{{ package.amount }}</div>
+                                    <div class="text-14">₦{{ "{:,.2f}".format(package.amount) }}</div>
                                 </div>
                                 <div class="text-light-1 mt-5">
-                                    <span class="fw-500 text-dark-1">{{ package.amount }}</span>
+                                    <span class="fw-500 text-dark-1">₦{{ "{:,.2f}".format(package.amount) }}</span>
                                     / per package
                                 </div>
                             </div>
@@ -713,6 +719,7 @@
                     </div>
                     {% endfor %}
                 </div>
+                    
             </div>
 
             <button class="section-slider-nav -prev flex-center button -blue-1 bg-white text-dark-1 size-40 rounded-full shadow-1 sm:d-none  js-routes-slider-prev">

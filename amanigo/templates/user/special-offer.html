@@ -217,27 +217,33 @@
     <div class="row y-gap-30 pt-40 js-post-container">
       {% for destination in destinations %}
       <div class="col-lg-4 col-sm-6 post-item" data-category-ids="{{ destination.category_ids }}">
-        <a href="{{ url_for('view_destination', destination_id=destination.id) }}" class="blogCard -type-1 d-block">
-          <div class="blogCard__image">
-            <div class="ratio ratio-4:3 rounded-8">
-              {% if destination.images.first() %}
-              <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/destinations/' + destination.images.first().url) }}" alt="{{ destination.name }}">
-              {% else %}
-              <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/destinations/default.jpg') }}" alt="{{ destination.name }}">
-              {% endif %}
-            </div>
-          </div>
-          <div class="mt-20">
-            <h4 class="text-dark-1 text-18 fw-500">{{ destination.name }}</h4>
-            <div class="text-light-1 text-15 lh-14 mt-5">{{ destination.subtitle }}</div>
-          </div>
-        </a>
+          <a href="{{ url_for('view_destination', destination_id=destination.id) }}" class="blogCard -type-1 d-block">
+              <div class="blogCard__image">
+                  <div class="ratio ratio-4:3 rounded-8">
+                      {% if destination.images.first() %}
+                          {% set image_url = destination.images.first().url %}
+                          {% if image_url.startswith('http://') or image_url.startswith('https://') %}
+                              <img class="img-ratio js-lazy" src="{{ image_url }}" alt="{{ destination.name }}">
+                          {% else %}
+                              <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/destinations/' + image_url) }}" alt="{{ destination.name }}">
+                          {% endif %}
+                      {% else %}
+                          <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/destinations/default.jpg') }}" alt="{{ destination.name }}">
+                      {% endif %}
+                  </div>
+              </div>
+              <div class="mt-20">
+                  <h4 class="text-dark-1 text-18 fw-500">{{ destination.name }}</h4>
+                  <div class="text-light-1 text-15 lh-14 mt-5">{{ destination.subtitle }}</div>
+              </div>
+          </a>
       </div>
       {% else %}
       <div class="col-12">
-        <p>No destinations available at the moment.</p>
+          <p>No destinations available at the moment.</p>
       </div>
       {% endfor %}
+      
     </div>
   </div>
 </section>

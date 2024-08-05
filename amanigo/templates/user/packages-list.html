@@ -1,163 +1,179 @@
-{%extends 'user/layout.html'%}
+{% extends 'user/layout.html' %}
 
-{%block content%}
+{% block content %}
 
-    <style>
-        .package-card {
-            margin: 20px auto;
-            padding: 10px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease-in-out;
-        }
-        .package-card:hover {
+<style>
+    .package-card {
+        margin: 20px auto;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+        height: 100%; /* Ensure full height for alignment */
+        display: flex;
+        flex-direction: column; /* Allow content to stack within card */
+        justify-content: space-between; /* Spread content vertically */
+    }
+
+    .package-card:hover {
         transform: scale(1.05);
     }
 
-        .package-card img {
-            width: 100%;
-            border-radius: 8px 8px 0 0;
-        }
-        .package-card .content {
-            padding: 10px;
-        }
-        .package-card .content h3 {
-            margin: 0;
-        }
-        .package-card .content p {
-            margin: 10px 0 0;
-        }
-   
-        .package-card a:hover{
-            color:#CE4501
-        }
-    .swiper-slide {
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .swiper-slide:hover {
-    transform: scale(1.05);
-  }
-  
-  .sectionTitle__title {
-    color: #CE4501; /* Brand color for headers */
-  }
-  
-  .arrow-left-hover, .arrow-right-hover {
-    background-color: #CE4501;
-    color: white;
-  }
-  
-  .arrow-left-hover:hover, .arrow-right-hover:hover {
-    background-color: #AA381E; /* Darker shade for hover effect */
-  }
-  
-  .pagination -dots {
-    color: #CE4501; /* Consistent brand color use */
-  }
-  
-  
-  .section-bg {
-    background-color: #300063; /* Sets the section background */
-  }
-  
-  .sectionTitle__title {
-    color: #CE4501; /* Brand color for title */
-  }
-  
-  .sectionTitle__text {
-    color: white; /* Ensures the subtitle text is visible against the dark background */
-  }
-  
-  .testimonials {
-    background-color: white; /* Background of the testimonial cards */
-    color: #333; /* Default text color */
-  }
-  
-  .testimonials h4 {
-    color: #CE4501; /* Specific color for headings within testimonials */
-  }
-  
-  .swiper-pagination-bullet-active {
-    background-color: #CE4501;
-  }
-  
-  .swiper-button-prev, .swiper-button-next {
-    color: #CE4501; /* Swiper arrows color to match the theme */
-  }
-  
-  .swiper-button-prev:hover, .swiper-button-next:hover {
-    background-color: #AA381E; /* Darker shade for hover effect */
-  }
-  
-  
-  .section-bg {
-    position: relative;
-    overflow: hidden; /* Prevents any spillover from the fixed background */
-  }
-  
-  .section-bg {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .background-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, rgba(48, 0, 99, 0.9), rgba(0, 0, 0, 0.9)), url('../../static/img/icons/aman2.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    z-index: -1;
-  }
-  
-  .container {
-    position: relative;
-    z-index: 1;
-  }
-  
-  h1, .text-white {
-    color: white;
-  }
-  
-  
-  
-  </style>
-  <section class="section-bg layout-pt-lg layout-pb-lg">
-    <div class="background-image">
-      <!-- Background image can be added here if needed -->
-    </div>
-    <div class="container">
-      <div class="row justify-center text-center">
-        <div class="col-xl-6 col-lg-8 col-md-10">
-          <h1 class="text-40 md:text-25 fw-600 text-white">Vacation Packages</h1>
-          <div class="text-white mt-15">Explore our Exclusive Packages</div>
-        </div>
-      </div>
-    </div>
-  </section>
+    .package-card img {
+        width: 100%;
+        border-radius: 8px 8px 0 0;
+        object-fit: cover; /* Maintain image aspect ratio */
+        height: 200px; /* Set a consistent height for images */
+    }
 
-  <section class="layout-pt-md layout-pb-lg mt-40">
+    .package-card .content {
+        padding: 10px;
+    }
+
+    .package-card .content h3 {
+        margin: 0;
+    }
+
+    .package-card .content p {
+        margin: 10px 0 0;
+    }
+
+    .package-card a:hover {
+        color: #CE4501;
+    }
+
+    .swiper-slide {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .swiper-slide:hover {
+        transform: scale(1.05);
+    }
+
+    .sectionTitle__title {
+        color: #CE4501; /* Brand color for headers */
+    }
+
+    .arrow-left-hover,
+    .arrow-right-hover {
+        background-color: #CE4501;
+        color: white;
+    }
+
+    .arrow-left-hover:hover,
+    .arrow-right-hover:hover {
+        background-color: #AA381E; /* Darker shade for hover effect */
+    }
+
+    .pagination-dots {
+        color: #CE4501; /* Consistent brand color use */
+    }
+
+    .section-bg {
+        background-color: #300063; /* Sets the section background */
+    }
+
+    .sectionTitle__text {
+        color: white; /* Ensures the subtitle text is visible against the dark background */
+    }
+
+    .testimonials {
+        background-color: white; /* Background of the testimonial cards */
+        color: #333; /* Default text color */
+    }
+
+    .testimonials h4 {
+        color: #CE4501; /* Specific color for headings within testimonials */
+    }
+
+    .swiper-pagination-bullet-active {
+        background-color: #CE4501;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        color: #CE4501; /* Swiper arrows color to match the theme */
+    }
+
+    .swiper-button-prev:hover,
+    .swiper-button-next:hover {
+        background-color: #AA381E; /* Darker shade for hover effect */
+    }
+
+    .section-bg {
+        position: relative;
+        overflow: hidden; /* Prevents any spillover from the fixed background */
+    }
+
+    .section-bg {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .background-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(48, 0, 99, 0.9), rgba(0, 0, 0, 0.9)), url('../../static/img/icons/aman2.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        z-index: -1;
+    }
+
+    .container {
+        position: relative;
+        z-index: 1;
+    }
+
+    h1,
+    .text-white {
+        color: white;
+    }
+</style>
+
+<section class="section-bg layout-pt-lg layout-pb-lg">
+    <div class="background-image">
+        <!-- Background image can be added here if needed -->
+    </div>
     <div class="container">
-   
-            <div class="row justify-center text-center">
-                <div class="col-auto">
-                  <div class="sectionTitle -md">
+        <div class="row justify-center text-center">
+            <div class="col-xl-6 col-lg-8 col-md-10">
+                <h1 class="text-40 md:text-25 fw-600 text-white">Vacation Packages</h1>
+                <div class="text-white mt-15">Explore our Exclusive Packages</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="layout-pt-md layout-pb-lg mt-40">
+    <div class="container">
+        <div class="row justify-center text-center mb-4">
+            <div class="col-auto">
+                <div class="sectionTitle -md">
                     <h2 class="sectionTitle__title">Vacation Packages</h2>
                     <p class="sectionTitle__text mt-5 sm:mt-0" style="color:#CE4501;">Explore our Best Vacation Packages</p>
-                  </div>
                 </div>
-              </div>
-          
+            </div>
+        </div>
+
+        <div class="row">
             {% for package in packages %}
-            <div class="col-md-4">
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                 <div class="package-card">
                     <a href="{{ url_for('view_package', package_id=package.id) }}">
-                        <img src="{{ url_for('static', filename='images/packages/' + package.image) }}" alt="{{ package.title }}">
+                        {% if package.image %}
+                            {% if package.image.startswith('http://') or package.image.startswith('https://') %}
+                                <img src="{{ package.image }}" alt="{{ package.title }}">
+                            {% else %}
+                                <img src="{{ url_for('static', filename='images/packages/' + package.image) }}" alt="{{ package.title }}">
+                            {% endif %}
+                        {% else %}
+                            <img src="{{ url_for('static', filename='images/packages/default.jpg') }}" alt="Default Image">
+                        {% endif %}
                         <div class="content">
                             <h3>{{ package.title }}</h3>
                             <small>{{ package.subtitle }}</small>
@@ -171,11 +187,6 @@
             {% endfor %}
         </div>
     </div>
-    </section>
-
-    
 </section>
 
-
-
-{%endblock%}
+{% endblock %}

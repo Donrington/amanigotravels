@@ -135,25 +135,33 @@
 
     <div class="row y-gap-30 pt-40">
       {% for offer in special_offers %}
-      <div class="col-lg-4 col-sm-6">
-          <a href="{{ url_for('view_special_offer', offer_id=offer.id) }}" class="blogCard -type-1 d-block">
-              <div class="blogCard__image">
-                  <div class="ratio ratio-4:3 rounded-8">
-                      <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/specialoffers/' ~ offer.image) }}" alt="{{ offer.title }}">
-                      
-                  </div>
-              </div>
-              <div class="mt-20">
-                  <h4 class="text-dark-1 text-18 fw-500">{{ offer.title }}</h4>
-                  <div class="text-light-1 text-15 lh-14 mt-5">{{ offer.subtitle }}</div>
-              </div>
-          </a>
-      </div>
-      {% else %}
-      <div class="col-12">
-          <p>No special offers available at the moment.</p>
-      </div>
-      {% endfor %}
+<div class="col-lg-4 col-sm-6">
+    <a href="{{ url_for('view_special_offer', offer_id=offer.id) }}" class="blogCard -type-1 d-block">
+        <div class="blogCard__image">
+            <div class="ratio ratio-4:3 rounded-8">
+                {% if offer.image %}
+                    {% if offer.image.startswith('http://') or offer.image.startswith('https://') %}
+                        <img class="img-ratio js-lazy" src="{{ offer.image }}" alt="{{ offer.title }}">
+                    {% else %}
+                        <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/specialoffers/' + offer.image) }}" alt="{{ offer.title }}">
+                    {% endif %}
+                {% else %}
+                    <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/specialoffers/default.jpg') }}" alt="Default Image">
+                {% endif %}
+            </div>
+        </div>
+        <div class="mt-20">
+            <h4 class="text-dark-1 text-18 fw-500">{{ offer.title }}</h4>
+            <div class="text-light-1 text-15 lh-14 mt-5">{{ offer.subtitle }}</div>
+        </div>
+    </a>
+</div>
+{% else %}
+<div class="col-12">
+    <p>No special offers available at the moment.</p>
+</div>
+{% endfor %}
+
     </div>
   </div>
 </section>
