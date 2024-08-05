@@ -136,56 +136,64 @@
 
    
 
-</style>
-<header class="masthead" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ url_for('static', filename='images/post/' + post.image) }}'); background-size: cover; background-position: center;">
-  <div class="container position-relative px-4 px-lg-5">
-    <div class="row gx-4 gx-lg-5 justify-content-center">
-      <div class="col-md-10 col-lg-8 col-xl-7">
-        <div class="site-heading">
-          <h1>{{ post.title }}</h1>
-          <span class="subheading">{{ post.subtitle }}</span>
-          <p class="post-meta">
-            Posted by <a href="#">{{ post.author.username }}</a>
-            on {{ post.post_date.strftime('%B %d, %Y') }} | Last Modified: {{ post.last_modified.strftime('%B %d, %Y %H:%M') }}
-            {% if post.deleted_at %}
-            | Deleted At: {{ post.deleted_at.strftime('%B %d, %Y %H:%M') }}
-            {% endif %}
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-{% endblock %}
-
-{% block content %}
-<div class="container py-5">
-  <div class="post-content">
-    <article>
-      <div class="imgpost">
-        {% if post.image %}
-        <img src="{{ url_for('static', filename='images/post/' ~ post.image) }}" alt="Post Image" class="img-fluid">
+</style><header class="masthead" style="
+background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+{% if post.image and (post.image.startswith('http://') or post.image.startswith('https://')) %}
+    url('{{ post.image }}');
+{% else %}
+    url('{{ url_for('static', filename='images/post/' + post.image) }}');
+{% endif %}
+background-size: cover;
+background-position: center;">
+<div class="container position-relative px-4 px-lg-5">
+<div class="row gx-4 gx-lg-5 justify-content-center">
+  <div class="col-md-10 col-lg-8 col-xl-7">
+    <div class="site-heading">
+      <h1>{{ post.title }}</h1>
+      <span class="subheading">{{ post.subtitle }}</span>
+      <p class="post-meta">
+        Posted by <a href="#">{{ post.author.username }}</a>
+        on {{ post.post_date.strftime('%B %d, %Y') }} | Last Modified: {{ post.last_modified.strftime('%B %d, %Y %H:%M') }}
+        {% if post.deleted_at %}
+        | Deleted At: {{ post.deleted_at.strftime('%B %d, %Y %H:%M') }}
         {% endif %}
-      </div>
-      <h3>{{ post.subtitle }}</h3>
-      <div>{{ post.content | safe }}</div>
-    </article>
-    <div class="mt-4 catag">
-      <strong>Categories:</strong>
-      {% for category in post.categories %}
-      <span class="category">{{ category.name }}</span>{% if not loop.last %}, {% endif %}
-      {% endfor %}
-    </div>
-    <div class="mt-1 catag">
-      <strong>Tags:</strong>
-      {% for tag in post.tags %}
-      <span class="tag">{{ tag.name }}</span>{% if not loop.last %}, {% endif %}
-      {% endfor %}
+      </p>
     </div>
   </div>
 </div>
-
-
+</div>
+</header>
+{%endblock%}
+{% block content %}
+<div class="container py-5">
+<div class="post-content">
+<article>
+  <div class="imgpost">
+    {% if post.image %}
+      {% if post.image.startswith('http://') or post.image.startswith('https://') %}
+        <img src="{{ post.image }}" alt="Post Image" class="img-fluid">
+      {% else %}
+        <img src="{{ url_for('static', filename='images/post/' + post.image) }}" alt="Post Image" class="img-fluid">
+      {% endif %}
+    {% endif %}
+  </div>
+  <h3>{{ post.subtitle }}</h3>
+  <div>{{ post.content | safe }}</div>
+</article>
+<div class="mt-4 catag">
+  <strong>Categories:</strong>
+  {% for category in post.categories %}
+  <span class="category">{{ category.name }}</span>{% if not loop.last %}, {% endif %}
+  {% endfor %}
+</div>
+<div class="mt-1 catag">
+  <strong>Tags:</strong>
+  {% for tag in post.tags %}
+  <span class="tag">{{ tag.name }}</span>{% if not loop.last %}, {% endif %}
+  {% endfor %}
+</div>
+</div>
+</div>
 
 <section class="customers layout-pt-lg layout-pb-lg bg-dark-3">
   <div class="container">

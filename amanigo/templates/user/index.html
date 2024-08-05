@@ -772,7 +772,6 @@
                 </div>
             </div>
         </div>
-
         <div class="row y-gap-30 pt-40">
             {% for post in posts %}
             <div class="col-lg-4 col-sm-6">
@@ -780,9 +779,13 @@
                     <div class="blogCard__image">
                         <div class="ratio ratio-4:3 rounded-8">
                           {% if post.image %}
-                          <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/post/' + post.image) }}" alt="{{ post.title }}">
+                              {% if post.image.startswith('http://') or post.image.startswith('https://') %}
+                                  <img class="img-ratio js-lazy" src="{{ post.image }}" alt="{{ post.title }}">
+                              {% else %}
+                                  <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/post/' + post.image) }}" alt="{{ post.title }}">
+                              {% endif %}
                           {% else %}
-                          No image
+                          <p>No image available</p>
                           {% endif %}
                         </div>
                     </div>
@@ -798,6 +801,7 @@
             </div>
             {% endfor %}
         </div>
+        
     </div>
 </section>
 
