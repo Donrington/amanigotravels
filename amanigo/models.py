@@ -43,7 +43,7 @@ class Post(db.Model):
     title = db.Column(db.String(200), nullable=False)
     subtitle = db.Column(db.Text, nullable=False)
     content = db.Column(db.Text, nullable=False)
-    image = db.Column(db.String(100), nullable=True)
+    image = db.Column(db.String(255), nullable=True)  # Increase size if URLs are long
     post_date = db.Column(db.DateTime, server_default=db.func.now())
     last_modified = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     deleted_at = db.Column(db.DateTime, nullable=True, default=None)
@@ -51,7 +51,7 @@ class Post(db.Model):
     author = db.relationship('User', backref=db.backref('posts', lazy=True, cascade="all, delete-orphan"))
     categories = db.relationship('Category', secondary='post_category', backref=db.backref('posts', lazy=True), cascade="all, delete")
     tags = db.relationship('Tag', secondary='post_tag', backref=db.backref('posts', lazy=True), cascade="all, delete")
-   
+
 
 # Association table for Post-Category (Many-to-Many)
 post_category = db.Table('post_category',

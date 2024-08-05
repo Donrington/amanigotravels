@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, FileField, SelectField, PasswordField, SubmitField,FloatField
-from wtforms.validators import DataRequired, Email, Length
+from wtforms.validators import DataRequired, Email, Length, Optional, URL
 from flask_wtf.file import FileAllowed, FileRequired
 
 
@@ -8,7 +8,8 @@ class NewPostForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     subtitle = TextAreaField('Subtitle', validators=[DataRequired()])
     content = TextAreaField('Content', validators=[DataRequired()])
-    image = FileField('Upload Image', validators=[FileRequired(), FileAllowed(['jpg', 'jpeg', 'png', 'gif', 'webp'], 'Images only!')])
+    image = FileField('Upload Image', validators=[FileAllowed(['jpg', 'jpeg', 'png', 'gif', 'webp'], 'Images only!')])
+    image_url = StringField('Image URL', validators=[Optional(), URL(message='Invalid URL')])
     categories = SelectField('Categories', choices=[
         ('Adventure Travel', 'Adventure Travel'),
         ('Business Travel', 'Business Travel'),
@@ -28,9 +29,7 @@ class NewPostForm(FlaskForm):
         ('Hajj and Umrah', 'Hajj and Umrah'),
         ('Educational Travel', 'Educational Travel')
     ])
-    tags = StringField('Tags') # Allowing multiple tags, consider using a field that supports multiple selections
-
-
+    tags = StringField('Tags')  # Allowing multiple tags, consider using a field that supports multiple selections
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])

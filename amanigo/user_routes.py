@@ -232,8 +232,7 @@ def save_image(image, save_path):
         except Exception as e:
             print(f"Failed to save image: {e}")  # Debug statement
             return None
-    return None
-@app.route("/user/new_post", methods=['GET', 'POST'])
+    return None@app.route("/user/new_post", methods=['GET', 'POST'])
 def new_post():
     if 'logged_in' not in session or not session['logged_in']:
         flash('You need to log in to create a new post.', 'error')
@@ -245,13 +244,22 @@ def new_post():
         subtitle = form.subtitle.data
         content = form.content.data
         image = request.files['image'] if 'image' in request.files else None
+        image_url = form.image_url.data.strip() if form.image_url.data else None
 
-        # Save the image and log the path
-        image_url = save_image(image, app.config['POST_IMAGE_PATH']) if image else None
-        print(f"Saved image URL: {image_url}")  # Debug statement
+        # Ensure only one is used
+        if image and image_url:
+            flash('Please provide either an image file or an image URL, not both.', 'error')
+            return render_template("user/new_post.html", form=form)
+
+        # Save the image file or use the URL
+        if image:
+            image_filename = save_image(image, app.config['POST_IMAGE_PATH'])
+            final_image_url = os.path.join('/static/images/post/', image_filename)
+        else:
+            final_image_url = image_url
 
         user_id = session.get('user_id')
-        new_post = Post(title=title, subtitle=subtitle, content=content, image=image_url, author_id=user_id)
+        new_post = Post(title=title, subtitle=subtitle, content=content, image=final_image_url, author_id=user_id)
 
         selected_category_names = form.categories.data.split(',')
         for category_name in selected_category_names:
@@ -276,7 +284,6 @@ def new_post():
         return redirect(url_for('admin_dashboard'))
 
     return render_template("user/new_post.html", form=form)
-
 
 @app.route("/create_destination", methods=['GET', 'POST'])
 def create_destination():

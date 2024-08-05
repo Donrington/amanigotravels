@@ -68,7 +68,14 @@
                         <div class="form-group">
                             {{ form.image.label(class_='form-label') }}
                             {{ form.image(class_='form-control-file') }}
+                            <small class="form-text text-muted">Upload an image file or provide a URL below.</small>
                         </div>
+                        <div class="form-group">
+                            {{ form.image_url.label(class_='form-label') }}
+                            {{ form.image_url(class_='form-control', placeholder='http://example.com/image.jpg') }}
+                            <small class="form-text text-muted">Enter an image URL if you don't want to upload a file.</small>
+                        </div>
+                        
                         <div class="form-group">
                             {{ form.categories.label(class_='form-label') }}
                             {{ form.categories(class_='form-control') }}
