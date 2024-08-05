@@ -46,29 +46,45 @@
     </style>
 </head>
 <body>
-    <header class="masthead" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ url_for('static', filename='images/packages/' + package.image) }}');">
-        <div class="container position-relative px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-md-10 col-lg-8 col-xl-7">
-                    <div class="site-heading">
-                        <h1>{{ package.title }}</h1>
-                        <span class="subheading">{{ package.subtitle }}</span>
-                        <p class="post-meta">
-                            Posted by <a href="#">{{ package.author.username }}</a>
-                            on {{ package.post_date.strftime('%B %d, %Y') }} | Last Modified: {{ package.last_modified.strftime('%B %d, %Y %H:%M') }}
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+  <header class="masthead" style="
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  {% if package.image.startswith('http://') or package.image.startswith('https://') %}
+      url('{{ package.image }}');
+  {% else %}
+      url('{{ url_for('static', filename='images/packages/' + package.image) }}');
+  {% endif %}
+  background-size: cover;
+  background-position: center;">
+  <div class="container position-relative px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+          <div class="col-md-10 col-lg-8 col-xl-7">
+              <div class="site-heading">
+                  <h1>{{ package.title }}</h1>
+                  <span class="subheading">{{ package.subtitle }}</span>
+                  <p class="post-meta">
+                      Posted by <a href="#">{{ package.author.username }}</a>
+                      on {{ package.post_date.strftime('%B %d, %Y') }} | Last Modified: {{ package.last_modified.strftime('%B %d, %Y %H:%M') }}
+                  </p>
+              </div>
+          </div>
+      </div>
+  </div>
+</header>
 
-    <div class="package-content">
-        <img src="{{ url_for('static', filename='images/packages/' + package.image) }}" alt="{{ package.title }}" class="pb-40">
-        <h3 class="pb-20">{{ package.subtitle }}</h3>
-        <h2 class="pb-20">₦{{ "{:,.2f}".format(package.amount) }}</h2>
-        <div>{{ package.content | safe }}</div>
-    </div>
+<div class="package-content">
+  {% if package.image %}
+      {% if package.image.startswith('http://') or package.image.startswith('https://') %}
+          <img src="{{ package.image }}" alt="{{ package.title }}" class="pb-40">
+      {% else %}
+          <img src="{{ url_for('static', filename='images/packages/' + package.image) }}" alt="{{ package.title }}" class="pb-40">
+      {% endif %}
+  {% else %}
+      <img src="{{ url_for('static', filename='images/packages/default.jpg') }}" alt="Default Image" class="pb-40">
+  {% endif %}
+  <h3 class="pb-20">{{ package.subtitle }}</h3>
+  <h2 class="pb-20">₦{{ "{:,.2f}".format(package.amount) }}</h2>
+  <div>{{ package.content | safe }}</div>
+</div>
 
 
 

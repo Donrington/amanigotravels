@@ -42,77 +42,92 @@
 </style>
 </head>
 <body>
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-xl-8 col-lg-10 col-md-12">
-            <div class="card shadow">
-                <div class="card-body">
-                    <h5 class="card-title">Create a New Destination</h5>
-                    {% set messages = get_flashed_messages(with_categories=true) %}
-                    {% if messages %}
-                    {% for category, message in messages %}
-                      <div class="alert alert-{{ category }}"> {{ message }} </div>
-                    {% endfor %}
-                    {% endif %}
-                    <form action="{{ url_for('create_destination') }}" method="post" enctype="multipart/form-data">
-                        {{ form.hidden_tag() }}
-
-                        <div class="form-group">
-                            {{ form.name.label(class_='form-label') }}
-                            {{ form.name(class_='form-control') }}
-                            {% if form.name.errors %}
-                            <ul class="errors">
-                            {% for error in form.name.errors %}
-                                <li>{{ error }}</li>
-                            {% endfor %}
-                            </ul>
-                            {% endif %}
-                        </div>
-
-                        <div class="form-group">
-                            {{ form.subtitle.label(class_='form-label') }}
-                            {{ form.subtitle(class_='form-control') }}
-                            {% if form.subtitle.errors %}
-                            <ul class="errors">
-                            {% for error in form.subtitle.errors %}
-                                <li>{{ error }}</li>
-                            {% endfor %}
-                            </ul>
-                            {% endif %}
-                        </div>
-
-                        <div class="form-group">
-                            {{ form.description.label(class_='form-label') }}
-                            {{ form.description(class_='form-control', style='height: 200px;') }}
-                            {% if form.description.errors %}
-                            <ul class="errors">
-                                {% for error in form.description.errors %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-8 col-lg-10 col-md-12">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h5 class="card-title">Create a New Destination</h5>
+                        {% set messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                        {% for category, message in messages %}
+                          <div class="alert alert-{{ category }}"> {{ message }} </div>
+                        {% endfor %}
+                        {% endif %}
+                        <form action="{{ url_for('create_destination') }}" method="post" enctype="multipart/form-data">
+                            {{ form.hidden_tag() }}
+    
+                            <div class="form-group">
+                                {{ form.name.label(class_='form-label') }}
+                                {{ form.name(class_='form-control') }}
+                                {% if form.name.errors %}
+                                <ul class="errors">
+                                {% for error in form.name.errors %}
                                     <li>{{ error }}</li>
                                 {% endfor %}
-                            </ul>
-                            {% endif %}
-                        </div>
-
-                        <div class="form-group">
-                            {{ form.image.label(class_='form-label') }}
-                            {{ form.image(class_='form-control-file') }}
-                            {% if form.image.errors %}
-                            <ul class="errors">
-                                {% for error in form.image.errors %}
+                                </ul>
+                                {% endif %}
+                            </div>
+    
+                            <div class="form-group">
+                                {{ form.subtitle.label(class_='form-label') }}
+                                {{ form.subtitle(class_='form-control') }}
+                                {% if form.subtitle.errors %}
+                                <ul class="errors">
+                                {% for error in form.subtitle.errors %}
                                     <li>{{ error }}</li>
                                 {% endfor %}
-                            </ul>
-                            {% endif %}
-                        </div>
-
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary mt-3">Create Destination</button>
-                        </div>
-                    </form>
+                                </ul>
+                                {% endif %}
+                            </div>
+    
+                            <div class="form-group">
+                                {{ form.description.label(class_='form-label') }}
+                                {{ form.description(class_='form-control', style='height: 200px;') }}
+                                {% if form.description.errors %}
+                                <ul class="errors">
+                                    {% for error in form.description.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </div>
+    
+                            <div class="form-group">
+                                {{ form.image.label(class_='form-label') }}
+                                {{ form.image(class_='form-control-file') }}
+                                <small class="form-text text-muted">Upload an image file or provide a URL below.</small>
+                                {% if form.image.errors %}
+                                <ul class="errors">
+                                    {% for error in form.image.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </div>
+    
+                            <div class="form-group">
+                                {{ form.image_url.label(class_='form-label') }}
+                                {{ form.image_url(class_='form-control', placeholder='http://example.com/image.jpg') }}
+                                <small class="form-text text-muted">Enter an image URL if you don't want to upload a file.</small>
+                                {% if form.image_url.errors %}
+                                <ul class="errors">
+                                    {% for error in form.image_url.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </div>
+    
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary mt-3">Create Destination</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    
 
 {% endblock %}

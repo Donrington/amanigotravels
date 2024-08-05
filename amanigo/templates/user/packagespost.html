@@ -62,7 +62,7 @@
                             {{ form.title.label(class_='form-label') }}
                             {{ form.title(class_='form-control') }}
                         </div>
-  
+
                         <div class="form-group">
                             {{ form.subtitle.label(class_='form-label') }}
                             {{ form.subtitle(class_='form-control') }}
@@ -72,17 +72,24 @@
                             {{ form.amount.label(class_='form-label') }}
                             {{ form.amount(class_='form-control') }}
                         </div>
-  
+
                         <div class="form-group">
                             {{ form.content.label(class_='form-label') }}
                             {{ form.content(class_='form-control',  style='height: 200px;') }}
                         </div>
-  
+
                         <div class="form-group">
                             {{ form.image.label(class_='form-label') }}
                             {{ form.image(class_='form-control-file') }}
+                            <small class="form-text text-muted">Upload an image file or provide a URL below.</small>
                         </div>
-  
+
+                        <div class="form-group">
+                            {{ form.image_url.label(class_='form-label') }}
+                            {{ form.image_url(class_='form-control', placeholder='http://example.com/image.jpg') }}
+                            <small class="form-text text-muted">Enter an image URL if you don't want to upload a file.</small>
+                        </div>
+
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary mt-3">Create Package</button>
                         </div>

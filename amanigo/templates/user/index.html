@@ -469,31 +469,37 @@
 
     <div class="row y-gap-20 pt-40">
 
-
-  
-      {% for special_offer in special_offers %}
-      <div class="col-lg-4 col-sm-6">
-        <div class="ctaCard -type-1 rounded-4 -no-overlay">
-          <div class="ctaCard__image ratio ratio-41:35">
-            <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/specialoffers/' + special_offer.image) }}" alt="{{ special_offer.title }}">
-          </div>
-          <div class="ctaCard__content py-50 px-50 xl:py-30 xl:px-30">
-            <div class="text-15 fw-500 text-white mb-10">{{ special_offer.subtitle[:20] }}{% if special_offer.subtitle|length > 20 %}...{% endif %}</div>
-            <h4 class="text-30 xl:text-24 text-white">{{ special_offer.title }}</h4>
-            <div class="d-inline-block mt-30">
-              <a href="{{ url_for('view_special_offer', offer_id=special_offer.id) }}" class="button px-48 py-15 -blue-1 -min-180 bg-white text-dark-1">Learn More</a>
+        {% for special_offer in special_offers %}
+        <div class="col-lg-4 col-sm-6">
+            <div class="ctaCard -type-1 rounded-4 -no-overlay">
+                <div class="ctaCard__image ratio ratio-41:35">
+                    {% if special_offer.image %}
+                        {% if special_offer.image.startswith('http://') or special_offer.image.startswith('https://') %}
+                            <img class="img-ratio js-lazy" src="{{ special_offer.image }}" alt="{{ special_offer.title }}">
+                        {% else %}
+                            <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/specialoffers/' + special_offer.image) }}" alt="{{ special_offer.title }}">
+                        {% endif %}
+                    {% else %}
+                        <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/special_offers/default.jpg') }}" alt="Default Image">
+                    {% endif %}
+                </div>
+                <div class="ctaCard__content py-50 px-50 xl:py-30 xl:px-30">
+                    <div class="text-15 fw-500 text-white mb-10">{{ special_offer.subtitle[:20] }}{% if special_offer.subtitle|length > 20 %}...{% endif %}</div>
+                    <h4 class="text-30 xl:text-24 text-white">{{ special_offer.title }}</h4>
+                    <div class="d-inline-block mt-30">
+                        <a href="{{ url_for('view_special_offer', offer_id=special_offer.id) }}" class="button px-48 py-15 -blue-1 -min-180 bg-white text-dark-1">Learn More</a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      {% else %}
-      <div class="col-12">
-        <p>No special offers available at the moment.</p>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
+        {% else %}
+        <div class="col-12">
+            <p>No special offers available at the moment.</p>
+        </div>
+        {% endfor %}
+        
+  
+
 
   <section class="hajj-umrah-section layout-pt-lg layout-pb-lg">
     <div class="swiper-container hajj-umrah-carousel">
@@ -534,27 +540,25 @@
       </div>
       
       <div class="row y-gap-40 justify-between pt-40 sm:pt-20">
-
-
-      
-          {% for destination in destinations %}
-          <div data-anim-child="slide-up delay-{{ loop.index + 3 }}" class="col-xl-{% if loop.index % 2 == 0 %}6{% else %}3{% endif %} col-md-4 col-sm-6">
+        {% for destination in destinations %}
+        <div data-anim-child="slide-up delay-{{ loop.index + 3 }}" class="col-xl-{% if loop.index % 2 == 0 %}6{% else %}3{% endif %} col-md-4 col-sm-6">
             <a href="{{ url_for('view_destination', destination_id=destination.id) }}" class="citiesCard -type-3 d-block rounded-4 h-full">
-                  <div class="citiesCard__image ratio ratio-1:1">
-                      {% if destination.images.first() %}
-                      <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/destinations/' + destination.images.first().url) }}" alt="image">
-                      {% else %}
-                      <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/destinations/default.jpg') }}" alt="image">
-                      {% endif %}
-                  </div>
-                  <div class="citiesCard__content px-30 py-30">
-                      <h4 class="text-26 fw-600 text-white">{{ destination.name }}</h4>
-                     
-                  </div>
-              </a>
-          </div>
-          {% endfor %}
-      </div>
+                <div class="citiesCard__image ratio ratio-1:1">
+                    {% set image_url = destination.images.first().url if destination.images.first() else 'default.jpg' %}
+                    {% if image_url.startswith('http://') or image_url.startswith('https://') %}
+                        <img class="img-ratio js-lazy" src="{{ image_url }}" alt="image">
+                    {% else %}
+                        <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/destinations/' + image_url) }}" alt="image">
+                    {% endif %}
+                </div>
+                <div class="citiesCard__content px-30 py-30">
+                    <h4 class="text-26 fw-600 text-white">{{ destination.name }}</h4>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    
     </div>
   </section>
 

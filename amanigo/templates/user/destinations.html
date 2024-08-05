@@ -132,23 +132,23 @@
 </style>
 
 <section class="layout-pb-md">
-
   <div class="row">
-      <div class="col-12">
-          <div class="relative d-flex destinationimg">
-            {% if destination.images.first() %}
-              <img src="{{ url_for('static', filename='images/destinations/' + destination.images.first().url) }}" alt="image" class="col-12 rounded-4 destinationimg">
-              {% else %}
-              <img src="{{ url_for('static', filename='images/destinations/default.jpg') }}" alt="image" class="col-12 rounded-4 destinationimg">
-              {% endif %}
-              <div class="absolute z-2 px-50 py-60 mt-40">
-                  <h1 class="text-50 fw-600 text-white name">Explore {{ destination.name }}</h1>
-                  <div class="text-white subtitle">{{ destination.subtitle }}</div>
-              </div>
-          </div>
-         
-      </div>
-  </div>
+    <div class="col-12">
+        <div class="relative d-flex destinationimg">
+            {% set image_url = destination.images.first().url if destination.images.first() else 'default.jpg' %}
+            {% if image_url.startswith('http://') or image_url.startswith('https://') %}
+                <img src="{{ image_url }}" alt="image" class="col-12 rounded-4 destinationimg">
+            {% else %}
+                <img src="{{ url_for('static', filename='images/destinations/' + image_url) }}" alt="image" class="col-12 rounded-4 destinationimg">
+            {% endif %}
+            <div class="absolute z-2 px-50 py-60 mt-40">
+                <h1 class="text-50 fw-600 text-white name">Explore {{ destination.name }}</h1>
+                <div class="text-white subtitle">{{ destination.subtitle }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
   
 
   <div class="row x-gap-20 y-gap-20 items-center pt-20" style="margin:auto;">
@@ -322,7 +322,15 @@
                 <a href="{{ url_for('blog', post_id=post.id) }}" class="blogCard -type-1 d-block">
                     <div class="blogCard__image">
                         <div class="ratio ratio-4:3 rounded-8">
-                            <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/post/' + post.image) }}" alt="{{ post.title }}">
+                          {% if post.image %}
+                          {% if post.image.startswith('http://') or post.image.startswith('https://') %}
+                              <img class="img-ratio js-lazy" src="{{ post.image }}" alt="{{ post.title }}">
+                          {% else %}
+                              <img class="img-ratio js-lazy" src="{{ url_for('static', filename='images/post/' + post.image) }}" alt="{{ post.title }}">
+                          {% endif %}
+                      {% else %}
+                      <p>No image available</p>
+                      {% endif %}
                         </div>
                     </div>
                     <div class="mt-20">

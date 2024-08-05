@@ -55,25 +55,26 @@ class DestinationForm(FlaskForm):
     name = StringField('Destination Name', validators=[DataRequired()])
     subtitle = TextAreaField('Subtitle', validators=[DataRequired()])
     description = TextAreaField('Description', validators=[DataRequired()])
-    image = FileField('Upload Image', validators=[FileRequired(), FileAllowed(['jpg', 'jpeg', 'png', 'gif', 'webp'], 'Images only!')])
+    image = FileField('Upload Image', validators=[FileAllowed(['jpg', 'jpeg', 'png', 'gif', 'webp'], 'Images only!')])
+    image_url = StringField('Image URL', validators=[Optional(), URL(message='Invalid URL')])
     submit = SubmitField('Create Destination')
-
 
 class SpecialOfferForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     subtitle = TextAreaField('Subtitle', validators=[DataRequired()])
     content = TextAreaField('Content', validators=[DataRequired()])
-    image = FileField('Upload Image', validators=[FileRequired(), FileAllowed(['jpg', 'jpeg', 'png', 'gif', 'webp'], 'Images only!')])
+    image = FileField('Upload Image', validators=[FileAllowed(['jpg', 'jpeg', 'png', 'gif', 'webp'], 'Images only!')])
+    image_url = StringField('Image URL', validators=[Optional(), URL(message='Invalid URL')])
     submit = SubmitField('Create Special Offer')
-
 
 class PackageForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     subtitle = StringField('Subtitle', validators=[DataRequired()])
     amount = FloatField('Amount (₦)', validators=[DataRequired()])
     content = TextAreaField('Content', validators=[DataRequired()])
-    image = FileField('Upload Image', validators=[FileRequired(), FileAllowed(['jpg', 'jpeg', 'png', 'gif', 'webp'], 'Images only!')])
-
+    image = FileField('Upload Image', validators=[FileAllowed(['jpg', 'jpeg', 'png', 'gif', 'webp'], 'Images only!')])
+    image_url = StringField('Image URL', validators=[Optional(), URL(message='Invalid URL')])
+    submit = SubmitField('Create Package')
 
 
 class AdminLoginForm(FlaskForm):

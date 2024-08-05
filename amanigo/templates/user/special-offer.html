@@ -18,7 +18,15 @@
 </style>
 
 
-<header class="masthead" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ url_for('static', filename='images/specialoffers/' + special_offer.image) }}');">
+<header class="masthead" style="
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    {% if special_offer.image.startswith('http://') or special_offer.image.startswith('https://') %}
+        url('{{ special_offer.image }}');
+    {% else %}
+        url('{{ url_for('static', filename='images/specialoffers/' + special_offer.image) }}');
+    {% endif %}
+    background-size: cover;
+    background-position: center;">
   <div class="container position-relative px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
@@ -37,7 +45,6 @@
     </div>
   </div>
 </header>
-
 
 
 {% endblock %}
@@ -78,22 +85,26 @@
       color:white !important;
     } 
 </style>
+
+
 <div class="container py-5">
-    <div class="post-content">
-        <article>
-            <div class="imgpost">
-                {% if special_offer.image %}
-                <img src="{{ url_for('static', filename='images/specialoffers/' ~ special_offer.image) }}" alt="Special Offer Image">
-                {% endif %}
-            </div>
-            <h3>{{ special_offer.subtitle }}</h3>
-            <div>{{ special_offer.content | safe }}</div>
-        </article>
+  <div class="post-content">
+      <article>
+          <div class="imgpost">
+              {% if special_offer.image %}
+                  {% if special_offer.image.startswith('http://') or special_offer.image.startswith('https://') %}
+                      <img src="{{ special_offer.image }}" alt="Special Offer Image">
+                  {% else %}
 
-    </div>
+                      <img src="{{ url_for('static', filename='images/specialoffers/' ~ special_offer.image) }}" alt="Special Offer Image">
+                  {% endif %}
+              {% endif %}
+          </div>
+          <h3>{{ special_offer.subtitle }}</h3>
+          <div>{{ special_offer.content | safe }}</div>
+      </article>
+  </div>
 </div>
-
-
 </section>
     
 

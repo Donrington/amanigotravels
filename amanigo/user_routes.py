@@ -232,7 +232,8 @@ def save_image(image, save_path):
         except Exception as e:
             print(f"Failed to save image: {e}")  # Debug statement
             return None
-    return None@app.route("/user/new_post", methods=['GET', 'POST'])
+    return None
+@app.route("/user/new_post", methods=['GET', 'POST'])
 def new_post():
     if 'logged_in' not in session or not session['logged_in']:
         flash('You need to log in to create a new post.', 'error')
@@ -284,7 +285,6 @@ def new_post():
         return redirect(url_for('admin_dashboard'))
 
     return render_template("user/new_post.html", form=form)
-
 @app.route("/create_destination", methods=['GET', 'POST'])
 def create_destination():
     if 'logged_in' not in session or not session['logged_in']:
@@ -297,16 +297,26 @@ def create_destination():
         subtitle = form.subtitle.data
         description = form.description.data
         image = request.files['image'] if 'image' in request.files else None
+        image_url = form.image_url.data.strip() if form.image_url.data else None
 
-        # Handle the image upload
-        image_url = save_image(image, app.config['DEST_IMAGE_PATH']) if image else None
-        
+        # Ensure that only one image source is provided
+        if image and image_url:
+            flash('Please provide either an image file or an image URL, not both.', 'error')
+            return render_template('user/create_destination.html', form=form)
+
+        # Handle the image upload or use the URL
+        if image:
+            image_filename = save_image(image, app.config['DEST_IMAGE_PATH'])
+            final_image_url = os.path.join('/static/images/post/', image_filename)
+        else:
+            final_image_url = image_url
+
         user_id = session.get('user_id')
         new_destination = Destination(name=name, subtitle=subtitle, description=description, author_id=user_id)
         db.session.add(new_destination)
         db.session.commit()
 
-        new_image = Image(url=image_url, destination_id=new_destination.id)
+        new_image = Image(url=final_image_url, destination_id=new_destination.id)
         db.session.add(new_image)
         db.session.commit()
 
@@ -314,7 +324,6 @@ def create_destination():
         return redirect(url_for('admin_dashboard'))
 
     return render_template('user/create_destination.html', form=form)
-
 
 
 @app.route("/destination/<int:destination_id>")
@@ -361,16 +370,26 @@ def new_special_offer():
         subtitle = form.subtitle.data
         content = form.content.data
         image = request.files['image'] if 'image' in request.files else None
+        image_url = form.image_url.data.strip() if form.image_url.data else None
 
-        # Handle the image upload
-        image_url = save_image(image, app.config['SPECIAL_OFFER_IMAGE_PATH']) if image else None
-        
+        # Ensure that only one image source is provided
+        if image and image_url:
+            flash('Please provide either an image file or an image URL, not both.', 'error')
+            return render_template('user/specialofferpost.html', form=form)
+
+        # Handle the image upload or use the URL
+        if image:
+            image_filename = save_image(image, app.config['SPECIAL_OFFER_IMAGE_PATH'])
+            final_image_url = os.path.join('/static/images/special_offers/', image_filename)
+        else:
+            final_image_url = image_url
+
         user_id = session.get('user_id')
         new_special_offer = SpecialOffer(
             title=title, 
             subtitle=subtitle, 
             content=content, 
-            image=image_url, 
+            image=final_image_url, 
             author_id=user_id
         )
         db.session.add(new_special_offer)
@@ -380,7 +399,6 @@ def new_special_offer():
         return redirect(url_for('admin_dashboard'))
 
     return render_template('user/specialofferpost.html', form=form)
-
 
 
 @app.route("/packages/<int:package_id>")
@@ -412,9 +430,19 @@ def create_package():
             amount = form.amount.data
             content = form.content.data
             image = request.files['image'] if 'image' in request.files else None
+            image_url = form.image_url.data.strip() if form.image_url.data else None
             
-            # Handle the image upload
-            image_url = save_image(image, app.config['PACKAGE_IMAGE_PATH']) if image else None
+            # Ensure that only one image source is provided
+            if image and image_url:
+                flash('Please provide either an image file or an image URL, not both.', 'error')
+                return render_template('user/packagespost.html', form=form)
+
+            # Handle the image upload or use the URL
+            if image:
+                image_filename = save_image(image, app.config['PACKAGE_IMAGE_PATH'])
+                final_image_url = os.path.join('/static/images/packages/', image_filename)
+            else:
+                final_image_url = image_url
 
             user_id = session.get('user_id')
 
@@ -427,7 +455,7 @@ def create_package():
                 subtitle=subtitle,
                 amount=amount,
                 content=content,
-                image=image_url,
+                image=final_image_url,
                 author_id=user_id
             )
             db.session.add(new_package)
@@ -445,6 +473,7 @@ def create_package():
                 flash(f"Error in {getattr(form, field).label.text}: {error}", 'error')
 
     return render_template('user/packagespost.html', form=form)
+
 
 @app.route('/visa', methods=['GET', 'POST'])
 @csrf.exempt
