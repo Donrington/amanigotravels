@@ -3,83 +3,109 @@
 {% block content %}
 
 <style>
-.cont {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.86);
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    margin-top: 50px;
-}
-
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-form {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.search-input {
-    width: 300px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    margin-right: 10px;
-}
-
-.search-button {
-    padding: 10px 20px;
-    background-color: #300063;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.search-button:hover {
-    background-color: #CE4501;
-}
-
-.visa-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.visa-table th, .visa-table td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: left;
-}
-
-.visa-table th {
-    background-color: #f2f2f2;
-    color: #333;
-}
-
-.visa-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.visa-table tr:hover {
-    background-color: #f1f1f1;
-}
-
-.visa-table th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-}
-</style>
-
+    .cont {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.86);
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        margin-top: 50px;
+    }
+    
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+    
+    form {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    
+    .search-input {
+        width: 300px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+        margin-right: 10px;
+    }
+    
+    .search-button {
+        padding: 10px 20px;
+        background-color: #300063;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    
+    .search-button:hover {
+        background-color: #CE4501;
+    }
+    
+    .visa-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        overflow-x: auto;
+        display: block;
+    }
+    
+    .visa-table thead {
+        display: table;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .visa-table th, .visa-table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+        min-width: 100px; /* Ensures columns have a minimum width */
+    }
+    
+    .visa-table th {
+        background-color: #f2f2f2;
+        color: #333;
+    }
+    
+    .visa-table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    
+    .visa-table tr:hover {
+        background-color: #f1f1f1;
+    }
+    
+    .visa-table tbody {
+        display: block;
+        width: 100%;
+        max-height: 400px;
+        overflow-y: auto;
+        box-sizing: border-box;
+    }
+    
+    @media (max-width: 768px) {
+        .search-input {
+            width: 200px;
+        }
+        .search-button {
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+        .visa-table th, .visa-table td {
+            font-size: 14px;
+            padding: 8px;
+        }
+    }
+    </style>
+    
 <div class="cont">
     <h1>Visa Applications</h1>
     <form method="GET" action="{{ url_for('visainfo') }}">
