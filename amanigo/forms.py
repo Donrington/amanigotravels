@@ -70,7 +70,7 @@ class SpecialOfferForm(FlaskForm):
 class PackageForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     subtitle = StringField('Subtitle', validators=[DataRequired()])
-    amount = FloatField('Amount (₦)', validators=[DataRequired()])
+    amount = FloatField('Amount ($)', validators=[DataRequired()])
     content = TextAreaField('Content', validators=[DataRequired()])
     image = FileField('Upload Image', validators=[FileAllowed(['jpg', 'jpeg', 'png', 'gif', 'webp'], 'Images only!')])
     image_url = StringField('Image URL', validators=[Optional(), URL(message='Invalid URL')])

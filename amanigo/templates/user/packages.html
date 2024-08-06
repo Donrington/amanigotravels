@@ -82,7 +82,7 @@
       <img src="{{ url_for('static', filename='images/packages/default.jpg') }}" alt="Default Image" class="pb-40">
   {% endif %}
   <h3 class="pb-20">{{ package.subtitle }}</h3>
-  <h2 class="pb-20">₦{{ "{:,.2f}".format(package.amount) }}</h2>
+  <h2 class="pb-20">${{ "{:,.2f}".format(package.amount) }}</h2>
   <div>{{ package.content | safe }}</div>
 </div>
 

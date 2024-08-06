@@ -177,7 +177,8 @@
                         <div class="content">
                             <h3>{{ package.title }}</h3>
                             <small>{{ package.subtitle }}</small>
-                            <h2>₦{{ "{:,.2f}".format(package.amount) }}</h2>
+                            <h2>${{ "{:,.2f}".format(package.amount) }}</h2>
+                            {# ₦ #}
                         </div>
                     </a>
                 </div>
