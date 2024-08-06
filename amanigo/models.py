@@ -148,4 +148,5 @@ class Admin(db.Model):
         return check_password_hash(self.password_hash, password)
 
 if __name__ == '__main__':
-    db.create_all()
+    with app.app_context():
+        db.create_all()
