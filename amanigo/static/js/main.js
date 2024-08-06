@@ -77,18 +77,19 @@ function initComponents() {
 
 
 function initialReveal() {
-  const preloader = document.querySelector('.js-preloader')
+  const preloader = document.querySelector('.js-preloader');
 
   if (preloader) {
-    preloader.classList.add('-is-hidden')
+    preloader.classList.add('-is-hidden');
     setTimeout(() => {
-      RevealAnim.init()
-    }, 100)
+      RevealAnim.init();
+    }, 10); // Consider reducing this delay if it doesn't affect animation quality
   } else {
-    RevealAnim.init()
+    RevealAnim.init();
   }
 }
 
+document.addEventListener('DOMContentLoaded', initialReveal);
 window.onclick = function(event) {
   if (
     !event.target.closest("[data-x-dd-click]") &&

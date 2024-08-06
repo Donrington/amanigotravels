@@ -2,125 +2,8 @@
 
 {%block banner%}
 
-<style>
-  .masthead{
-    z-index: -100;
-  }
-  .customers{
-      background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('../../static/img/icons/15.jpg'); background-attachment: fixed !important;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      color:white !important;
-    }
-    .carousel {
-            position: relative;
-            max-width: 90%;
-            margin: auto;
-            overflow: hidden;
-            /* border: 2px solid #ddd;
-            background-color: #fff; */
-        }
+<style>.masthead{z-index:-100}.customers{background-image:linear-gradient(rgba(0,0,0,.9),rgba(0,0,0,.9)),url('../../static/img/icons/15.jpg');background-attachment:fixed!important;background-position:center;background-repeat:no-repeat;background-size:cover;color:#fff!important}.carousel{position:relative;max-width:90%;margin:auto;overflow:hidden}.carousel-container{display:flex;transition:transform .5s ease-in-out}.carousel-item{min-width:33.33%;box-sizing:border-box;padding:20px;text-align:center;transition:transform .5s ease-in-out;position:relative;color:#000}.carousel-item a:hover{color:#CE4501}.carousel-item h3{margin:0;font-size:1.5em;transition:color .3s}.carousel-item p{font-size:1em;margin-top:10px}.carousel-item img{width:100%;border-radius:10px}.prev,.next{cursor:pointer;position:absolute;top:50%;width:auto;padding:16px;margin-top:-22px;color:#fff;font-weight:bold;font-size:18px;transition:.6s ease;border-radius:50%;user-select:none;background-color:rgba(0,0,0,.5)}.next{right:0;border-radius:50%}.prev:hover,.next:hover{background-color:#CE4501;transition:.1s ease-in}.active-featured{color:#fff;padding:20px;border-radius:10px;position:relative}.active-featured::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(to bottom,rgba(0,0,0,.5),rgba(0,0,0,.5)),url('') center/cover;border-radius:10px;z-index:1}.active-featured h3,.active-featured p{position:relative;z-index:2;color:#fff}@media (max-width:768px){.carousel-item{min-width:50%}}@media (max-width:480px){.carousel-item{min-width:100%}}.elementor-section{margin-top:-150px;z-index:200}
 
-        .carousel-container {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .carousel-item {
-            min-width: 33.33%;
-            box-sizing: border-box;
-            padding: 20px;
-            text-align: center;
-            transition: transform 0.5s ease-in-out;
-            position: relative;
-            color: #000;
-        }
-        .carousel-item a:hover{
-          color: #CE4501;
-        }
-        .carousel-item h3 {
-            margin: 0;
-            font-size: 1.5em;
-            transition: color 0.3s;
-        }
-
-        .carousel-item p {
-            font-size: 1em;
-            margin-top: 10px;
-        }
-
-        .carousel-item img {
-            width: 100%;
-            border-radius: 10px;
-        }
-
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 16px;
-            margin-top: -22px;
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            transition: 0.6s ease;
-            border-radius: 50%;
-            user-select: none;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        .next {
-            right: 0;
-            border-radius: 50%;
-        }
-
-        .prev:hover, .next:hover {
-            background-color: #CE4501;
-            transition: 0.1s ease-in;
-        }
-
-        .active-featured {
-            color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            position: relative;
-        }
-
-        .active-featured::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('') center/cover;
-            border-radius: 10px;
-            z-index: 1;
-        }
-
-        .active-featured h3, .active-featured p {
-            position: relative;
-            z-index: 2;
-            color: #fff;
-        }
-
-        @media (max-width: 768px) {
-            .carousel-item {
-                min-width: 50%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .carousel-item {
-                min-width: 100%;
-            }
-        }
-        .elementor-section{
-          margin-top: -150px;
-          z-index: 200;
-        }
 </style>
 <section class="masthead -type-10">
   <div class="swiper-container">
@@ -198,9 +81,9 @@
                                               <p>Comprehensive packages for your spiritual journeys of Umar and Hajj.</p>
                                           </div>
                                       </div>
-                                      <div class="carousel-item" data-bg="../../static/img/destinations/lon5.webp">
+                                      <div class="carousel-item" data-bg="../../static/images/destinations/lon2.webp">
                                           <div class="grid-item-inner">
-                                              <img src="../../static/images/destinations/lon2.jpg" alt="Tour Operations" title="Tour Operations">
+                                              <img src="../../static/images/destinations/lon2.webp" alt="Tour Operations" title="Tour Operations">
                                               <h3><a href="{{url_for('destination_list')}}">Tour Operations</a></h3>
                                               <p>Exciting tours and travel experiences tailored to your interests and needs.</p>
                                           </div>
@@ -239,9 +122,9 @@
                                             <p>Comprehensive packages for your spiritual journeys of Umar and Hajj.</p>
                                         </div>
                                     </div>
-                                    <div class="carousel-item" data-bg="../../static/img/destinations/lon5.webp">
+                                    <div class="carousel-item" data-bg="../../static/images/destinations/lon2.webp">
                                         <div class="grid-item-inner">
-                                            <img src="../../static/images/destinations/lon2.jpg" alt="Tour Operations" title="Tour Operations">
+                                            <img src="../../static/images/destinations/lon2.webp" alt="Tour Operations" title="Tour Operations">
                                             <h3><a href="{{url_for('destination_list')}}">Tour Operations</a></h3>
                                             <p>Exciting tours and travel experiences tailored to your interests and needs.</p>
                                         </div>
@@ -280,7 +163,7 @@
                                           <p>Comprehensive packages for your spiritual journeys of Umar and Hajj.</p>
                                       </div>
                                   </div>
-                                  <div class="carousel-item" data-bg="../../static/img/destinations/lon5.webp">
+                                  <div class="carousel-item" data-bg="../../static/images/destinations/lon2.webp">
                                       <div class="grid-item-inner">
                                           <img src="../../static/images/destinations/lon2.jpg" alt="Tour Operations" title="Tour Operations">
                                           <h3><a href="{{url_for('destination_list')}}">Tour Operations</a></h3>
@@ -321,7 +204,7 @@
                                         <p>Comprehensive packages for your spiritual journeys of Umar and Hajj.</p>
                                     </div>
                                 </div>
-                                <div class="carousel-item" data-bg="../../static/img/destinations/lon5.webp">
+                                <div class="carousel-item" data-bg="../../static/images/destinations/lon2.webp">
                                     <div class="grid-item-inner">
                                         <img src="../../static/images/destinations/lon2.jpg" alt="Tour Operations" title="Tour Operations">
                                         <h3><a href="{{url_for('destination_list')}}">Tour Operations</a></h3>
@@ -362,7 +245,7 @@
                                       <p>Comprehensive packages for your spiritual journeys of Umar and Hajj.</p>
                                   </div>
                               </div>
-                              <div class="carousel-item" data-bg="../../static/img/destinations/lon5.webp">
+                              <div class="carousel-item" data-bg="../../static/images/destinations/lon2.webp">
                                   <div class="grid-item-inner">
                                       <img src="../../static/images/destinations/lon2.jpg" alt="Tour Operations" title="Tour Operations">
                                       <h3><a href="{{url_for('destination_list')}}">Tour Operations</a></h3>
@@ -507,7 +390,7 @@
     <div class="swiper-container hajj-umrah-carousel">
         <div class="swiper-wrapper">
             <!-- Slide with background image -->
-            <div class="swiper-slide" style="background-image: url('../../static/images/hajj1.jpg');">
+            <div class="swiper-slide" style="background-image: url('../../static/images/hajj1.webp');">
                 <div class="overlay-content">
                     <h2>Embark on a Spiritual Journey</h2>
                     <p>Experience Hajj with unparalleled service and support.</p>
@@ -604,7 +487,7 @@
               <div class="swiper-slide">
                 <div class="row items-center x-gap-30 y-gap-20">
                   <div class="col-auto">
-                    <img src="../../static/img/avatars/9334392.jpg" alt="Tony" class="avatar-img">
+                    <img src="../../static/img/avatars/av3.webp" alt="Tony" class="avatar-img">
                   </div>
 
                   <div class="col-auto">
@@ -619,7 +502,7 @@
               <div class="swiper-slide">
                 <div class="row items-center x-gap-30 y-gap-20">
                   <div class="col-auto">
-                    <img src="../../static/img/avatars/9334410.jpg" alt="Danmallam"  class="avatar-img">
+                    <img src="../../static/img/avatars/av1.webp" alt="Danmallam"  class="avatar-img">
                   </div>
 
                   <div class="col-auto">
@@ -634,7 +517,7 @@
               <div class="swiper-slide">
                 <div class="row items-center x-gap-30 y-gap-20">
                   <div class="col-auto">
-                    <img src="../../static/img/avatars/9334399.jpg" alt="Linda"  class="avatar-img">
+                    <img src="../../static/img/avatars/av2.webp" alt="Linda"  class="avatar-img">
                   </div>
 
                   <div class="col-auto">
@@ -820,57 +703,8 @@
 
 <script>
 
-let slideIndex = 0;
-        const slides = document.querySelectorAll('.carousel-item');
-        const totalSlides = slides.length;
+let slideIndex=0;const slides=document.querySelectorAll('.carousel-item'),totalSlides=slides.length;function showSlide(e){e>=totalSlides?slideIndex=0:e<0&&(slideIndex=totalSlides-1);const t=-slideIndex*100/getVisibleSlides();document.querySelector('.carousel-container').style.transform=`translateX(${t}%)`,slides.forEach((t,l)=>{l===slideIndex+getVisibleSlides()/2-.5?(t.classList.add('active-featured'),t.style.backgroundImage=`url(${t.dataset.bg})`):(t.classList.remove('active-featured'),t.style.backgroundImage='none')})}function nextSlide(){slideIndex++,showSlide(slideIndex)}function prevSlide(){slideIndex--,showSlide(slideIndex)}function getVisibleSlides(){return window.innerWidth<=480?1:window.innerWidth<=768?2:3}window.addEventListener('resize',()=>showSlide(slideIndex)),document.addEventListener('DOMContentLoaded',()=>{showSlide(slideIndex),setInterval(()=>{nextSlide()},3e3)});
 
-        function showSlide(index) {
-            if (index >= totalSlides) {
-                slideIndex = 0;
-            } else if (index < 0) {
-                slideIndex = totalSlides - 1;
-            }
-            const offset = -slideIndex * 100 / getVisibleSlides();
-            document.querySelector('.carousel-container').style.transform = `translateX(${offset}%)`;
-            slides.forEach((slide, idx) => {
-                if (idx === slideIndex + getVisibleSlides() / 2 - 0.5) {
-                    slide.classList.add('active-featured');
-                    slide.style.backgroundImage = `url(${slide.dataset.bg})`;
-                } else {
-                    slide.classList.remove('active-featured');
-                    slide.style.backgroundImage = 'none';
-                }
-            });
-        }
-
-        function nextSlide() {
-            slideIndex++;
-            showSlide(slideIndex);
-        }
-
-        function prevSlide() {
-            slideIndex--;
-            showSlide(slideIndex);
-        }
-
-        function getVisibleSlides() {
-            if (window.innerWidth <= 480) {
-                return 1;
-            } else if (window.innerWidth <= 768) {
-                return 2;
-            } else {
-                return 3;
-            }
-        }
-
-        window.addEventListener('resize', () => showSlide(slideIndex));
-
-        document.addEventListener('DOMContentLoaded', () => {
-            showSlide(slideIndex);
-            setInterval(() => {
-                nextSlide();
-            }, 3000); // Change slide every 3 seconds
-        });
 </script>
 
 {%endblock content%}

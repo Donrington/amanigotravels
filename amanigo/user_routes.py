@@ -255,7 +255,8 @@ def new_post():
         # Save the image file or use the URL
         if image:
             image_filename = save_image(image, app.config['POST_IMAGE_PATH'])
-            final_image_url = os.path.join('/static/images/post/', image_filename)
+            # Correct the path joining here
+            final_image_url = image_filename
         else:
             final_image_url = image_url
 
@@ -307,7 +308,8 @@ def create_destination():
         # Handle the image upload or use the URL
         if image:
             image_filename = save_image(image, app.config['DEST_IMAGE_PATH'])
-            final_image_url = os.path.join('/static/images/post/', image_filename)
+            # Correct the path joining here
+            final_image_url = image_filename
         else:
             final_image_url = image_url
 
@@ -324,6 +326,9 @@ def create_destination():
         return redirect(url_for('admin_dashboard'))
 
     return render_template('user/create_destination.html', form=form)
+
+# Assuming you have a function `save_image` that saves the image file and returns the filename
+
 
 
 @app.route("/destination/<int:destination_id>")
@@ -380,7 +385,8 @@ def new_special_offer():
         # Handle the image upload or use the URL
         if image:
             image_filename = save_image(image, app.config['SPECIAL_OFFER_IMAGE_PATH'])
-            final_image_url = os.path.join('/static/images/special_offers/', image_filename)
+            # Correct the path joining here
+            final_image_url = image_filename
         else:
             final_image_url = image_url
 
@@ -440,9 +446,11 @@ def create_package():
             # Handle the image upload or use the URL
             if image:
                 image_filename = save_image(image, app.config['PACKAGE_IMAGE_PATH'])
-                final_image_url = os.path.join('/static/images/packages/', image_filename)
+            # Correct the path joining here
+                final_image_url = image_filename
             else:
                 final_image_url = image_url
+
 
             user_id = session.get('user_id')
 

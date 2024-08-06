@@ -2,119 +2,8 @@
 
 {%block content%}
 
-<style>
-.visa-header {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('../../static/images/visaimage.webp'); 
-    background-attachment: fixed !important;
-    background-size: cover;
-    background-position: center;
-    color: white;
-    text-align: center;
-    padding: 100px 20px;
-}
+<style>.visa-header{background-image:linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.9)),url('../../static/images/visaimage.webp');background-attachment:fixed!important;background-size:cover;background-position:center;color:white;text-align:center;padding:100px 20px}.header-content h1{font-size:3rem;margin-bottom:.5rem}.header-content p{font-size:1.5rem;margin-top:0}.content-section{display:flex;flex-wrap:wrap;justify-content:space-between;max-width:1200px;margin:50px auto;padding:20px}.visa-info,.visa-form{flex:1 1 100%;margin-bottom:20px;background:#f7f7f7;padding:20px;border-radius:8px;box-shadow:0 0 10px rgba(0,0,0,0.1)}.visa-info h2,.visa-form h3{font-size:2rem;margin-bottom:1rem}.visa-info p,.visa-form p{font-size:1rem;line-height:1.5;margin-bottom:1rem}.form-group{margin-bottom:15px}.form-group label{display:block;margin-bottom:5px;font-weight:bold}.form-group input{width:calc(100% - 20px);padding:10px;border:1px solid #ddd;border-radius:4px;font-size:1rem}button[type="submit"]{width:100%;padding:15px;background-color:#300063;color:white;border:none;border-radius:4px;font-size:1rem;cursor:pointer}button[type="submit"]:hover{background-color:#CE4501;transition:.1s ease-in}@media (min-width:768px){.visa-info,.visa-form{flex:1 1 48%;margin-bottom:0}.visa-info{margin-right:2%}}@media (max-width:767px){.header-content h1{font-size:2rem}.header-content p{font-size:1rem}.content-section{padding:10px}.visa-info,.visa-form{padding:15px}}
 
-.header-content h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-}
-
-.header-content p {
-    font-size: 1.5rem;
-    margin-top: 0;
-}
-
-.content-section {
-    display: flex;
-    flex-wrap: wrap; /* Ensure items wrap on smaller screens */
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 50px auto;
-    padding: 20px;
-}
-
-.visa-info, .visa-form {
-    flex: 1 1 100%; /* Make each section take full width on small screens */
-    margin-bottom: 20px;
-    background: #f7f7f7;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.visa-info h2, .visa-form h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.visa-info p, .visa-form p {
-    font-size: 1rem;
-    line-height: 1.5;
-    margin-bottom: 1rem;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.form-group input {
-    width: calc(100% - 20px);
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
-button[type="submit"] {
-    width: 100%;
-    padding: 15px;
-    background-color: #300063;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-}
-
-button[type="submit"]:hover {
-    background-color: #CE4501;
-    transition: .1s ease-in;
-}
-
-/* Media Queries */
-@media (min-width: 768px) {
-    .visa-info, .visa-form {
-        flex: 1 1 48%; /* Take half the width on medium screens */
-        margin-bottom: 0; /* Remove margin bottom */
-    }
-
-    .visa-info {
-        margin-right: 2%; /* Add space between the two sections */
-    }
-}
-
-@media (max-width: 767px) {
-    .header-content h1 {
-        font-size: 2rem;
-    }
-
-    .header-content p {
-        font-size: 1rem;
-    }
-
-    .content-section {
-        padding: 10px;
-    }
-
-    .visa-info, .visa-form {
-        padding: 15px;
-    }
-}
 
 </style>
 <header class="visa-header">
@@ -146,12 +35,7 @@ button[type="submit"]:hover {
             <form id="visaForm" method="POST" action="{{ url_for('visa') }}">
                 <h3>Get Visa Assistance Now</h3>
                 <p>We're bringing you a new level of comfort.</p>
-                {% set messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category }}"> {{ message }} </div>
-                {% endfor %}
-                {% endif %}
+         
                 <div class="form-group">
                     <label for="firstName">First Name</label>
                     <input type="text" id="firstName" name="firstName" required>
