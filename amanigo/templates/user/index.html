@@ -591,10 +591,10 @@
                                 <div class="d-flex items-center text-light-1">
                                     <div class="text-14">{{ package.subtitle }}</div>
                                     <div class="size-3 bg-light-1 rounded-full ml-10 mr-10"></div>
-                                    <div class="text-14">₦{{ "{:,.2f}".format(package.amount) }}</div>
+                                    <div class="text-14">${{ "{:,.2f}".format(package.amount) }}</div>
                                 </div>
                                 <div class="text-light-1 mt-5">
-                                    <span class="fw-500 text-dark-1">₦{{ "{:,.2f}".format(package.amount) }}</span>
+                                    <span class="fw-500 text-dark-1">${{ "{:,.2f}".format(package.amount) }}</span>
                                     / per package
                                 </div>
                             </div>
