@@ -167,9 +167,9 @@ def index():
     user_id = session.get('user_id')
     user = User.query.get(user_id)
     posts = Post.query.order_by(Post.post_date.desc()).limit(3).all()  # Fetch the latest three posts
-    destinations = Destination.query.limit(4).all()  # Fetch the latest four destinations
+    destinations = Destination.query.limit(6).all()  # Fetch the latest four destinations
     special_offers = SpecialOffer.query.order_by(SpecialOffer.offer_date.desc()).limit(3).all()
-    packages = Package.query.order_by(Package.id.desc()).limit(3).all()
+    packages = Package.query.order_by(Package.id.desc()).limit(5).all()
     return render_template('user/index.html', pagename='Homepage | Amanigo Travels', posts=posts, user=user, destinations=destinations, special_offers=special_offers, packages=packages)
 
     
