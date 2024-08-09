@@ -423,10 +423,11 @@
           </div>
         </div>
       </div>
-      
+
+       
       <div class="row y-gap-40 justify-between pt-40 sm:pt-20">
         {% for destination in destinations %}
-        <div data-anim-child="slide-up delay-{{ loop.index + 3 }}" class="col-xl-{% if loop.index % 2 == 0 %}6{% else %}3{% endif %} col-md-4 col-sm-6">
+        <div data-anim-child="slide-up delay-{{ loop.index + 3 }}" class="col-xl-4 col-md-4 col-sm-6">
             <a href="{{ url_for('view_destination', destination_id=destination.id) }}" class="citiesCard -type-3 d-block rounded-4 h-full">
                 <div class="citiesCard__image ratio ratio-1:1">
                     {% set image_url = destination.images.first().url if destination.images.first() else 'default.jpg' %}
