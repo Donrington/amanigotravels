@@ -3955,7 +3955,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   border-radius: 8px;
 }
-
+/* Default dropdown for larger screens */
 .services-dropdown .dropdown-menu {
   display: none;
 }
@@ -3970,42 +3970,39 @@ h1, h2, h3, h4, h5, h6 {
   min-width: 200px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
-  z-index: 1000; /* Ensure dropdown is above other elements */
+  z-index: 1000;
 }
 
 @media (max-width: 767px) {
-  .services-dropdown .dropdown-menu {
-    display: none; /* Ensure dropdown starts closed */
-    position: static;
-    float: none;
-    width: 100%;
-    background-color: transparent;
-    box-shadow: none;
+  /* Show all items in the same row on small screens */
+  .services-dropdown .dropdown-toggle {
+    display: none; /* Hide the dropdown toggle */
   }
 
-  .services-dropdown .dropdown-menu.show {
-    display: block; /* Show dropdown when active */
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  .services-dropdown .dropdown-menu {
+    display: flex !important; /* Flex to arrange items in a row */
+    position: static; /* Position statically */
+    background-color: transparent;
+    box-shadow: none;
+    width: auto; /* Full width */
+    padding-left: 0; /* Align with other menu items */
+    margin-top: 0; /* No gap above */
   }
 
   .services-dropdown .dropdown-item {
-    display: block;
     padding: 10px 20px;
     color: #000;
     background-color: #fff;
     border-bottom: 1px solid #ddd;
-    cursor: pointer; /* Ensures link is clickable */
+    cursor: pointer;
+    display: inline-block; /* Inline with other items */
   }
 
   .services-dropdown .dropdown-item:hover {
     background-color: #f8f9fa;
   }
-
-  .dropdown-toggle::after {
-    display: none;
-  }
 }
+
 
 
 .dropdown__button {
