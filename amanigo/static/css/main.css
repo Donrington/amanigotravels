@@ -4009,12 +4009,12 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
-/* Hide large screen menu on small devices */
+/* Large Screen Menu Visibility */
 .header-menu.d-none.d-lg-block {
   display: block !important;
 }
 
-/* Show small screen menu on small devices */
+/* Small Screen Menu Visibility */
 .header-menu.d-lg-none {
   display: none !important;
 }
@@ -4028,8 +4028,6 @@ h1, h2, h3, h4, h5, h6 {
       display: block !important;
   }
 }
-
-
 
 .dropdown__button {
   height: 40px;
