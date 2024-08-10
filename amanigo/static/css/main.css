@@ -3995,7 +3995,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #000;
     background-color: #fff;
     border-bottom: 1px solid #ddd;
-    cursor: pointer; /* Ensures link is clickable */
+    cursor:auto; /* Ensures link is clickable */
   }
 
   .services-dropdown .dropdown-item:hover {
@@ -4006,6 +4006,7 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
   }
 }
+
 
 
 .dropdown__button {
