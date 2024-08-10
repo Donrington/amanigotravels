@@ -4008,6 +4008,52 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+/* Default styles for large screens */
+.header-menu.d-none.d-lg-block {
+  display: block !important;
+}
+
+.header-menu.d-lg-none {
+  display: none !important;
+}
+
+/* Styles for small screens */
+@media (max-width: 992px) {
+  .header-menu.d-none.d-lg-block {
+      display: none !important;
+  }
+
+  .header-menu.d-lg-none {
+      display: block !important;
+  }
+
+  .menu__nav {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+  }
+
+  .menu__nav li {
+      flex: 1 1 auto; /* Make each menu item take up space evenly */
+  }
+
+  .nav-link {
+      padding: 10px;
+      display: block;
+      text-align: center;
+      color: #000;
+      text-decoration: none;
+      transition: color 0.3s ease;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus {
+      color: #CE4501;
+  }
+}
+
 .dropdown__button {
   height: 40px;
 }

@@ -56,71 +56,53 @@
                     </a>
                 </div>
             </div>
-            <div class="header-menu" data-x="mobile-menu" data-x-toggle="is-menu-active">
-                <div class="mobile-overlay"></div>
-                <div class="header-menu__content">
-                    <div class="mobile-bg js-mobile-bg"></div>
-                    <div class="menu js-navList">
-                        <ul class="menu__nav text-dark-1 -is-active">
-                            <li>
-                                <a href="{{url_for('index')}}" class="nav-link">
-                                    <span class="mr-10">Home</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{url_for('about')}}" class="nav-link">
-                                    <span class="mr-10">About</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{url_for('visa')}}" class="nav-link">
-                                    <span class="mr-10">Visa</span>
-                                </a>
-                            </li>
-                            <li class="dropdown services-dropdown">
-                              <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false">
-                                  <span class="mr-10">Services</span>
-                              </a>
-                              <ul class="dropdown-menu custom-dropdown">
-                                  <li><a href="{{url_for('destination_list')}}" class="dropdown-item">Destinations</a></li>
-                                  <li><a href="{{url_for('packages_list')}}" class="dropdown-item">Vacation Packages</a></li>
-                                  <li><a href="{{url_for('special_offers_list')}}" class="dropdown-item">Special Offers</a></li>
-                                  <li><a href="{{url_for('core_services')}}" class="dropdown-item">Core Services</a></li>
-                              </ul>
-                          </li>
-                            <li>
-                                <a href="{{url_for('bloglist')}}" class="nav-link">
-                                    <span class="mr-10">News</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{url_for('contact')}}" class="nav-link">
-                                    <span class="mr-10">Contact</span>
-                                </a>
-                            </li>
+            <!-- Large Screen Menu -->
+            <div class="header-menu d-none d-lg-block" data-x="mobile-menu" data-x-toggle="is-menu-active">
+                <ul class="menu__nav text-dark-1">
+                    <li><a href="{{url_for('index')}}" class="nav-link"><span class="mr-10">Home</span></a></li>
+                    <li><a href="{{url_for('about')}}" class="nav-link"><span class="mr-10">About</span></a></li>
+                    <li><a href="{{url_for('visa')}}" class="nav-link"><span class="mr-10">Visa</span></a></li>
+                    <li class="dropdown services-dropdown">
+                        <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="mr-10">Services</span>
+                        </a>
+                        <ul class="dropdown-menu custom-dropdown">
+                            <li><a href="{{url_for('destination_list')}}" class="dropdown-item">Destinations</a></li>
+                            <li><a href="{{url_for('packages_list')}}" class="dropdown-item">Vacation Packages</a></li>
+                            <li><a href="{{url_for('special_offers_list')}}" class="dropdown-item">Special Offers</a></li>
+                            <li><a href="{{url_for('core_services')}}" class="dropdown-item">Core Services</a></li>
                         </ul>
-                    </div>
-                    <div class="mobile-footer px-20 py-20 border-top-light js-mobile-footer">
-                    </div>
-                </div>
+                    </li>
+                    <li><a href="{{url_for('bloglist')}}" class="nav-link"><span class="mr-10">News</span></a></li>
+                    <li><a href="{{url_for('contact')}}" class="nav-link"><span class="mr-10">Contact</span></a></li>
+                </ul>
             </div>
+
+            <!-- Small Screen Menu -->
+            <div class="header-menu d-lg-none" data-x="mobile-menu" data-x-toggle="is-menu-active">
+                <ul class="menu__nav text-dark-1">
+                    <li><a href="{{url_for('index')}}" class="nav-link"><span class="mr-10">Home</span></a></li>
+                    <li><a href="{{url_for('about')}}" class="nav-link"><span class="mr-10">About</span></a></li>
+                    <li><a href="{{url_for('visa')}}" class="nav-link"><span class="mr-10">Visa</span></a></li>
+                    <li><a href="{{url_for('destination_list')}}" class="nav-link"><span class="mr-10">Destinations</span></a></li>
+                    <li><a href="{{url_for('packages_list')}}" class="nav-link"><span class="mr-10">Vacation Packages</span></a></li>
+                    <li><a href="{{url_for('special_offers_list')}}" class="nav-link"><span class="mr-10">Special Offers</span></a></li>
+                    <li><a href="{{url_for('core_services')}}" class="nav-link"><span class="mr-10">Core Services</span></a></li>
+                    <li><a href="{{url_for('bloglist')}}" class="nav-link"><span class="mr-10">News</span></a></li>
+                    <li><a href="{{url_for('contact')}}" class="nav-link"><span class="mr-10">Contact</span></a></li>
+                </ul>
+            </div>
+
             <div class="col-auto">
                 <div class="d-flex items-center">
-                    <div class="d-none xl:d-flex x-gap-20 items-center pl-30 text-dark-1" data-x="header-mobile-icons" data-x-toggle="text-white">
-                        <div><button class="d-flex items-center icon-menu text-inherit text-22" data-x-click="html, header, header-logo, header-mobile-icons, mobile-menu"></button></div>
-                    </div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="d-none d-md-flex x-gap-20 items-center pl-30 text-dark-1" data-x="header-mobile-icons" data-x-toggle="text-white">
-                        <div><button class="d-flex items-center icon-menu text-inherit text-22" data-x-click="html, header, header-logo, header-mobile-icons, mobile-menu"></button></div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 </header>
-
 
 
     {%block banner%}
