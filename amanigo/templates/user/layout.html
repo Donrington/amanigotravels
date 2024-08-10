@@ -56,6 +56,14 @@
                     </a>
                 </div>
             </div>
+            
+            <!-- Small Screen Menu Toggle Button -->
+            <div class="col-auto d-lg-none">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
             <!-- Large Screen Menu -->
             <div class="header-menu d-none d-lg-block" data-x="mobile-menu" data-x-toggle="is-menu-active">
                 <ul class="menu__nav text-dark-1">
@@ -79,25 +87,27 @@
             </div>
 
             <!-- Small Screen Menu -->
-            <div class="header-menu d-lg-none" data-x="mobile-menu" data-x-toggle="is-menu-active">
-                <ul class="menu__nav text-dark-1">
-                    <li><a href="{{url_for('index')}}" class="nav-link"><span class="mr-10">Home</span></a></li>
-                    <li><a href="{{url_for('about')}}" class="nav-link"><span class="mr-10">About</span></a></li>
-                    <li><a href="{{url_for('visa')}}" class="nav-link"><span class="mr-10">Visa</span></a></li>
-                    <li><a href="{{url_for('destination_list')}}" class="nav-link"><span class="mr-10">Destinations</span></a></li>
-                    <li><a href="{{url_for('packages_list')}}" class="nav-link"><span class="mr-10">Vacation Packages</span></a></li>
-                    <li><a href="{{url_for('special_offers_list')}}" class="nav-link"><span class="mr-10">Special Offers</span></a></li>
-                    <li><a href="{{url_for('core_services')}}" class="nav-link"><span class="mr-10">Core Services</span></a></li>
-                    <li><a href="{{url_for('bloglist')}}" class="nav-link"><span class="mr-10">News</span></a></li>
-                    <li><a href="{{url_for('contact')}}" class="nav-link"><span class="mr-10">Contact</span></a></li>
-                </ul>
+            <div class="collapse d-lg-none" id="navbarNavDropdown">
+                <div class="header-menu" data-x="mobile-menu" data-x-toggle="is-menu-active">
+                    <ul class="menu__nav text-dark-1">
+                        <li><a href="{{url_for('index')}}" class="nav-link"><span class="mr-10">Home</span></a></li>
+                        <li><a href="{{url_for('about')}}" class="nav-link"><span class="mr-10">About</span></a></li>
+                        <li><a href="{{url_for('visa')}}" class="nav-link"><span class="mr-10">Visa</span></a></li>
+                        <li><a href="{{url_for('destination_list')}}" class="nav-link"><span class="mr-10">Destinations</span></a></li>
+                        <li><a href="{{url_for('packages_list')}}" class="nav-link"><span class="mr-10">Vacation Packages</span></a></li>
+                        <li><a href="{{url_for('special_offers_list')}}" class="nav-link"><span class="mr-10">Special Offers</span></a></li>
+                        <li><a href="{{url_for('core_services')}}" class="nav-link"><span class="mr-10">Core Services</span></a></li>
+                        <li><a href="{{url_for('bloglist')}}" class="nav-link"><span class="mr-10">News</span></a></li>
+                        <li><a href="{{url_for('contact')}}" class="nav-link"><span class="mr-10">Contact</span></a></li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="col-auto">
+            <div class="col-auto d-none d-lg-block">
                 <div class="d-flex items-center">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                    <div class="d-none xl:d-flex x-gap-20 items-center pl-30 text-dark-1" data-x="header-mobile-icons" data-x-toggle="text-white">
+                        <div><button class="d-flex items-center icon-menu text-inherit text-22" data-x-click="html, header, header-logo, header-mobile-icons, mobile-menu"></button></div>
+                    </div>
                 </div>
             </div>
         </div>
