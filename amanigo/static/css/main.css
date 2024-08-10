@@ -4006,19 +4006,12 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
   }
 }
-
-
-
-/* Large Screen Menu Visibility */
+/* Default: Large screen menu */
 .header-menu.d-none.d-lg-block {
   display: block !important;
 }
 
-/* Small Screen Menu Visibility */
-.header-menu.d-lg-none {
-  display: none !important;
-}
-
+/* Small screen setup */
 @media (max-width: 992px) {
   .header-menu.d-none.d-lg-block {
       display: none !important;
