@@ -35,7 +35,7 @@
             <form id="visaForm" method="POST" action="{{ url_for('visa') }}">
                 <h3>Get Visa Assistance Now</h3>
                 <p>We're bringing you a new level of comfort.</p>
-         
+        
                 <div class="form-group">
                     <label for="firstName">First Name</label>
                     <input type="text" id="firstName" name="firstName" required>
@@ -53,6 +53,17 @@
                     <input type="text" id="country" name="country" required>
                 </div>
                 <div class="form-group">
+                    <label for="visaType">Visa Type</label>
+                    <select id="visaType" name="visaType" required>
+                        <option value="">Select Visa Type</option>
+                        <option value="tourist">Tourist Visa</option>
+                        <option value="business">Business Visa</option>
+                        <option value="student">Student Visa</option>
+                        <option value="work">Work Visa</option>
+                        <option value="transit">Transit Visa</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" required>
                 </div>
@@ -60,35 +71,44 @@
                     <label for="phone">Phone Number</label>
                     <input type="tel" id="phone" name="phone" required>
                 </div>
+          
                 <button type="submit">Submit Application</button>
             </form>
         </div>
     </section>
-</main>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const form = document.getElementById('visaForm');
-        form.addEventListener('submit', (event) => {
-            // event.preventDefault(); // Comment this out to allow form submission
-            if (validateForm()) {
-                alert('Visa application submitted successfully!');
-                form.reset();
-            }
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('visaForm');
+            let formSubmitted = false;  // Flag to track if form is already submitted
+    
+            form.addEventListener('submit', (event) => {
+                if (formSubmitted) {
+                    event.preventDefault();  // Prevent further submissions
+                    return;
+                }
+    
+                if (validateForm()) {
+                    event.preventDefault();  // Prevent actual submission for testing
+                    alert('Visa application submitted successfully!');
+                    form.reset();
+                    formSubmitted = true;  // Set flag to true after submission
+                }
+            });
         });
-    });
-
-    function validateForm() {
-        const inputs = document.querySelectorAll('input[required]');
-        for (let input of inputs) {
-            if (!input.value) {
-                alert(`Please fill out the ${input.previousElementSibling.textContent} field.`);
-                return false;
+    
+        function validateForm() {
+            const inputs = document.querySelectorAll('input[required], select[required]');
+            for (let input of inputs) {
+                if (!input.value) {
+                    alert(`Please fill out the ${input.previousElementSibling.textContent} field.`);
+                    return false;
+                }
             }
+            return true;
         }
-        return true;
-    }
-</script>
+    </script>
+    
 
 
 {%endblock%}

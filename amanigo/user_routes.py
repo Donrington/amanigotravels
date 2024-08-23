@@ -482,7 +482,6 @@ def create_package():
 
     return render_template('user/packagespost.html', form=form)
 
-
 @app.route('/visa', methods=['GET', 'POST'])
 @csrf.exempt
 def visa():
@@ -494,9 +493,10 @@ def visa():
             country = request.form['country']
             email = request.form['email']
             phone = request.form['phone']
+            visa_type = request.form['visaType']  # Capture visa type
 
             # Debugging: Print received form data
-            logging.debug(f"Received form data: first_name={first_name}, last_name={last_name}, dob={dob}, country={country}, email={email}, phone={phone}")
+            logging.debug(f"Received form data: first_name={first_name}, last_name={last_name}, dob={dob}, country={country}, email={email}, phone={phone}, visa_type={visa_type}")
 
             # Convert dob to datetime object
             dob = datetime.strptime(dob, '%Y-%m-%d')
@@ -507,13 +507,14 @@ def visa():
                 dob=dob,
                 country=country,
                 email=email,
-                phone=phone
+                phone=phone,
+                visa_type=visa_type  # Save visa type
             )
 
             db.session.add(new_application)
             db.session.commit()
 
-            flash('Visa application   submitted successfully!', 'success')
+            flash('Visa application submitted successfully!', 'success')
             return redirect(url_for('visa'))
         except Exception as e:
             # Debugging: Print the exception
@@ -522,7 +523,6 @@ def visa():
             flash('Error submitting visa application. Please try again.', 'danger')
 
     return render_template('user/visapage.html')
-
 
 @app.route('/visa_applications', methods=['GET'])
 @csrf.exempt
@@ -540,10 +540,12 @@ def visainfo():
             (VisaApplication.last_name.ilike(f'%{query}%')) |
             (VisaApplication.country.ilike(f'%{query}%')) |
             (VisaApplication.email.ilike(f'%{query}%')) |
-            (VisaApplication.phone.ilike(f'%{query}%'))
+            (VisaApplication.phone.ilike(f'%{query}%')) |
+            (VisaApplication.visa_type.ilike(f'%{query}%'))  # Filter by visa type
         ).all()
     else:
         applications = VisaApplication.query.all()
+        
     return render_template('user/visainfo.html', pagename='Visa Applications | Amanigo Travels', applications=applications, query=query, user=user)
 
 @app.route('/delete_visa_application/<int:application_id>', methods=['POST'])
