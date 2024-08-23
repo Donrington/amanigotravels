@@ -148,19 +148,6 @@ class Admin(db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-class VisaApplication(db.Model):
-    __table_args__ = {'extend_existing': True}
-
-    id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(50), nullable=False)
-    last_name = db.Column(db.String(50), nullable=False)
-    dob= db.Column(db.Date, nullable=False)
-    country = db.Column(db.String(50), nullable=False)
-    email = db.Column(db.String(100), nullable=False)
-    phone = db.Column(db.String(20), nullable=False)
-    visa_type = db.Column(db.String(50), nullable=False) # New column for visa type 
-    created_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
-
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
