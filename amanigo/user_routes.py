@@ -385,7 +385,7 @@ def new_special_offer():
         # Handle the image upload or use the URL
         if image:
             image_filename = save_image(image, app.config['SPECIAL_OFFER_IMAGE_PATH'])
-            # Correct the path joining here
+          
             final_image_url = image_filename
         else:
             final_image_url = image_url
