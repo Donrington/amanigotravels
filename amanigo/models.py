@@ -128,6 +128,7 @@ class VisaApplication(db.Model):
     visa_type = db.Column(db.String(50), nullable=False)  # New column for visa type
     created_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
+
 class Newsletter(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(100), nullable=False)
